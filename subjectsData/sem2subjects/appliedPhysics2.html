@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0B0425;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content h3,
+        .semester1 .theoretical-content h4,
+        .semester1 .theoretical-content h5,
+        .semester1 .theoretical-content p,
+        .semester1 .theoretical-content ul {
+            text-align: left;
+            color: #f3f4f6;
+        }
+
+        .semester1 .theoretical-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .semester1 .theoretical-content h4 {
+            font-size: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .semester1 .theoretical-content h5 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content p {
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .semester1 .theoretical-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .semester1 .theoretical-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .semester1 .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: rgb(47, 130, 255);
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .semester1.section {
+            flex: 1;
+        }
+
+        .video-section {
+            
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:left;
+        }
+        .video-section2 {
+          
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:right;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            border-radius: 0.375rem;
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+
+        pre1 .output
+        {
+            display: inline-block;
+            justify-content: space-between;
+        }
+               
+@media (max-width: 425px) {
+    .semester1 .theoretical-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .semester1 .theoretical-content h4 {
+        font-size: 1.35rem;
+        margin-top: 1.5rem;
+    }
+
+    .semester1 .theoretical-content h5 {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+    }
+
+    .semester1 .theoretical-content p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        line-height: 1.8;
+    }
+
+    .semester1 .theoretical-content ul {
+        margin: 0.3rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .semester1 .theoretical-content ul li {
+        margin-bottom: 0.3rem;
+    }
+
+   .video-section iframe{
+        width: 230px;
+        height: 157px;
+    }
+    .card{
+        width: 95%;
+    }
+
+    .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+        .Output img{
+            width: 260px;
+            height: 170px;
+        }
+        .code-block code{
+                font-size: 0.8rem;
+        }
+    
+}
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester2.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+
+    <!-- Experiments Section -->
+    <section class="semester1 section">
+        <h1 class="section-title"> Applied Physics 2 Practical List </h1>
+
+    <a href="../files/sem7.pdf" download="ALL.pdf" class="download-button">Download PDF</a>
+    <div class="INFO">
+
+        Video + Theory 
+        
+    </div>
+
+    <ul class="practicals-list">
+
+    <li class="card">
+        <h2 class="card-title">1. Determine the e/m Ratio of an Electron by J.J. Thomson Method</h2>
+        <button class="reveal-button" onclick="toggleContent('theoryContent1')">Toggle Content</button>
+        <div id="theoryContent1" class="theoretical-content">
+            <h3>Overview</h3>
+            <p>This experiment involves using J.J. Thomson's method to determine the charge-to-mass (e/m) ratio of an electron by observing the electron's behavior in electric and magnetic fields.</p>
+    
+            <h4>Procedure</h4>
+            <p>1. Set up the cathode ray tube with an electric field and magnetic field.<br>
+               2. Observe deflection of the electron beam and record measurements.<br>
+               3. Calculate the e/m ratio using the observed deflection.</p>
+    
+            <div id="videoBlock1" class="video-section">
+                <h3>Video Explanation of J.J. Thomson's e/m Ratio Experiment</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </li>
+    
+    <li class="card">
+        <h2 class="card-title">2. Measure Frequency and Obtain Lissajous Pattern on CRO</h2>
+        <button class="reveal-button" onclick="toggleContent('theoryContent2')">Toggle Content</button>
+        <div id="theoryContent2" class="theoretical-content">
+            <h3>Overview</h3>
+            <p>This experiment involves measuring the frequency of a sine wave and generating a Lissajous pattern by feeding two signals into the CRO from separate signal generators.</p>
+    
+            <h4>Procedure</h4>
+            <p>1. Connect the sine-wave signal from the signal generator to the CRO.<br>
+               2. Feed a second sine-wave signal to the CRO's second input.<br>
+               3. Adjust the frequency and observe the Lissajous pattern.</p>
+    
+            <div id="videoBlock2" class="video-section">
+                <h3>Video on Lissajous Patterns and Frequency Measurement</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </li>
+    
+    <li class="card">
+        <h2 class="card-title">3. Determine the Frequency of A.C. Mains Using a Sonometer</h2>
+        <button class="reveal-button" onclick="toggleContent('theoryContent3')">Toggle Content</button>
+        <div id="theoryContent3" class="theoretical-content">
+            <h3>Overview</h3>
+            <p>In this experiment, we determine the frequency of A.C. mains by measuring the vibration frequency of a wire on a sonometer.</p>
+    
+            <h4>Procedure</h4>
+            <p>1. Place the sonometer under the influence of the A.C. mains.<br>
+               2. Adjust tension and length of the wire until resonance is achieved.<br>
+               3. Calculate the frequency based on resonance conditions.</p>
+    
+            <div id="videoBlock3" class="video-section">
+                <h3>Video on Using Sonometer for A.C. Frequency Measurement</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </li>
+    
+    <li class="card">
+        <h2 class="card-title">4. Frequency Determination of a Tuning Fork by Melde’s Method</h2>
+        <button class="reveal-button" onclick="toggleContent('theoryContent4')">Toggle Content</button>
+        <div id="theoryContent4" class="theoretical-content">
+            <h3>Overview</h3>
+            <p>This experiment involves determining the frequency of a tuning fork by setting up a vibrating string that resonates with it using Melde’s method.</p>
+    
+            <h4>Procedure</h4>
+            <p>1. Set up the apparatus with the tuning fork and string.<br>
+               2. Vary the tension in the string to achieve resonance.<br>
+               3. Calculate the frequency based on the wave characteristics on the string.</p>
+    
+            <div id="videoBlock4" class="video-section">
+                <h3>Video on Melde’s Method for Frequency Determination</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </li>
+    
+    <li class="card">
+        <h2 class="card-title">5. Computer Simulation of Brownian Motion and RC Circuits</h2>
+        <button class="reveal-button" onclick="toggleContent('theoryContent5')">Toggle Content</button>
+        <div id="theoryContent5" class="theoretical-content">
+            <h3>Overview</h3>
+            <p>Using Monte Carlo simulation, this experiment simulates Brownian motion and charging/discharging processes in RC circuits.</p>
+    
+            <h4>Procedure</h4>
+            <p>1. Write a simulation code for Brownian motion or RC circuits.<br>
+               2. Run the simulation and observe the results.<br>
+               3. Analyze the statistical behavior of the system.</p>
+    
+            <div id="videoBlock5" class="video-section">
+                <h3>Video on Monte Carlo Simulation Applications</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </li>
+    
+    <li class="card">
+        <h2 class="card-title">6. Study the Charging and Discharging of a Capacitor</h2>
+        <button class="reveal-button" onclick="toggleContent('theoryContent6')">Toggle Content</button>
+        <div id="theoryContent6" class="theoretical-content">
+            <h3>Overview</h3>
+            <p>This experiment examines the charging and discharging processes in an RC circuit and determines the time constant.</p>
+    
+            <h4>Procedure</h4>
+            <p>1. Set up the RC circuit with a capacitor and resistor.<br>
+               2. Apply voltage and observe the capacitor's charging and discharging.<br>
+               3. Calculate the time constant from the voltage curve.</p>
+    
+            <div id="videoBlock6" class="video-section">
+                <h3>Video on Capacitor Charging and Discharging</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </li>
+    
+    <li class="card">
+        <h2 class="card-title">7. Study of the Hall Effect</h2>
+        <button class="reveal-button" onclick="toggleContent('theoryContent7')">Toggle Content</button>
+        <div id="theoryContent7" class="theoretical-content">
+            <h3>Overview</h3>
+            <p>The Hall effect experiment demonstrates the generation of a voltage difference in a conductor when subjected to a magnetic field.</p>
+    
+            <h4>Procedure</h4>
+            <p>1. Connect the conductor to a current source and apply a magnetic field.<br>
+               2. Measure the voltage difference across the conductor.<br>
+               3. Calculate the Hall coefficient based on measurements.</p>
+    
+            <div id="videoBlock7" class="video-section">
+                <h3>Video on Hall Effect and Its Applications</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </li>
+
+    <li class="card">
+        <h2 class="card-title">8. Verify Stefan’s Law</h2>
+        <button class="reveal-button" onclick="toggleContent('theoryContent8')">Toggle Content</button>
+        <div id="theoryContent8" class="theoretical-content">
+            <h3>Overview</h3>
+            <p>This experiment involves verifying Stefan’s Law, which relates to the power radiated by a black body to its temperature.</p>
+    
+            <h4>Procedure</h4>
+            <p>1. Set up a black body radiator and measure its temperature.<br>
+               2. Measure the power radiated at various temperatures.<br>
+               3. Plot the results to verify the relationship as per Stefan's Law.</p>
+    
+            <div id="videoBlock8" class="video-section">
+                <h3>Video on Stefan’s Law Verification</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </li>
+    
+    <li class="card">
+        <h2 class="card-title">9. Determine the Energy Band Gap of a Semiconductor by Four Probe Method</h2>
+        <button class="reveal-button" onclick="toggleContent('theoryContent9')">Toggle Content</button>
+        <div id="theoryContent9" class="theoretical-content">
+            <h3>Overview</h3>
+            <p>This experiment measures the energy band gap of a semiconductor using the four-probe method and examining the variation of reverse saturation current with temperature.</p>
+    
+            <h4>Procedure</h4>
+            <p>1. Set up the four-probe apparatus with the semiconductor sample.<br>
+               2. Measure the current at different temperatures.<br>
+               3. Analyze the data to determine the energy band gap.</p>
+    
+            <div id="videoBlock9" class="video-section">
+                <h3>Video on Four Probe Method for Energy Band Gap Determination</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </li>
+    
+    <li class="card">
+        <h2 class="card-title">10. Study the I-V Characteristics of a Zener Diode</h2>
+        <button class="reveal-button" onclick="toggleContent('theoryContent10')">Toggle Content</button>
+        <div id="theoryContent10" class="theoretical-content">
+            <h3>Overview</h3>
+            <p>This experiment focuses on examining the current-voltage (I-V) characteristics of a Zener diode, which operates in reverse bias.</p>
+    
+            <h4>Procedure</h4>
+            <p>1. Connect the Zener diode in reverse bias in a circuit.<br>
+               2. Vary the voltage and record the current.<br>
+               3. Plot the I-V curve to analyze the Zener breakdown region.</p>
+    
+            <div id="videoBlock10" class="video-section">
+                <h3>Video on I-V Characteristics of Zener Diodes</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </li>
+    
+    <li class="card">
+        <h2 class="card-title">11. Find the Thermal Conductivity of a Poor Conductor by Lee’s Disk Method</h2>
+        <button class="reveal-button" onclick="toggleContent('theoryContent11')">Toggle Content</button>
+        <div id="theoryContent11" class="theoretical-content">
+            <h3>Overview</h3>
+            <p>This experiment measures the thermal conductivity of a poor conductor using Lee's disk method, which involves measuring the heat flow through the material.</p>
+    
+            <h4>Procedure</h4>
+            <p>1. Set up the Lee's disk apparatus with the poor conductor.<br>
+               2. Heat the disk and measure the temperature difference.<br>
+               3. Calculate thermal conductivity based on heat flow measurements.</p>
+    
+            <div id="videoBlock11" class="video-section">
+                <h3>Video on Lee’s Disk Method for Thermal Conductivity</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </li>
+    
+    <li class="card">
+        <h2 class="card-title">12. Study the Thermo EMF Using Thermocouple and Resistance Using Pt. Resistance Thermometer</h2>
+        <button class="reveal-button" onclick="toggleContent('theoryContent12')">Toggle Content</button>
+        <div id="theoryContent12" class="theoretical-content">
+            <h3>Overview</h3>
+            <p>This experiment studies the thermoelectric EMF produced by a thermocouple and measures resistance using a platinum resistance thermometer.</p>
+    
+            <h4>Procedure</h4>
+            <p>1. Connect the thermocouple and measure the temperature.<br>
+               2. Record the EMF generated at different temperatures.<br>
+               3. Use the resistance thermometer to measure and compare resistance values.</p>
+    
+            <div id="videoBlock12" class="video-section">
+                <h3>Video on Thermo EMF and Resistance Measurement</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </li>
+
+    </ul>
+
+</section>
+
+<script>
+    function toggleContent(contentId) {
+        var content = document.getElementById(contentId);
+
+        // Check if content is hidden (display is "none" or initial empty value)
+        if (content.style.display === "none" || content.style.display === "") {
+            content.style.display = "block"; // Show content
+        } else {
+            content.style.display = "none"; // Hide content
+        }
+    }
+</script>
+</body>
+
+</html>

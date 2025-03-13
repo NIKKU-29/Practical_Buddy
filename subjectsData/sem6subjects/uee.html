@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+    
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0B0425;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: #1e40af;
+        }
+
+        .theoretical-content {
+            display: none; /* Ensure all theoretical content is hidden by default */
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+               
+@media (max-width: 425px) {
+    .semester1 .theoretical-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .semester1 .theoretical-content h4 {
+        font-size: 1.35rem;
+        margin-top: 1.5rem;
+    }
+
+    .semester1 .theoretical-content h5 {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+    }
+
+    .semester1 .theoretical-content p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        line-height: 1.8;
+    }
+
+    .semester1 .theoretical-content ul {
+        margin: 0.3rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .semester1 .theoretical-content ul li {
+        margin-bottom: 0.3rem;
+    }
+
+   .video-section iframe{
+        width: 230px;
+        height: 157px;
+    }
+    .card{
+        width: 95%;
+    }
+
+    .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+        .Output img{
+            width: 260px;
+            height: 170px;
+        }
+        .code-block code{
+                font-size: 0.8rem;
+        }
+    
+}
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester6.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+
+    <!-- Experiments Section -->
+    <section class="semester1 section">
+        <h1 class="section-title">Utilization Of Electrical Engineering</h1>
+
+    <a href="../../files/uee.pdf" download="UEE_FILE.pdf" class="download-button">Download PDF</a>
+    <div class="INFO">
+
+        Video + Theory 
+        
+    </div>
+
+        <ul class="practicals-list">
+            <li class="card">
+                <h2 class="card-title">1. Verification of illumination laws (C03)</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent1')">Toggle Content</button>
+                <div id="theoryContent1" class="theoretical-content">
+                    <p>Study and verify various illumination laws such as the inverse square law and Lambert's cosine law.</p>
+                </div>
+            </li>
+
+            <li class="card">
+                <h2 class="card-title">2. Plot polar curves for various lamps (C03)</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent2')">Toggle Content</button>
+                <div id="theoryContent2" class="theoretical-content">
+                    <p>Plot and compare polar curves for different types of lamps including filament, CFL, and LED.</p>
+                </div>
+            </li>
+
+            <li class="card">
+                <h2 class="card-title">3. Performance comparison of different lamps (C03)</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent3')">Toggle Content</button>
+                <div id="theoryContent3" class="theoretical-content">
+                    <p>Compare the performance of MV lamps, SV lamps, filament lamps, CFL, and LED lights.</p>
+                </div>
+            </li>
+
+            <li class="card">
+                <h2 class="card-title">4. Design of lighting schemes (C03)</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent4')">Toggle Content</button>
+                <div id="theoryContent4" class="theoretical-content">
+                    <p>Design lighting schemes for house, commercial complex, industry, street light, and floodlight applications.</p>
+                </div>
+            </li>
+
+            <li class="card">
+                <h2 class="card-title">5. Study of charging methods of batteries (C02)</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent5')">Toggle Content</button>
+                <div id="theoryContent5" class="theoretical-content">
+                    <p>Study various methods of battery charging and calculate their life cycles.</p>
+                </div>
+            </li>
+
+            <li class="card">
+                <h2 class="card-title">6. Charging and discharging of super capacitors (C02)</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent6')">Toggle Content</button>
+                <div id="theoryContent6" class="theoretical-content">
+                    <p>Explore the charging and discharging characteristics of super capacitors.</p>
+                </div>
+            </li>
+
+            <li class="card">
+                <h2 class="card-title">7. Characteristics of welding transformer (C04)</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent7')">Toggle Content</button>
+                <div id="theoryContent7" class="theoretical-content">
+                    <p>Study the characteristics and behavior of welding transformers.</p>
+                </div>
+            </li>
+
+            <li class="card">
+                <h2 class="card-title">8. Resistance/Inductance/Dielectric Heating Demonstration</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent8')">Toggle Content</button>
+                <div id="theoryContent8" class="theoretical-content">
+                    <p>Demonstration of various heating methods such as resistance, inductance, and dielectric heating.</p>
+                </div>
+            </li>
+
+            <li class="card">
+                <h2 class="card-title">9. Speed control and braking schemes for traction motors</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent9')">Toggle Content</button>
+                <div id="theoryContent9" class="theoretical-content">
+                    <p>Explore various speed control and braking schemes used in traction motors.</p>
+                </div>
+            </li>
+
+            <li class="card">
+                <h2 class="card-title">10. Study of LADSIM software basics (C02)</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent10')">Toggle Content</button>
+                <div id="theoryContent10" class="theoretical-content">
+                    <p>Understand LADSIM software and develop basic circuits using AND, OR, NOT gates.</p>
+                </div>
+            </li>
+
+            <li class="card">
+                <h2 class="card-title">11. Automated inspection conveyor using LADSIM (C02)</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent11')">Toggle Content</button>
+                <div id="theoryContent11" class="theoretical-content">
+                    <p>Study the use of Latch, flag, timers, counters, BSR, BSL in LADSIM software and develop an automated conveyor control system.</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <script>
+        function toggleContent(contentId) {
+            var content = document.getElementById(contentId);
+
+            // Check if content is hidden (display is "none" or initial empty value)
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block"; // Show content
+            } else {
+                content.style.display = "none"; // Hide content
+            }
+        }
+    </script>
+</body>
+
+</html>

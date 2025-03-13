@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0B0425;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content h3,
+        .semester1 .theoretical-content h4,
+        .semester1 .theoretical-content h5,
+        .semester1 .theoretical-content p,
+        .semester1 .theoretical-content ul {
+            text-align: left;
+            color: #f3f4f6;
+        }
+
+        .semester1 .theoretical-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .semester1 .theoretical-content h4 {
+            font-size: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .semester1 .theoretical-content h5 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content p {
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .semester1 .theoretical-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .semester1 .theoretical-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .semester1 .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: rgb(47, 130, 255);
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .semester1.section {
+            flex: 1;
+        }
+
+        .video-section {
+            
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:left;
+        }
+        .video-section2 {
+          
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:right;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            border-radius: 0.375rem;
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+
+        pre1 .output
+        {
+            display: inline-block;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 425px) {
+    .semester1 .theoretical-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .semester1 .theoretical-content h4 {
+        font-size: 1.35rem;
+        margin-top: 1.5rem;
+    }
+
+    .semester1 .theoretical-content h5 {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+    }
+
+    .semester1 .theoretical-content p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        line-height: 1.8;
+    }
+
+    .semester1 .theoretical-content ul {
+        margin: 0.3rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .semester1 .theoretical-content ul li {
+        margin-bottom: 0.3rem;
+    }
+
+   .video-section iframe{
+        width: 230px;
+        height: 157px;
+    }
+    .card{
+        width: 95%;
+    }
+
+    .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+        .Output img{
+            width: 260px;
+            height: 170px;
+        }
+        .code-block code{
+                font-size: 0.8rem;
+        }
+    
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar --><nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester1.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+    <!-- Experiments Section -->
+    <section class="semester1 section">
+        <h1 class="section-title"> Applied Physics Practical List</h1>
+    <a href="../files/sem7.pdf" download="ALL.pdf" class="download-button">Download PDF</a>
+    <div class="INFO">
+        Video + Theory       
+    </div>
+    <ul class="practicals-list">
+
+        <li class="card">
+            <h2 class="card-title">1. Determination of Wavelength of Sodium Light using Newton’s Rings</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent1')">Toggle Content</button>
+            <div id="theoryContent1" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment uses Newton’s Rings to measure the wavelength of sodium light by analyzing the interference pattern formed between a convex lens and flat glass surface.</p>
+                <h4>Procedure</h4>
+                <p>1. Set up the lens and glass plate apparatus.<br>
+                   2. Use a microscope to observe and measure the ring diameters.<br>
+                   3. Calculate the wavelength based on the ring spacing.</p>
+                <h4>Notes</h4>
+                <p>- Ensure proper alignment of the lens and glass plate.<br>
+                   - Accurate measurements of ring diameters are essential.</p>
+                <div id="videoBlock1" class="video-section">
+                    <h3>Video on Newton’s Rings Experiment</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+        <li class="card">
+            <h2 class="card-title">2. Determination of Wavelength of Sodium Light using Fresnel's Biprism</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent2')">Toggle Content</button>
+            <div id="theoryContent2" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment measures the wavelength of sodium light using Fresnel's biprism to create an interference pattern from a single light source.</p>
+    
+                <h4>Procedure</h4>
+                <p>1. Align the biprism with a monochromatic light source.<br>
+                   2. Record the positions of interference fringes on the screen.<br>
+                   3. Calculate wavelength using fringe spacing and setup parameters.</p>
+    
+                <h4>Notes</h4>
+                <p>- Maintain stable light source intensity.<br>
+                   - Adjust biprism position for clear fringe visibility.</p>
+    
+                <div id="videoBlock2" class="video-section">
+                    <h3>Video on Fresnel's Biprism Experiment</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">3. Determination of Wavelength of Sodium Light using Diffraction Grating</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent3')">Toggle Content</button>
+            <div id="theoryContent3" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves using a diffraction grating to determine the wavelength of sodium light by measuring the angles of diffraction for various orders.</p>
+    
+                <h4>Procedure</h4>
+                <p>1. Align the grating with the sodium light source.<br>
+                   2. Measure diffraction angles using a spectrometer.<br>
+                   3. Calculate wavelength using grating equation.</p>
+    
+                <h4>Notes</h4>
+                <p>- Ensure the grating is properly aligned with the light source.<br>
+                   - Measure angles carefully for accurate calculations.</p>
+    
+                <div id="videoBlock3" class="video-section">
+                    <h3>Video on Diffraction Grating Experiment</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">4. Determination of Refractive Index of a Prism using Spectrometer</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent4')">Toggle Content</button>
+            <div id="theoryContent4" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment determines the refractive index of a prism by measuring the angle of minimum deviation using a spectrometer.</p>
+    
+                <h4>Procedure</h4>
+                <p>1. Place the prism on the spectrometer table.<br>
+                   2. Rotate the spectrometer to find the minimum deviation angle.<br>
+                   3. Calculate refractive index using prism and deviation angles.</p>
+    
+                <h4>Notes</h4>
+                <p>- Handle prism carefully to avoid surface damage.<br>
+                   - Ensure accurate alignment of the spectrometer.</p>
+    
+                <div id="videoBlock4" class="video-section">
+                    <h3>Video on Prism Refractive Index Experiment</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">5. Determination of Dispersive Power of Prism using Spectrometer and Mercury Source</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent5')">Toggle Content</button>
+            <div id="theoryContent5" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment measures the dispersive power of a prism by analyzing the angular separation of spectral lines from a mercury source.</p>
+    
+                <h4>Procedure</h4>
+                <p>1. Place the prism on the spectrometer table.<br>
+                   2. Observe the spectrum of the mercury source.<br>
+                   3. Calculate dispersive power based on angular separation.</p>
+    
+                <h4>Notes</h4>
+                <p>- Ensure prism stability to prevent shifts in spectrum.<br>
+                   - Focus on clearly separated spectral lines for accuracy.</p>
+    
+                <div id="videoBlock5" class="video-section">
+                    <h3>Video on Prism Dispersive Power Experiment</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+
+        <li class="card">
+            <h2 class="card-title">6. Determination of Specific Rotation of Cane Sugar Solution using Half Shade Polarimeter</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent6')">Toggle Content</button>
+            <div id="theoryContent6" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves using a half shade polarimeter to measure the specific rotation of cane sugar solution, which helps in determining the concentration of the solution.</p>
+    
+                <h4>Procedure</h4>
+                <p>1. Prepare the cane sugar solution and place it in the polarimeter tube.<br>
+                   2. Observe the rotation of the plane of polarized light.<br>
+                   3. Calculate specific rotation based on observed angle and concentration.</p>
+    
+                <h4>Notes</h4>
+                <p>- Ensure proper calibration of the polarimeter.<br>
+                   - Use accurate measurements of solution concentration for reliable results.</p>
+    
+                <div id="videoBlock6" class="video-section">
+                    <h3>Video on Polarimeter Experiment</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">7. Determination of Wavelength of He-Ne Laser using Transmission Diffraction Grating</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent7')">Toggle Content</button>
+            <div id="theoryContent7" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment uses a transmission diffraction grating to determine the wavelength of a He-Ne laser, based on the diffraction angles of laser light.</p>
+    
+                <h4>Procedure</h4>
+                <p>1. Align the He-Ne laser with the diffraction grating.<br>
+                   2. Measure diffraction angles for different orders.<br>
+                   3. Use the grating equation to calculate wavelength.</p>
+    
+                <h4>Notes</h4>
+                <p>- Ensure laser alignment for clear diffraction patterns.<br>
+                   - Avoid direct eye exposure to laser light.</p>
+    
+                <div id="videoBlock7" class="video-section">
+                    <h3>Video on He-Ne Laser Diffraction Experiment</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">8. Determination of Numerical Aperture (NA) of an Optical Fibre</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent8')">Toggle Content</button>
+            <div id="theoryContent8" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment measures the numerical aperture (NA) of an optical fiber, which describes its light-gathering capability and efficiency in optical communications.</p>
+    
+                <h4>Procedure</h4>
+                <p>1. Connect the optical fiber to a light source.<br>
+                   2. Measure the output beam divergence angle.<br>
+                   3. Calculate the NA based on the measured angle.</p>
+    
+                <h4>Notes</h4>
+                <p>- Handle optical fibers carefully to prevent damage.<br>
+                   - Ensure accurate angle measurement for reliable NA calculation.</p>
+    
+                <div id="videoBlock8" class="video-section">
+                    <h3>Video on Optical Fiber Numerical Aperture</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">9. Plotting Knife-edge Distance vs Time Period for Bar Pendulum</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent9')">Toggle Content</button>
+            <div id="theoryContent9" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment plots the relationship between the knife-edge distance from the center of gravity and the time period of oscillation for a bar pendulum. The graph helps to determine the acceleration due to gravity and moment of inertia.</p>
+    
+                <h4>Procedure</h4>
+                <p>1. Set up the bar pendulum and measure oscillation time for different knife-edge distances.<br>
+                   2. Plot the distance vs time period graph.<br>
+                   3. Use the graph to calculate gravitational acceleration, radius of gyration, and moment of inertia.</p>
+    
+                <h4>Notes</h4>
+                <p>- Securely position the pendulum to ensure consistent oscillations.<br>
+                   - Measure distances and time periods accurately for reliable results.</p>
+    
+                <div id="videoBlock9" class="video-section">
+                    <h3>Video on Bar Pendulum Experiment</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">10. Determination of Ultrasound Wave Velocity using Ultrasonic Spectrometer in Liquid (Kerosene Oil)</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent10')">Toggle Content</button>
+            <div id="theoryContent10" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment uses an ultrasonic spectrometer to measure the velocity of ultrasound waves in a liquid, providing insights into the medium's properties.</p>
+    
+                <h4>Procedure</h4>
+                <p>1. Place the liquid sample in the spectrometer.<br>
+                   2. Measure wave frequency and wavelength in the liquid.<br>
+                   3. Calculate wave velocity based on measurements.</p>
+    
+                <h4>Notes</h4>
+                <p>- Avoid air bubbles in the liquid sample for accurate readings.<br>
+                   - Calibrate spectrometer to ensure reliable results.</p>
+    
+                <div id="videoBlock10" class="video-section">
+                    <h3>Video on Ultrasonic Wave Velocity Experiment</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">11. Verification of Inverse Square Law</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent11')">Toggle Content</button>
+            <div id="theoryContent11" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment verifies the inverse square law for light intensity by measuring the intensity at various distances from the source.</p>
+    
+                <h4>Procedure</h4>
+                <p>1. Set up the light source and intensity meter.<br>
+                   2. Measure intensity at different distances from the source.<br>
+                   3. Plot intensity vs distance and verify the inverse square relationship.</p>
+    
+                <h4>Notes</h4>
+                <p>- Minimize ambient light interference.<br>
+                   - Position intensity meter accurately for each distance measurement.</p>
+    
+                <div id="videoBlock11" class="video-section">
+                    <h3>Video on Inverse Square Law Experiment</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+
+        <li class="card">
+            <h2 class="card-title">12. Determination of Planck’s Constant</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent12')">Toggle Content</button>
+            <div id="theoryContent12" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment determines Planck’s constant by analyzing the photoelectric effect and calculating the relationship between frequency and energy.</p>
+    
+                <h4>Procedure</h4>
+                <p>1. Set up a photoelectric cell with a light source.<br>
+                   2. Measure photoelectric current at different light frequencies.<br>
+                   3. Calculate Planck's constant using the frequency and stopping potential.</p>
+    
+                <h4>Notes</h4>
+                <p>- Ensure stable light source.<br>
+                   - Record stopping potential accurately for reliable calculations.</p>
+    
+                <div id="videoBlock12" class="video-section">
+                    <h3>Video on Planck’s Constant Determination</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+
+        </ul>
+
+
+</section>
+
+<script>
+    function toggleContent(contentId) {
+        var content = document.getElementById(contentId);
+
+        // Check if content is hidden (display is "none" or initial empty value)
+        if (content.style.display === "none" || content.style.display === "") {
+            content.style.display = "block"; // Show content
+        } else {
+            content.style.display = "none"; // Hide content
+        }
+    }
+</script>
+</body>
+
+</html>

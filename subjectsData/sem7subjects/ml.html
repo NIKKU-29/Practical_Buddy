@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0B0425;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content h3,
+        .semester1 .theoretical-content h4,
+        .semester1 .theoretical-content h5,
+        .semester1 .theoretical-content p,
+        .semester1 .theoretical-content ul {
+            text-align: left;
+            color: #f3f4f6;
+        }
+
+        .semester1 .theoretical-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .semester1 .theoretical-content h4 {
+            font-size: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .semester1 .theoretical-content h5 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content p {
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .semester1 .theoretical-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .semester1 .theoretical-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .semester1 .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: rgb(47, 130, 255);
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .semester1.section {
+            flex: 1;
+        }
+
+        .video-section {
+            
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:left;
+        }
+        .video-section2 {
+          
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:right;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            border-radius: 0.375rem;
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+
+        pre1 .output
+        {
+            display: inline-block;
+            justify-content: space-between;
+        }
+               
+@media (max-width: 425px) {
+    .semester1 .theoretical-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .semester1 .theoretical-content h4 {
+        font-size: 1.35rem;
+        margin-top: 1.5rem;
+    }
+
+    .semester1 .theoretical-content h5 {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+    }
+
+    .semester1 .theoretical-content p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        line-height: 1.8;
+    }
+
+    .semester1 .theoretical-content ul {
+        margin: 0.3rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .semester1 .theoretical-content ul li {
+        margin-bottom: 0.3rem;
+    }
+
+   .video-section iframe{
+        width: 230px;
+        height: 157px;
+    }
+    .card{
+        width: 95%;
+    }
+
+    .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+        .Output img{
+            width: 260px;
+            height: 170px;
+        }
+        .code-block code{
+                font-size: 0.8rem;
+        }
+    
+}
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester7.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+
+    <!-- Experiments Section -->
+    <section class="semester1 section">
+        <h1 class="section-title"> Machine Learning </h1>
+
+    <a href="../files/sem7.pdf" download="ALL.pdf" class="download-button">Download PDF</a>
+    <div class="INFO">
+
+        Video + Theory 
+        
+    </div>
+
+        <ul class="practicals-list">
+            <li class="card">
+                <h2 class="card-title">1. Introduction to JUPYTER IDE and its Libraries Pandas and NumPy</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent1')">Toggle Content</button>
+                <div id="theoryContent1" class="theoretical-content">
+                    <h3>Overview of Jupyter IDE</h3>
+                    <p>Jupyter IDE is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations, and narrative text. It supports many programming languages, including Python.</p>
+            
+                    <h3>Pandas</h3>
+                    <p>Pandas is a Python library used for data manipulation and analysis. It provides data structures such as Series and DataFrame to efficiently handle large datasets.</p>
+            
+                    <h3>NumPy</h3>
+                    <p>NumPy is a Python library for numerical computing. It provides support for arrays, matrices, and a large collection of high-level mathematical functions to operate on these arrays.</p>
+            
+                    <h3>How to Use Pandas and NumPy in Jupyter</h3>
+
+                
+
+                    <div id="videoBlock2" class="video-section">
+                        <h3>How to Perform Logistic Regression</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/yIYKR4sgzI8" title="YouTube video player"></iframe>
+                    </div>
+
+                    <pre><code>
+            import pandas as pd
+            import numpy as np
+            
+            # Example DataFrame in Pandas
+            data = {'Name': ['John', 'Jane', 'Tom'], 'Age': [28, 34, 29]}
+            df = pd.DataFrame(data)
+            
+            # Example NumPy array
+            arr = np.array([1, 2, 3, 4, 5])
+            print(arr)
+                    </code></pre>
+                </div>
+            </li>
+
+            <li class="card">
+                <h2 class="card-title">2. Program to Demonstrate Simple Linear Regression</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent2')">Toggle Content</button>
+                <div id="theoryContent2" class="theoretical-content">
+                    <h3>Overview of Simple Linear Regression</h3>
+                    <p>Linear regression is a statistical method that is used to model the relationship between a dependent variable and one or more independent variables. In simple linear regression, we use one independent variable to predict the value of a dependent variable.</p>
+            
+                    <h3>Formula</h3>
+                    <p>The equation for simple linear regression is given by:</p>
+                    <pre><code>y = mx + b</code></pre>
+                    <p>where:
+                    <ul>
+                        <li><strong>y</strong> is the dependent variable (predicted value)</li>
+                        <li><strong>m</strong> is the slope (regression coefficient)</li>
+                        <li><strong>x</strong> is the independent variable</li>
+                        <li><strong>b</strong> is the y-intercept (constant term)</li>
+                    </ul>
+                    </p>
+            
+            
+                    <h3>Viva Questions</h3>
+                    <h4>1. What is Simple Linear Regression?</h4>
+        <p><strong>Answer:</strong> Simple Linear Regression is a statistical method that models the relationship between a single independent variable (X) and a dependent variable (Y) by fitting a linear equation to the data.</p>
+
+        <h4>2. What is the difference between linear and logistic regression?</h4>
+        <p><strong>Answer:</strong> Linear regression is used for predicting continuous values, whereas logistic regression is used for binary classification problems.</p>
+
+        <h4>3. What is the role of the slope and intercept in linear regression?</h4>
+        <p><strong>Answer:</strong> The slope (m) determines the steepness of the line, while the intercept (b) is where the line crosses the Y-axis. Together, they define the linear equation Y = mX + b.</p>
+
+        <h4>4. How do you assess the accuracy of a linear regression model?</h4>
+        <p><strong>Answer:</strong> The accuracy of a linear regression model can be assessed using metrics such as Mean Squared Error (MSE), R-squared (R²), and by analyzing residuals.</p>
+
+        <h4>5. What is the assumption behind linear regression?</h4>
+        <p><strong>Answer:</strong> Linear regression assumes a linear relationship between the input (independent) and output (dependent) variables, and that the errors (residuals) are normally distributed.</p>
+                
+        <div id="videoBlock2" class="video-section">
+            <h3>How to Perform Logistic Regression</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/yIYKR4sgzI8" title="YouTube video player"></iframe>
+        </div>
+
+        <h3>Code Example for Simple Linear Regression in Python</h3>
+                    <pre><code>
+
+from sklearn.linear_model import LinearRegression
+import numpy as np
+            
+# Sample data
+X = np.array([[1], [2], [3], [4], [5]])
+y = np.array([1, 2, 3, 3.5, 5])
+            
+# Create a linear regression model
+model = LinearRegression().fit(X, y)
+            
+# Make a prediction
+predicted_value = model.predict([[6]])
+print(f"Predicted value for x=6: {predicted_value[0]}")
+                    </code></pre>
+                </div>
+            </li>
+            
+            
+            <li class="card">
+                <h2 class="card-title">3. Program to Demonstrate Logistic Regression</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent3')">Toggle Content</button>
+                <div id="theoryContent3" class="theoretical-content">
+                    <h3>Overview of Logistic Regression</h3>
+                    <p>Logistic Regression is a statistical method used for binary classification problems. It models the probability that a given input belongs to a particular class, typically using the logistic function to restrict the output between 0 and 1.</p>
+            
+                    <h3>Formula</h3>
+                    <p>The equation for logistic regression is given by:</p>
+                    <pre><code>p(X) = 1 / (1 + e^-(b0 + b1X))</code></pre>
+                    <p>where:
+                    <ul>
+                        <li><strong>p(X)</strong> is the probability that the dependent variable is 1</li>
+                        <li><strong>b0</strong> is the intercept (constant term)</li>
+                        <li><strong>b1</strong> is the regression coefficient (slope)</li>
+                        <li><strong>X</strong> is the independent variable</li>
+                    </ul>
+                    </p>
+            
+                    <h3>Viva Questions</h3>
+                    <h4>1. What is Logistic Regression?</h4>
+                    <p><strong>Answer:</strong> Logistic Regression is a statistical method used for binary classification, where the dependent variable is categorical and can take only two values: 0 or 1.</p>
+            
+                    <h4>2. What is the difference between linear and logistic regression?</h4>
+                    <p><strong>Answer:</strong> Linear regression predicts continuous values, while logistic regression is used for binary classification problems, predicting a probability value between 0 and 1.</p>
+            
+                    <h4>3. What is the logistic function?</h4>
+                    <p><strong>Answer:</strong> The logistic function is a sigmoid-shaped function that maps any real-valued number into the range [0, 1]. It is used to model the probability of the dependent variable being in a particular class.</p>
+            
+                    <h4>4. How do you interpret the coefficients in logistic regression?</h4>
+                    <p><strong>Answer:</strong> In logistic regression, the coefficients represent the change in the log-odds of the dependent variable per unit change in the independent variable.</p>
+            
+                    <h4>5. What is the cost function used in logistic regression?</h4>
+                    <p><strong>Answer:</strong> The cost function in logistic regression is called the binary cross-entropy or log-loss. It measures how well the model's predicted probabilities match the actual class labels.</p>
+            
+                    <div id="videoBlock3" class="video-section">
+                        <h3>How to Perform Logistic Regression</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/zM4VZR0px8E" title="YouTube video player"></iframe>
+                    </div>
+            
+                    <h3>Code Example for Logistic Regression in Python</h3>
+                    <pre><code>
+from sklearn.linear_model import LogisticRegression
+import numpy as np
+            
+# Sample data (independent variable and binary target)
+X = np.array([[1], [2], [3], [4], [5]])
+y = np.array([0, 0, 0, 1, 1])
+            
+# Create a logistic regression model
+model = LogisticRegression().fit(X, y)
+            
+# Make a prediction
+predicted_class = model.predict([[6]])
+print(f"Predicted class for X=6: {predicted_class[0]}")
+                    </code></pre>
+                </div>
+            </li>
+            
+            
+            <li class="card">
+                <h2 class="card-title">4. Program to Demonstrate Decision Tree – ID3 Algorithm</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent4')">Toggle Content</button>
+                <div id="theoryContent4" class="theoretical-content">
+                    <h3>Overview of Decision Tree – ID3 Algorithm</h3>
+                    <p>The ID3 (Iterative Dichotomiser 3) algorithm is a decision tree algorithm used for classification. It uses a top-down, greedy approach to build the tree by selecting the feature that maximizes information gain at each step.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <p>The ID3 algorithm works by calculating the entropy and information gain for each feature. The feature with the highest information gain is selected as the root node or the decision node.</p>
+                    <pre><code>Information Gain = Entropy(parent) - [Weighted average] Entropy(children)</code></pre>
+            
+                    <h3>Viva Questions</h3>
+                    <h4>1. What is the ID3 algorithm?</h4>
+                    <p><strong>Answer:</strong> ID3 is an algorithm used to generate a decision tree for classification problems. It selects attributes based on the highest information gain and uses entropy to measure the uncertainty of data.</p>
+            
+                    <h4>2. What is entropy in the context of the ID3 algorithm?</h4>
+                    <p><strong>Answer:</strong> Entropy is a measure of the uncertainty or disorder in a dataset. In the ID3 algorithm, it is used to quantify the amount of uncertainty in the classification of a dataset based on the selected attribute.</p>
+            
+                    <h4>3. What is information gain?</h4>
+                    <p><strong>Answer:</strong> Information gain measures the reduction in entropy after splitting the dataset based on a particular feature. The feature with the highest information gain is selected to split the data at each step.</p>
+            
+                    <h4>4. What is the difference between a decision node and a leaf node in a decision tree?</h4>
+                    <p><strong>Answer:</strong> A decision node is a node in the tree where the data is split based on a feature, while a leaf node represents a final classification outcome (e.g., yes or no).</p>
+            
+                    <h4>5. How do you prevent overfitting in decision trees?</h4>
+                    <p><strong>Answer:</strong> Overfitting in decision trees can be prevented by limiting the tree's depth, pruning unnecessary branches, or setting a minimum number of samples required to split a node.</p>
+            
+                    <div id="videoBlock4" class="video-section">
+                        <h3>How to Perform Decision Tree – ID3 Algorithm</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/LDRbO9a6XPU" title="YouTube video player"></iframe>
+                    </div>
+            
+                    <h3>Code Example for Decision Tree – ID3 Algorithm in Python</h3>
+                    <pre><code>
+from sklearn.tree import DecisionTreeClassifier
+import numpy as np
+            
+# Sample data (features and labels)
+X = np.array([[0, 0], [1, 1], [1, 0], [0, 1]])
+y = np.array([0, 1, 1, 0])
+            
+# Create a decision tree classifier
+model = DecisionTreeClassifier(criterion='entropy').fit(X, y)
+            
+# Make a prediction
+predicted_class = model.predict([[1, 0]])
+print(f"Predicted class for [1, 0]: {predicted_class[0]}")
+                    </code></pre>
+                </div>
+            </li>
+            
+            <li class="card">
+                <h2 class="card-title">5. Program to Demonstrate k‐Nearest Neighbor Flowers Classification</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent5')">Toggle Content</button>
+                <div id="theoryContent5" class="theoretical-content">
+                    <h3>Overview of k-Nearest Neighbor (k-NN) Algorithm</h3>
+                    <p>The k-Nearest Neighbor (k-NN) algorithm is a simple, supervised machine learning algorithm that can be used for both classification and regression tasks. It classifies a new data point based on the majority class of its nearest neighbors.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <p>In k-NN, we choose a number 'k', which represents the number of nearest neighbors to consider when classifying a new data point. The distance between points is calculated using methods like Euclidean distance, and the majority class among the nearest neighbors is assigned to the new point.</p>
+            
+                    <h3>Viva Questions</h3>
+                    <h4>1. What is the k-NN algorithm?</h4>
+                    <p><strong>Answer:</strong> The k-Nearest Neighbor (k-NN) algorithm is a supervised learning algorithm that classifies data points based on the class of their nearest neighbors, as determined by a distance metric such as Euclidean distance.</p>
+            
+                    <h4>2. What is the role of the 'k' in k-NN?</h4>
+                    <p><strong>Answer:</strong> 'k' is the number of nearest neighbors to consider when classifying a new data point. A larger k value can smooth out noise but may reduce the algorithm's sensitivity to the dataset's structure.</p>
+            
+                    <h4>3. What distance metrics can be used in k-NN?</h4>
+                    <p><strong>Answer:</strong> Common distance metrics used in k-NN include Euclidean distance, Manhattan distance, and Minkowski distance.</p>
+            
+                    <h4>4. How do you determine the optimal value of k in k-NN?</h4>
+                    <p><strong>Answer:</strong> The optimal value of k can be found using cross-validation. Generally, a small k value makes the model sensitive to noise, while a large k value can oversmooth the data and reduce accuracy.</p>
+            
+                    <h4>5. What are the advantages and disadvantages of the k-NN algorithm?</h4>
+                    <p><strong>Answer:</strong> Advantages of k-NN include simplicity and effectiveness in low-dimensional spaces. However, it can be computationally expensive for large datasets and may struggle with high-dimensional data (the curse of dimensionality).</p>
+            
+                    <div id="videoBlock5" class="video-section">
+                        <h3>How to Perform k-Nearest Neighbor (k-NN) Algorithm</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4ObVzTuFivY" title="YouTube video player"></iframe>
+                    </div>
+            
+                    <h3>Code Example for k-NN Flower Classification in Python</h3>
+                    <pre><code>
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+            
+# Load the Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+            
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            
+# Create the k-NN model
+knn = KNeighborsClassifier(n_neighbors=3)
+            
+# Fit the model
+knn.fit(X_train, y_train)
+            
+# Make predictions
+y_pred = knn.predict(X_test)
+            
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy of k-NN classifier: {accuracy}')
+                    </code></pre>
+                </div>
+            </li>
+            
+            <li class="card">
+                <h2 class="card-title">6. Program to Demonstrate Naive Bayes Classifier for Spam Detection</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent6')">Toggle Content</button>
+                <div id="theoryContent6" class="theoretical-content">
+                    <h3>Overview of Naive Bayes Classifier</h3>
+                    <p>The Naive Bayes classifier is a probabilistic machine learning model used for classification tasks. It is based on Bayes' Theorem and assumes that features are independent of each other, which is why it is termed "naive".</p>
+            
+                    <h3>Key Concepts</h3>
+                    <p>Bayes' Theorem is used to calculate the probability of a label (such as spam or not spam) given some features (such as the presence of specific words in an email). The classifier calculates the probability of each class and selects the one with the highest probability.</p>
+                    <pre><code>P(Class|Features) = (P(Features|Class) * P(Class)) / P(Features)</code></pre>
+            
+                    <h3>Viva Questions</h3>
+                    <h4>1. What is Naive Bayes Classifier?</h4>
+                    <p><strong>Answer:</strong> Naive Bayes is a probabilistic classifier based on Bayes' Theorem. It assumes that the presence of a feature in a class is independent of the presence of any other feature, which simplifies the calculation.</p>
+            
+                    <h4>2. What is Bayes' Theorem?</h4>
+                    <p><strong>Answer:</strong> Bayes' Theorem calculates the probability of an event occurring based on prior knowledge of conditions that might be related to the event. It is the foundation of the Naive Bayes classifier.</p>
+            
+                    <h4>3. Why is it called "Naive" Bayes?</h4>
+                    <p><strong>Answer:</strong> It is called "naive" because it assumes that the features are independent of each other, which is rarely true in real-world data. However, the model often performs well despite this assumption.</p>
+            
+                    <h4>4. What are the advantages of Naive Bayes?</h4>
+                    <p><strong>Answer:</strong> Naive Bayes is computationally efficient, works well with small datasets, and performs well in tasks such as spam detection or text classification. It also handles missing data effectively.</p>
+            
+                    <h4>5. What are the disadvantages of Naive Bayes?</h4>
+                    <p><strong>Answer:</strong> The primary disadvantage is the naive assumption of feature independence, which may not hold in many real-world scenarios. It also struggles with datasets where feature correlations are important.</p>
+            
+                    <div id="videoBlock6" class="video-section">
+                        <h3>How to Perform Naive Bayes Classification</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/O2L2Uv9pdDA" title="YouTube video player"></iframe>
+                    </div>
+            
+                    <h3>Code Example for Naive Bayes Classifier in Python</h3>
+                    <pre><code>
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+            
+# Sample data
+emails = ['Free money now', 'Hey, how are you?', 'Claim your prize', 'Call me later', 'Win a brand new car']
+labels = [1, 0, 1, 0, 1]  # 1 indicates spam, 0 indicates non-spam
+            
+# Convert text data into feature vectors
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(emails)
+            
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, labels, test_size=0.2, random_state=42)
+            
+# Create the Naive Bayes model
+nb = MultinomialNB()
+            
+# Fit the model
+nb.fit(X_train, y_train)
+            
+# Make predictions
+y_pred = nb.predict(X_test)
+            
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy of Naive Bayes classifier: {accuracy}')
+                    </code></pre>
+                </div>
+            </li>
+            
+
+            <li class="card">
+                <h2 class="card-title">7. Program to Demonstrate Support Vector Machine (SVM) for Classification</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent7')">Toggle Content</button>
+                <div id="theoryContent7" class="theoretical-content">
+                    <h3>Overview of Support Vector Machine (SVM)</h3>
+                    <p>Support Vector Machine (SVM) is a powerful supervised learning algorithm used for both classification and regression tasks. It works by finding the hyperplane that best separates the data points of different classes in a high-dimensional space.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <p>SVM aims to maximize the margin between the data points of different classes. Data points that lie closest to the hyperplane are called support vectors, and they determine the position and orientation of the hyperplane.</p>
+                    <pre><code>Maximize: margin = distance between the hyperplane and the closest data points</code></pre>
+            
+                    <h3>Viva Questions</h3>
+                    <h4>1. What is a Support Vector Machine?</h4>
+                    <p><strong>Answer:</strong> SVM is a supervised learning algorithm used for classification and regression tasks. It finds the optimal hyperplane that maximizes the margin between different classes of data.</p>
+            
+                    <h4>2. What is a hyperplane in SVM?</h4>
+                    <p><strong>Answer:</strong> A hyperplane is a decision boundary that separates different classes in an SVM model. In 2D space, it's a line; in higher dimensions, it's a plane or a more complex shape.</p>
+            
+                    <h4>3. What are support vectors?</h4>
+                    <p><strong>Answer:</strong> Support vectors are the data points that lie closest to the hyperplane. These points are critical in defining the hyperplane's position and maximizing the margin.</p>
+            
+                    <h4>4. What is the kernel trick in SVM?</h4>
+                    <p><strong>Answer:</strong> The kernel trick is used to transform data into a higher-dimensional space where it becomes easier to separate classes using a hyperplane. Common kernels include linear, polynomial, and radial basis function (RBF).</p>
+            
+                    <h4>5. What are the advantages and disadvantages of SVM?</h4>
+                    <p><strong>Answer:</strong> Advantages include its effectiveness in high-dimensional spaces and its robustness to overfitting. Disadvantages include its sensitivity to the choice of kernel and its computational inefficiency with large datasets.</p>
+            
+                    <div id="videoBlock7" class="video-section">
+                        <h3>How to Perform Classification using Support Vector Machine (SVM)</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/efR1C6CvhmE" title="YouTube video player"></iframe>
+                    </div>
+            
+                    <h3>Code Example for SVM Classification in Python</h3>
+                    <pre><code>
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
+            
+# Load the Iris dataset
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+            
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            
+# Create the SVM model
+svm_model = SVC(kernel='linear')
+            
+# Fit the model
+svm_model.fit(X_train, y_train)
+            
+# Make predictions
+y_pred = svm_model.predict(X_test)
+            
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy of SVM classifier: {accuracy}')
+                    </code></pre>
+                </div>
+            </li>
+            
+            <li class="card">
+                <h2 class="card-title">8. Program to Demonstrate Random Forest Algorithm for Classification</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent8')">Toggle Content</button>
+                <div id="theoryContent8" class="theoretical-content">
+                    <h3>Overview of Random Forest Algorithm</h3>
+                    <p>Random Forest is a powerful ensemble learning algorithm used for classification and regression tasks. It works by creating multiple decision trees during training and outputting the mode of the classes (classification) or mean prediction (regression) of the individual trees.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <p>Random Forest operates by creating a 'forest' of decision trees. Each tree is trained on a random subset of the training data (with replacement), and at each node, a random subset of features is chosen. This randomness helps in reducing overfitting and improving accuracy.</p>
+            
+                    <h3>Viva Questions</h3>
+                    <h4>1. What is the Random Forest algorithm?</h4>
+                    <p><strong>Answer:</strong> Random Forest is an ensemble learning method that builds multiple decision trees and merges them to get more accurate and stable predictions. It is often used for classification and regression problems.</p>
+            
+                    <h4>2. How does Random Forest prevent overfitting?</h4>
+                    <p><strong>Answer:</strong> Random Forest reduces overfitting by creating multiple decision trees from different random subsets of data and features, and then averaging the predictions (in regression) or taking a majority vote (in classification).</p>
+            
+                    <h4>3. What is the role of randomness in Random Forest?</h4>
+                    <p><strong>Answer:</strong> Random Forest introduces randomness in two ways: 1) By selecting random subsets of the training data (bagging), and 2) By selecting a random subset of features to split at each node in the decision tree. This increases model diversity and reduces overfitting.</p>
+            
+                    <h4>4. What are the advantages of Random Forest?</h4>
+                    <p><strong>Answer:</strong> Random Forest is robust to overfitting, works well with both categorical and continuous data, can handle large datasets efficiently, and is less sensitive to noise in the data compared to a single decision tree.</p>
+            
+                    <h4>5. What are the disadvantages of Random Forest?</h4>
+                    <p><strong>Answer:</strong> Random Forest can be computationally expensive for large datasets, and the model becomes less interpretable as it involves a large number of decision trees. Also, it can suffer from high memory usage.</p>
+            
+                    <div id="videoBlock8" class="video-section">
+                        <h3>How to Perform Classification using Random Forest Algorithm</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/nyxTdL_4Q-Y" title="YouTube video player"></iframe>
+                    </div>
+            
+                    <h3>Code Example for Random Forest Classification in Python</h3>
+                    <pre><code>
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+            
+# Load the Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+            
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            
+# Create the Random Forest model
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+            
+# Fit the model
+rf_model.fit(X_train, y_train)
+            
+# Make predictions
+y_pred = rf_model.predict(X_test)
+            
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy of Random Forest classifier: {accuracy}')
+                    </code></pre>
+                </div>
+            </li>            
+          
+            <li class="card">
+                <h2 class="card-title">9. Program to Demonstrate K-Means Clustering Algorithm</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent9')">Toggle Content</button>
+                <div id="theoryContent9" class="theoretical-content">
+                    <h3>Overview of K-Means Clustering Algorithm</h3>
+                    <p>K-Means is an unsupervised machine learning algorithm used to partition data into k clusters. It works by randomly initializing centroids, assigning each data point to the nearest centroid, and then iteratively updating centroids until convergence is reached.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <p>K-Means aims to minimize the variance within each cluster by finding k cluster centers (centroids). The algorithm iteratively assigns data points to the nearest centroid and recalculates the centroids based on the new cluster memberships.</p>
+                    <pre><code>Minimize: Sum of squared distances between points and their nearest centroid</code></pre>
+            
+                    <h3>Viva Questions</h3>
+                    <h4>1. What is K-Means clustering?</h4>
+                    <p><strong>Answer:</strong> K-Means is an unsupervised clustering algorithm that partitions data into k clusters. Each cluster is represented by its centroid, and data points are assigned to the nearest centroid.</p>
+            
+                    <h4>2. How does the K-Means algorithm work?</h4>
+                    <p><strong>Answer:</strong> K-Means works by initializing k centroids, assigning each data point to the nearest centroid, and iteratively updating the centroids by calculating the mean of all points in each cluster until convergence is reached.</p>
+            
+                    <h4>3. What is the role of k in K-Means?</h4>
+                    <p><strong>Answer:</strong> The value of k determines the number of clusters into which the data will be partitioned. Choosing an appropriate k is crucial to the effectiveness of the algorithm and can be determined using methods like the elbow method or silhouette score.</p>
+            
+                    <h4>4. What are the advantages of K-Means?</h4>
+                    <p><strong>Answer:</strong> K-Means is computationally efficient, easy to implement, and works well when the clusters are spherical and well-separated. It also scales well to large datasets.</p>
+            
+                    <h4>5. What are the disadvantages of K-Means?</h4>
+                    <p><strong>Answer:</strong> K-Means can be sensitive to the initial placement of centroids, may converge to a local minimum, and struggles with clusters that are not spherical or have different sizes and densities. It also requires the number of clusters, k, to be specified beforehand.</p>
+            
+                    <div id="videoBlock9" class="video-section">
+                        <h3>How to Perform K-Means Clustering</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4b5d3muPQmA" title="YouTube video player"></iframe>
+                    </div>
+            
+                    <h3>Code Example for K-Means Clustering in Python</h3>
+                    <pre><code>
+from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
+import matplotlib.pyplot as plt
+            
+# Generate synthetic data
+X, y = make_blobs(n_samples=300, centers=4, cluster_std=0.60, random_state=42)
+            
+# Create the K-Means model
+kmeans = KMeans(n_clusters=4)
+            
+# Fit the model
+kmeans.fit(X)
+            
+# Predict cluster labels
+y_kmeans = kmeans.predict(X)
+            
+# Plot the clusters
+plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=50, cmap='viridis')
+            
+# Plot the centroids
+centroids = kmeans.cluster_centers_
+plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=200, alpha=0.75)
+plt.title('K-Means Clustering')
+plt.show()
+                    </code></pre>
+                </div>
+            </li>           
+
+            <li class="card">
+                <h2 class="card-title">10. Program to Demonstrate Principal Component Analysis (PCA)</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent10')">Toggle Content</button>
+                <div id="theoryContent10" class="theoretical-content">
+                    <h3>Overview of Principal Component Analysis (PCA)</h3>
+                    <p>Principal Component Analysis (PCA) is a dimensionality reduction technique used to reduce the number of variables in a dataset while retaining as much information as possible. It works by transforming the data into a new set of orthogonal components called principal components.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <p>PCA transforms data into a lower-dimensional space by finding the directions (principal components) that capture the maximum variance in the data. The first principal component captures the most variance, and each subsequent component captures the remaining variance while being orthogonal to the previous components.</p>
+                    <pre><code>Maximize: Variance captured by each principal component</code></pre>
+            
+                    <h3>Viva Questions</h3>
+                    <h4>1. What is Principal Component Analysis (PCA)?</h4>
+                    <p><strong>Answer:</strong> PCA is a dimensionality reduction technique that transforms data into a set of orthogonal components, where each component represents the maximum variance in the data. It is often used to simplify datasets while retaining important information.</p>
+            
+                    <h4>2. How does PCA work?</h4>
+                    <p><strong>Answer:</strong> PCA works by computing the covariance matrix of the data, finding its eigenvalues and eigenvectors, and using the eigenvectors to form principal components that represent the directions of maximum variance.</p>
+            
+                    <h4>3. What is the significance of eigenvalues and eigenvectors in PCA?</h4>
+                    <p><strong>Answer:</strong> In PCA, eigenvalues represent the amount of variance captured by each principal component, while eigenvectors define the direction of the principal components. The principal components with the highest eigenvalues capture the most important patterns in the data.</p>
+            
+                    <h4>4. What are the advantages of PCA?</h4>
+                    <p><strong>Answer:</strong> PCA helps in reducing the dimensionality of large datasets, simplifies data for analysis, reduces computational complexity, and can help mitigate issues related to multicollinearity.</p>
+            
+                    <h4>5. What are the disadvantages of PCA?</h4>
+                    <p><strong>Answer:</strong> PCA can lead to the loss of interpretability of the transformed features, and it assumes that the directions with the most variance are the most important. PCA also works best with linearly separable data and may not be effective with highly nonlinear datasets.</p>
+            
+                    <div id="videoBlock10" class="video-section">
+                        <h3>How to Perform Principal Component Analysis (PCA)</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/FgakZw6K1QQ" title="YouTube video player"></iframe>
+                    </div>
+            
+                    <h3>Code Example for PCA in Python</h3>
+                    <pre><code>
+from sklearn.decomposition import PCA
+from sklearn.datasets import load_iris
+import matplotlib.pyplot as plt
+            
+# Load the Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+            
+# Create a PCA model that reduces the data to 2 components
+pca = PCA(n_components=2)
+            
+# Fit the PCA model
+X_pca = pca.fit_transform(X)
+            
+# Plot the PCA-transformed data
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap='viridis')
+plt.xlabel('First Principal Component')
+plt.ylabel('Second Principal Component')
+plt.title('PCA on Iris Dataset')
+plt.show()
+                    </code></pre>
+                </div>
+            </li>            
+         
+        
+        </ul>
+    </section>
+
+    <script>
+        function toggleContent(contentId) {
+            var content = document.getElementById(contentId);
+
+            // Check if content is hidden (display is "none" or initial empty value)
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block"; // Show content
+            } else {
+                content.style.display = "none"; // Hide content
+            }
+        }
+    </script>
+</body>
+
+</html>

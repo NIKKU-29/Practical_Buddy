@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+            font-family: Roboto;
+            color: white;
+            touch-action: manipulation;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        html, body {
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        
+
+        body {
+            background-image: url(landing_images/lopo.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        body .container {
+            margin-right: 20vw;
+            width: 760px;
+            height: 460px;
+            border-radius: 40px;
+            position: relative;
+            border: 2.5px solid #007BFF;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(14px);
+        }
+
+        body .container .slider {
+            height: 461px;
+            background-color: rgba(7, 7, 8, 0.534);
+            border-radius: 40px 80px 80px 40px;
+            position: absolute;
+            width: calc(760px / 2 + 30px);
+            top: -1px;
+            left: -1px;
+            transition: left 0.4s ease, right 0.4s ease, border-radius 0.4s ease;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body .container .slider .images-container {
+            width: 350px;
+            height: 250px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translate(-20px, -20px);
+            overflow: visible;
+        }
+
+        body .container .slider .images-container .small-spaceship {
+            position: absolute;
+            width: 100px;
+            animation-name: animate-small-spaceships;
+            animation-duration: 6s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-delay: 1s;
+        }
+
+        body .container .slider .images-container #small-spaceship-one {
+            top: 90px;
+            left: 20px;
+        }
+
+        body .container .slider .images-container #small-spaceship-two {
+            bottom: 25px;
+            right: 15px;
+        }
+
+        body .container .slider .images-container #rocket-img {
+            width: 175px;
+            height: 175px;
+            animation-name: animate-rocket;
+            animation-duration: 6s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-delay: 1s;
+        }
+
+        @keyframes animate-small-spaceships {
+            0% {
+                transform: translate(0px, 0px) rotate(0deg);
+            }
+            50% {
+                transform: translate(60px, 400px) rotate(-180deg);
+            }
+            85%{
+                transform: translate(0px, -100px) rotate(0deg);
+            }
+
+            98% {
+                transform: translate(0px, 0px) rotate(0deg);
+            }
+            100% {
+                transform: translate(0px, 0px) rotate(0deg);
+            }
+        }
+
+        @keyframes animate-rocket {
+            0% {
+                transform: translate(0px, 0px);
+            }
+            50% {
+                transform: translate(60px, -400px) rotate(-360deg);
+            }
+            85%{
+                transform: translate(0px, 100px) rotate(0deg);
+            }
+            98% {
+                transform: translate(0px, 0px) rotate(0deg);
+            }
+            100% {
+                transform: translate(0px, 0px);
+            }
+        }
+
+        body .container .slider #slider-text {
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            line-height: 20px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            top: calc(100% - 400px);
+        }
+
+        body .container .slider #slider-text #page-name {
+            color: #007BFF;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        body .container .content {
+            background: transparent;
+            height: 431px;
+            position: absolute;
+            width: calc(760px - (760px / 2 + 30px));
+            top: 0;
+            right: -1px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: left 0.4s ease, right 0.4s ease;
+        }
+
+        body .container .content .sign-in-up-btns {
+            margin-top: 1vh;
+            margin-bottom: 1.5vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            overflow: visible;
+        }
+
+        body .container .content .sign-in-up-btns button {
+            padding: 5px 15px;
+            border: none;
+            outline: none;
+            border-radius: 100px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 0px 10px -5px #007BFF;}
+
+        body .container .content .sign-in-up-btns #sign-in-btn-switch {
+            background: rgb(31, 37, 70);
+        }
+
+        body .container .content .sign-in-up-btns #sign-up-btn-switch {
+            background: #007BFF;;
+            background-color:#007BFF;
+            backdrop-filter: blur(14px);
+        }
+
+        body .container .content #sign-in-up-title {
+            margin: 20px 0;
+            font-size: 30px;
+        }
+
+        body .container .content .sign-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            overflow: visible;
+        }
+
+        body .container .content .sign-content .input-fields {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            overflow: visible;
+        }
+
+        body .container .content .sign-content .input-fields i {
+            transform: translate(105px, -26.5px) !important;
+            font-size: 10px;
+            overflow: visible;
+        }
+
+        body .container .content .sign-content .input-fields input {
+            background: transparent;
+            background-color:  #007bffce;
+            font-size: 13px;
+            backdrop-filter: blur(14px);
+            border: none;
+            outline: none;
+            padding: 12px 35px 12px 12px;
+            width: 250px;
+            border-radius: 6px;
+            box-shadow: 0 0px 10px -5px rgb(31, 37, 70);
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body .container .content .sign-content .input-fields input::placeholder {
+            color: white;
+            text-align: start;
+            font-size: 13px;
+            letter-spacing: 0px;
+        }
+
+        body .container .content .sign-content .help-box {
+            text-align: right;
+            margin: -10px 0 10px 0;
+            cursor: pointer;
+            padding: 2px 4px;
+            font-size: 13.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: visible;
+            gap: 3px;
+        }
+
+        body .container .content #sign-in-up-btn {
+            background-color: #007bffce;
+            padding: 12px 12px 12px 12px;
+            width: 240px;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            transition: gap 0.2s ease;
+        }
+
+        body .container .content #sign-in-up-btn:hover {
+            gap: 15px;
+        }
+
+        body .container .content .icon-sign-in-up-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            overflow: visible;
+        }
+
+        body .container .content .icon-sign-in-up-container button {
+            overflow: visible;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 12px;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            background-color: #007BFF;
+            backdrop-filter: blur(14px);
+            cursor: pointer;
+            box-shadow: 0 0px 10px -5px rgb(31, 37, 70);
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease;
+        }
+
+        body .container .content .icon-sign-in-up-container button:hover {
+            background: #007bffd3;
+            color: white;
+        }
+
+        #remember-me-checkbox {
+            transform: translate(0px, 0);
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+    .brand img {
+    width: 70%; /* Adjust as needed */
+    height: 90%;
+    
+}
+
+.navbar{
+    height: 50vw;
+    justify-content: flex-start;
+    
+}
+
+
+
+body {
+            background-image: url(landing_images/lopo.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            align-items: center;
+        }
+
+    body .container-flex
+    
+    {
+            margin-top: 3vh;
+            margin-left: 1vw;
+            width: 20vw;
+            height: 8vw;
+            align-items: flex-start;
+    }
+
+
+        
+        
+        /* Move brand image to top-left and adjust size */
+
+/* Adjusting the container for the small screen */
+@media (max-width: 400px) {
+
+
+.brand img {
+    width: 100%;
+    height: auto;
+}
+
+
+.navbar {
+      
+      justify-content: flex-start;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 500px;
+    }
+
+
+body .container .content {
+  background: transparent;
+  height: 431px;
+  position: absolute;
+  width: 330px;
+  top: 0;
+  right: -1px;
+  display: flex;
+  flex-direction: column-;
+  justify-content: center;
+
+  transition: left 0.4s ease, right 0.4s ease;
+}
+
+   
+    /* Adjust container size for small screens */
+    body .container {
+        width: 340px;
+        height: 460px;
+        margin-right: 10vw;
+    }
+
+    /* Adjust slider to be vertical (up-down) */
+    body .container .slider {
+        width: 150px;
+        height: 0px;
+        display: flex;
+        flex-direction: column;  /* Vertical direction */
+        align-items: center;
+    }
+
+    /* Adjust image container and its elements */
+    body .container .slider .images-container {
+        width: 100px;
+        height: 120px;
+    }
+
+    body .container .slider .images-container .small-spaceship {
+        width: 50px;
+    }
+
+    body .container .slider .images-container #rocket-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    /* Adjust text for smaller screens */
+    body .container .slider #slider-text {
+        font-size: 12px;
+        top: calc(100% - 220px);
+    }
+
+    /* Adjust button sizes for small screens */
+    body .container .content .sign-in-up-btns button {
+        padding: 3px 10px;
+        font-size: 11px;
+    }
+
+    /* Input fields reduced for smaller screens */
+    body .container .content .sign-content .input-fields input {
+        width: 180px;
+        padding: 10px 20px 10px 10px;
+        font-size: 11px;
+    }
+
+    /* Adjust sign-in and sign-up button placement */
+    body .container .content .sign-in-up-btns {
+        display: flex;
+        flex-direction: row;  /* Stack buttons vertically */
+        align-items: center;
+        gap: 10px; /* Space between buttons */
+    }
+
+    body .container .content #sign-in-up-btn {
+        width: 180px;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    body .container .content .sign-content .help-box {
+
+  font-size: 11.5px;
+  
+}
+
+    /* Adjust icon buttons for smaller screens */
+    body .container .content .icon-sign-in-up-container button {
+        padding: 6px 10px;
+        font-size: 20px;
+    }
+
+    
+ 
+    body .container-flex {
+        width: 14vw;
+        height: 6vw;
+    }
+  
+}
+    /* Adjust brand container */
+    
+
+
+
+    
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container-flex">
+            <a href="index.html" class="brand"><img src="landing_images/loui.png" alt=""></a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="slider">
+            <div class="images-container">
+                <img src="landing_images/a31e7808-1db0-46ce-aee6-5e1e6749d6fe.gif" id="small-spaceship-one" class="small-spaceship" alt="Small Spaceship">
+                <img src="landing_images/a31e7808-1db0-46ce-aee6-5e1e6749d6fe.gif" id="small-spaceship-two" class="small-spaceship" alt="Small Spaceship">
+                <img src="landing_images/Yellow-Bulb-PNG-Transparent-Image.png" id="rocket-img" alt="Rocket">
+            </div>
+            <div id="slider-text">
+                <span>Join us on this journey to Excelence</span>
+                <span id="page-name">Practical Buddy</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="sign-in-up-btns">
+                <button id="sign-in-btn-switch">Sign In</button>
+                <button id="sign-up-btn-switch">Sign Up</button>
+            </div>
+            <h1 id="sign-in-up-title">Sign In</h1>
+            <div class="sign-content">
+                <div class="input-fields">
+                    <input type="email" id="email-input" placeholder="Email Address" required>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="input-fields">
+                    <input type="password" id="password-input" placeholder="Password" required>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="help-box">
+                    <label id="forgot-password-label">Forgot Password</label>
+                    
+                    <label id="remember-me-label">Remember Me</label>
+                    <input type="checkbox" id="remember-me-checkbox">
+                </div>
+                <button id="sign-in-up-btn">Sign In</button>
+                <div class="icon-sign-in-up-container">
+                    <button><i class="fa-brands fa-facebook"></i></button>
+                    <button><i class="fa-brands fa-google"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let signIButtonSwitch = document.getElementById('sign-in-btn-switch');
+            let signUpButtonSwitch = document.getElementById('sign-up-btn-switch');
+            let SignInOrUpButton = document.getElementById('sign-in-up-btn');
+            let SignInOrUpTitle = document.getElementById('sign-in-up-title');
+            let pageContentBox = document.querySelector('body .content');
+            let sliderBox = document.querySelector('body .slider');
+            let rememberMeCheckbox = document.getElementById('remember-me-checkbox');
+            let forgotPass = document.getElementById('forgot-password-label');
+            let emailInput = document.getElementById('email-input');
+            let emailInputIcon = document.getElementsByClassName('fa-envelope')[0];
+            let arrow = document.createElement('i');
+            arrow.classList = 'fa-solid fa-arrow-right';
+            rememberMeCheckbox.style.display = 'block';
+            emailInput.style.display = 'block';
+            emailInputIcon.style.display = 'block';
+    
+            function updateSliderPosition(isSignIn) {
+                if (window.innerWidth <= 400) { // Check if the viewport width is 400 pixels or less
+                    if (isSignIn) {
+                        // Move the slider up for sign-in
+                        sliderBox.style.top = '55px'; // Adjust to the desired position
+                        pageContentBox.style.opacity = 1; 
+                        SignInOrUpTitle.textContent = 'Sign In';
+                        SignInOrUpButton.textContent = 'Sign In';
+                    } else {
+                        // Move the slider down for sign-up
+                        sliderBox.style.top = '50px'; // Adjust to the desired position
+                        pageContentBox.style.opacity = 1;
+                        SignInOrUpTitle.textContent = 'Sign Up';
+                        SignInOrUpButton.textContent = 'Sign Up';
+                    }
+                } else {
+                    if (isSignIn) {
+                        // Normal left/right slider position for sign-in
+                        SignInOrUpTitle.textContent = 'Sign In';
+                        SignInOrUpButton.textContent = 'Sign In';
+                        sliderBox.style.borderRadius = '40px 80px 80px 40px';
+                        sliderBox.style.left = 'calc(0% - 1px)';
+                        pageContentBox.style.right = '0%';
+                    } else {
+                        // Normal left/right slider position for sign-up
+                        SignInOrUpTitle.textContent = 'Sign Up';
+                        SignInOrUpButton.textContent = 'Sign Up';
+                        sliderBox.style.borderRadius = '80px 40px 40px 80px';
+                        sliderBox.style.left = 'calc(50% - 30px)';
+                        pageContentBox.style.right = 'calc(50% + 30px)';
+                    }
+                }
+            }
+    
+            signIButtonSwitch.onclick = () => {
+                if (window.getComputedStyle(signIButtonSwitch).backgroundColor !== 'rgb(31, 37, 70)') {
+                    signIButtonSwitch.style.backgroundColor = '';
+                    signUpButtonSwitch.style.backgroundColor = '#007BFF';
+                    updateSliderPosition(true);
+                    for (let i = 1; i >= 0; i -= 0.01) {
+                        setTimeout(function () {
+                            pageContentBox.style.opacity = i.toFixed(2);
+                            if (i <= 0.01) {
+                                emailInput.style.display = 'block';
+                                emailInputIcon.style.display = 'block';
+                                rememberMeCheckbox.style.display = 'block';
+                                forgotPass.style.display='block';
+                                SignInOrUpButton.appendChild(arrow);
+                            }
+                        }, (1 - i) * 100);
+                    }
+                    for (let i = 0; i <= 1; i += 0.01) {
+                        setTimeout(function () {
+                            pageContentBox.style.opacity = i.toFixed(2);
+                        }, (1 + i) * 100);
+                    }
+                }
+            }
+    
+            signUpButtonSwitch.onclick = () => {
+                if (window.getComputedStyle(signUpButtonSwitch).backgroundColor !== 'rgb(31, 37, 70)') {
+                    signUpButtonSwitch.style.backgroundColor = '#091F53';
+                    signIButtonSwitch.style.backgroundColor = '#007BFF';
+                    updateSliderPosition(false);
+                    for (let i = 1; i >= 0; i -= 0.01) {
+                        setTimeout(function () {
+                            pageContentBox.style.opacity = i.toFixed(2);
+                            if (i <= 0.01) {
+                                emailInput.style.display = 'block';
+                                emailInputIcon.style.display = 'block';
+                                rememberMeCheckbox.style.display = 'block';
+                                rememberMeCheckbox.checked = false;
+                                forgotPass.style.display='none';
+                                SignInOrUpButton.appendChild(arrow);
+                            }
+                        }, (1 - i) * 100);
+                    }
+                    for (let i = 0; i <= 1; i += 0.01) {
+                        setTimeout(function () {
+                            pageContentBox.style.opacity = i.toFixed(2);
+                        }, (1 + i) * 100);
+                    }
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

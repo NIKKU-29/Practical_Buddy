@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0B0425;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content h3,
+        .semester1 .theoretical-content h4,
+        .semester1 .theoretical-content h5,
+        .semester1 .theoretical-content p,
+        .semester1 .theoretical-content ul {
+            text-align: left;
+            color: #f3f4f6;
+        }
+
+        .semester1 .theoretical-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .semester1 .theoretical-content h4 {
+            font-size: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .semester1 .theoretical-content h5 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content p {
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .semester1 .theoretical-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .semester1 .theoretical-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .semester1 .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: rgb(47, 130, 255);
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .semester1.section {
+            flex: 1;
+        }
+
+        .video-section {
+            
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:left;
+        }
+        .video-section2 {
+          
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:right;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            border-radius: 0.375rem;
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+
+        pre1 .output
+        {
+            display: inline-block;
+            justify-content: space-between;
+        }
+               
+@media (max-width: 425px) {
+    .semester1 .theoretical-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .semester1 .theoretical-content h4 {
+        font-size: 1.35rem;
+        margin-top: 1.5rem;
+    }
+
+    .semester1 .theoretical-content h5 {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+    }
+
+    .semester1 .theoretical-content p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        line-height: 1.8;
+    }
+
+    .semester1 .theoretical-content ul {
+        margin: 0.3rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .semester1 .theoretical-content ul li {
+        margin-bottom: 0.3rem;
+    }
+
+   .video-section iframe{
+        width: 230px;
+        height: 157px;
+    }
+    .card{
+        width: 95%;
+    }
+
+    .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+        .Output img{
+            width: 260px;
+            height: 170px;
+        }
+        .code-block code{
+                font-size: 0.8rem;
+        }
+    
+}
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester2.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+
+    <!-- Experiments Section -->
+    <section class="semester1 section">
+        <h1 class="section-title"> Programming In Modern C Practical List</h1>
+
+    <a href="../files/sem7.pdf" download="ALL.pdf" class="download-button">Download PDF</a>
+    <div class="INFO">
+
+        Video + Theory 
+        
+    </div>
+    <ul class="practicals-list">
+
+        <li class="card">
+            <h2 class="card-title">Experiment 1: Find Divisor or Factorial of a Given Number</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent1')">Toggle Content</button>
+            <div id="theoryContent1" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves writing a program to find the divisors of a given number or calculate its factorial. It illustrates basic loop and conditional logic.</p>
+    
+                <h4>Theory</h4>
+                <p>The factorial of a non-negative integer n is the product of all positive integers less than or equal to n, denoted by n!. A divisor is a number that can divide another number without leaving a remainder.</p>
+    
+                <h4>Code</h4>
+                <pre><code>
+
+    #include &lt;stdio.h&gt;
+    
+    // Function to calculate factorial
+    int factorial(int n) {
+        if (n == 0) return 1;
+        return n * factorial(n - 1);
+    }
+    
+    // Function to find divisors
+    void findDivisors(int n) {
+        printf("Divisors of %d are: ", n);
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0)
+                printf("%d ", i);
+        }
+        printf("\n");
+    }
+    
+    int main() {
+        int choice, num;
+        printf("Enter 1 for Factorial or 2 for Divisors: ");
+        scanf("%d", &choice);
+        printf("Enter a number: ");
+        scanf("%d", &num);
+    
+        if (choice == 1) {
+            printf("Factorial of %d is: %d\n", num, factorial(num));
+        } else {
+            findDivisors(num);
+        }
+        return 0;
+    }
+                </code></pre>
+    
+                <div id="videoBlock1" class="video-section">
+                    <h3>Video Explanation of Divisor and Factorial</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 2: Sum of a Geometric Series</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent2')">Toggle Content</button>
+            <div id="theoryContent2" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment focuses on writing a program to find the sum of a geometric series.</p>
+    
+                <h4>Theory</h4>
+                <p>A geometric series is a series of terms where each term after the first is found by multiplying the previous term by a fixed, non-zero number called the common ratio.</p>
+    
+                <h4>Code</h4>
+                <pre><code>
+    #include &lt;stdio.h&gt;
+    
+    double geometricSum(int n, double r) {
+        if (n == 0) return 1; // First term a = 1
+        return geometricSum(n - 1, r) + (1 * pow(r, n));
+    }
+    
+    int main() {
+        int n;
+        double r;
+        printf("Enter the number of terms (n): ");
+        scanf("%d", &n);
+        printf("Enter the common ratio (r): ");
+        scanf("%lf", &r);
+        printf("Sum of the geometric series: %.2f\n", geometricSum(n, r));
+        return 0;
+    }
+                </code></pre>
+    
+                <div id="videoBlock2" class="video-section">
+                    <h3>Video Explanation of Geometric Series</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 3: Tower of Hanoi Problem</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent3')">Toggle Content</button>
+            <div id="theoryContent3" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves writing a recursive program to solve the Tower of Hanoi problem.</p>
+    
+                <h4>Theory</h4>
+                <p>The Tower of Hanoi is a mathematical puzzle that involves moving disks between three rods according to certain rules. The challenge is to move the entire stack to another rod.</p>
+    
+                <h4>Code</h4>
+                <pre><code>
+    #include &lt;stdio.h&gt;
+    
+    void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod) {
+        if (n == 1) {
+            printf("Move disk 1 from %c to %c\n", from_rod, to_rod);
+            return;
+        }
+        towerOfHanoi(n - 1, from_rod, aux_rod, to_rod);
+        printf("Move disk %d from %c to %c\n", n, from_rod, to_rod);
+        towerOfHanoi(n - 1, aux_rod, to_rod, from_rod);
+    }
+    
+    int main() {
+        int n;
+        printf("Enter number of disks: ");
+        scanf("%d", &n);
+        towerOfHanoi(n, 'A', 'C', 'B'); // A, B and C are names of rods
+        return 0;
+    }
+                </code></pre>
+    
+                <div id="videoBlock3" class="video-section">
+                    <h3>Video Explanation of Tower of Hanoi</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 4: Print the First m Fibonacci Numbers</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent4')">Toggle Content</button>
+            <div id="theoryContent4" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves writing a recursive program to print the first m Fibonacci numbers.</p>
+    
+                <h4>Theory</h4>
+                <p>The Fibonacci sequence is a series of numbers in which each number is the sum of the two preceding ones, usually starting with 0 and 1.</p>
+    
+                <h4>Code</h4>
+                <pre><code>
+    #include &lt;stdio.h&gt;
+    
+    void printFibonacci(int n1, int n2, int count) {
+        if (count == 0) return;
+        printf("%d ", n1);
+        printFibonacci(n2, n1 + n2, count - 1);
+    }
+    
+    int main() {
+        int m;
+        printf("Enter number of Fibonacci numbers to print: ");
+        scanf("%d", &m);
+        printFibonacci(0, 1, m);
+        printf("\n");
+        return 0;
+    }
+                </code></pre>
+    
+                <div id="videoBlock4" class="video-section">
+                    <h3>Video Explanation of Fibonacci Numbers</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 5: Menu Driven Program for Matrix Operations</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent5')">Toggle Content</button>
+            <div id="theoryContent5" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves writing a menu-driven program to perform various operations on matrices.</p>
+    
+                <h4>Theory</h4>
+                <p>This program will include operations like addition, subtraction, finding upper and lower triangular matrices, transpose, and multiplication of matrices.</p>
+    
+                <h4>Code</h4>
+                <pre><code>
+    #include &lt;stdio.h&gt;
+    
+    #define MAX 10
+    
+    void addMatrices(int a[MAX][MAX], int b[MAX][MAX], int res[MAX][MAX], int r, int c) {
+        for (int i = 0; i < r; i++)
+            for (int j = 0; j < c; j++)
+                res[i][j] = a[i][j] + b[i][j];
+    }
+    
+    // Function to display the matrix
+    void displayMatrix(int matrix[MAX][MAX], int r, int c) {
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++)
+                printf("%d ", matrix[i][j]);
+            printf("\n");
+        }
+    }
+    
+    int main() {
+        int r, c;
+        int a[MAX][MAX], b[MAX][MAX], res[MAX][MAX];
+        printf("Enter number of rows and columns: ");
+        scanf("%d %d", &r, &c);
+    
+        printf("Enter elements of first matrix:\n");
+        for (int i = 0; i < r; i++)
+            for (int j = 0; j < c; j++)
+                scanf("%d", &a[i][j]);
+    
+        printf("Enter elements of second matrix:\n");
+        for (int i = 0; i < r; i++)
+            for (int j = 0; j < c; j++)
+                scanf("%d", &b[i][j]);
+    
+        addMatrices(a, b, res, r, c);
+        printf("Sum of the matrices:\n");
+        displayMatrix(res, r, c);
+        return 0;
+    }
+                </code></pre>
+    
+                <div id="videoBlock5" class="video-section">
+                    <h3>Video Explanation of Matrix Operations</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 6: Calculate the GCD of Two Numbers</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent6')">Toggle Content</button>
+            <div id="theoryContent6" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves writing a program to calculate the GCD (Greatest Common Divisor) of two numbers.</p>
+    
+                <h4>Theory</h4>
+                <p>The GCD of two or more integers is the largest positive integer that divides each of the integers without a remainder. The Euclidean algorithm is a common method for finding the GCD.</p>
+    
+                <h4>Code</h4>
+                <pre><code>
+    #include &lt;stdio.h&gt;
+    
+    int gcd(int a, int b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+    
+    int main() {
+        int a, b;
+        printf("Enter two numbers: ");
+        scanf("%d %d", &a, &b);
+        printf("GCD of %d and %d is: %d\n", a, b, gcd(a, b));
+        return 0;
+    }
+                </code></pre>
+    
+                <div id="videoBlock6" class="video-section">
+                    <h3>Video Explanation of GCD Calculation</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 7: Reverse a String</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent7')">Toggle Content</button>
+            <div id="theoryContent7" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves writing a program to reverse a given string.</p>
+    
+                <h4>Theory</h4>
+                <p>String manipulation is a fundamental concept in programming, and reversing a string demonstrates the use of arrays and loops effectively.</p>
+    
+                <h4>Code</h4>
+                <pre><code>
+    #include &lt;stdio.h&gt;
+    #include <string.h>
+    
+    void reverseString(char str[]) {
+        int n = strlen(str);
+        for (int i = 0; i < n / 2; i++) {
+            char temp = str[i];
+            str[i] = str[n - i - 1];
+            str[n - i - 1] = temp;
+        }
+    }
+    
+    int main() {
+        char str[100];
+        printf("Enter a string: ");
+        fgets(str, sizeof(str), stdin);
+        str[strcspn(str, "\n")] = 0; // Remove newline character
+        reverseString(str);
+        printf("Reversed string: %s\n", str);
+        return 0;
+    }
+                </code></pre>
+    
+                <div id="videoBlock7" class="video-section">
+                    <h3>Video Explanation of String Reversal</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 8: Sort an Array Using Bubble Sort</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent8')">Toggle Content</button>
+            <div id="theoryContent8" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves writing a program to sort an array using the bubble sort algorithm.</p>
+    
+                <h4>Theory</h4>
+                <p>Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted.</p>
+    
+                <h4>Code</h4>
+                <pre><code>
+    #include &lt;stdio.h&gt;
+    
+    void bubbleSort(int arr[], int n) {
+        for (int i = 0; i < n - 1; i++)
+            for (int j = 0; j < n - i - 1; j++)
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+    }
+    
+    int main() {
+        int n;
+        printf("Enter number of elements: ");
+        scanf("%d", &n);
+        int arr[n];
+        printf("Enter elements:\n");
+        for (int i = 0; i < n; i++)
+            scanf("%d", &arr[i]);
+    
+        bubbleSort(arr, n);
+        printf("Sorted array: ");
+        for (int i = 0; i < n; i++)
+            printf("%d ", arr[i]);
+        printf("\n");
+        return 0;
+    }
+                </code></pre>
+    
+                <div id="videoBlock8" class="video-section">
+                    <h3>Video Explanation of Bubble Sort</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 9: Find Prime Numbers up to n</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent9')">Toggle Content</button>
+            <div id="theoryContent9" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves writing a program to find all prime numbers up to a given number n.</p>
+    
+                <h4>Theory</h4>
+                <p>A prime number is a natural number greater than 1 that cannot be formed by multiplying two smaller natural numbers. The prime numbers are: 2, 3, 5, 7, 11, and so on.</p>
+    
+                <h4>Code</h4>
+                <pre><code>
+    #include &lt;stdio.h&gt;
+    
+    int isPrime(int num) {
+        if (num <= 1) return 0;
+        for (int i = 2; i * i <= num; i++)
+            if (num % i == 0)
+                return 0;
+        return 1;
+    }
+    
+    int main() {
+        int n;
+        printf("Enter a number: ");
+        scanf("%d", &n);
+        printf("Prime numbers up to %d are: ", n);
+        for (int i = 2; i <= n; i++) {
+            if (isPrime(i))
+                printf("%d ", i);
+        }
+        printf("\n");
+        return 0;
+    }
+                </code></pre>
+    
+                <div id="videoBlock9" class="video-section">
+                    <h3>Video Explanation of Prime Numbers</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 10: Simple Calculator Using Switch Case</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent10')">Toggle Content</button>
+            <div id="theoryContent10" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves writing a simple calculator program that uses a switch statement to perform basic arithmetic operations.</p>
+    
+                <h4>Theory</h4>
+                <p>Switch-case is a control statement that allows variable values to be tested for equality against a list of values. It is often used as a cleaner alternative to if-else statements when dealing with multiple conditions.</p>
+    
+                <h4>Code</h4>
+                <pre><code>
+    #include &lt;stdio.h&gt;
+    
+    int main() {
+        char operator;
+        double num1, num2, result;
+    
+        printf("Enter an operator (+, -, *, /): ");
+        scanf(" %c", &operator);
+        printf("Enter two numbers: ");
+        scanf("%lf %lf", &num1, &num2);
+    
+        switch (operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                if (num2 != 0)
+                    result = num1 / num2;
+                else {
+                    printf("Division by zero error!\n");
+                    return 1;
+                }
+                break;
+            default:
+                printf("Invalid operator!\n");
+                return 1;
+        }
+        printf("Result: %.2lf\n", result);
+        return 0;
+    }
+                </code></pre>
+    
+                <div id="videoBlock10" class="video-section">
+                    <h3>Video Explanation of Simple Calculator</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+
+
+    </ul>
+
+
+</section>
+
+<script>
+    function toggleContent(contentId) {
+        var content = document.getElementById(contentId);
+
+        // Check if content is hidden (display is "none" or initial empty value)
+        if (content.style.display === "none" || content.style.display === "") {
+            content.style.display = "block"; // Show content
+        } else {
+            content.style.display = "none"; // Hide content
+        }
+    }
+</script>
+</body>
+
+</html>

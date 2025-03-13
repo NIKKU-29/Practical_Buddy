@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0B0425;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content h3,
+        .semester1 .theoretical-content h4,
+        .semester1 .theoretical-content h5,
+        .semester1 .theoretical-content p,
+        .semester1 .theoretical-content ul {
+            text-align: left;
+            color: #f3f4f6;
+        }
+
+        .semester1 .theoretical-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .semester1 .theoretical-content h4 {
+            font-size: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .semester1 .theoretical-content h5 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content p {
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .semester1 .theoretical-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .semester1 .theoretical-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .semester1 .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: rgb(47, 130, 255);
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .semester1.section {
+            flex: 1;
+        }
+
+        .video-section {
+            
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:left;
+        }
+        .video-section2 {
+          
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:right;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            border-radius: 0.375rem;
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+
+        pre1 .output
+        {
+            display: inline-block;
+            justify-content: space-between;
+        }
+               
+@media (max-width: 425px) {
+    .semester1 .theoretical-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .semester1 .theoretical-content h4 {
+        font-size: 1.35rem;
+        margin-top: 1.5rem;
+    }
+
+    .semester1 .theoretical-content h5 {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+    }
+
+    .semester1 .theoretical-content p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        line-height: 1.8;
+    }
+
+    .semester1 .theoretical-content ul {
+        margin: 0.3rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .semester1 .theoretical-content ul li {
+        margin-bottom: 0.3rem;
+    }
+
+   .video-section iframe{
+        width: 230px;
+        height: 157px;
+    }
+    .card{
+        width: 95%;
+    }
+
+    .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+        .Output img{
+            width: 260px;
+            height: 170px;
+        }
+        .code-block code{
+                font-size: 0.8rem;
+        }
+    
+}
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester2.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+
+    <!-- Experiments Section -->
+    <section class="semester1 section">
+        <h1 class="section-title"> Environmental Studies Practical List</h1>
+
+    <a href="../files/sem7.pdf" download="ALL.pdf" class="download-button">Download PDF</a>
+    <div class="INFO">
+
+        Video + Theory 
+        
+    </div>
+    <ul class="practicals-list">
+
+        <li class="card">
+            <h2 class="card-title">Experiment 1: Determination of pH, Conductivity, and Turbidity in Drinking Water Sample</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent1')">Toggle Content</button>
+            <div id="theoryContent1" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves measuring the pH, conductivity, and turbidity of a drinking water sample.</p>
+    
+                <h4>Theory</h4>
+                <p>pH indicates the acidity or alkalinity of the water. Conductivity measures the water's ability to conduct electricity, which correlates with the concentration of ions. Turbidity indicates the clarity of the water, influenced by the presence of suspended particles.</p>
+    
+                <h4>Equipment</h4>
+                <p>pH meter, conductivity meter, turbidity meter.</p>
+    
+                <div id="videoBlock1" class="video-section">
+                    <h3>Video Explanation of pH, Conductivity, and Turbidity</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 2: Determination of pH and Conductivity of Soil/Sludge Samples</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent2')">Toggle Content</button>
+            <div id="theoryContent2" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment focuses on measuring the pH and conductivity of soil or sludge samples.</p>
+    
+                <h4>Theory</h4>
+                <p>Soil pH affects nutrient availability, while conductivity provides insight into the ionic content, which is critical for plant growth and soil health.</p>
+    
+                <h4>Equipment</h4>
+                <p>pH meter, conductivity meter.</p>
+    
+                <div id="videoBlock2" class="video-section">
+                    <h3>Video Explanation of Soil/Sludge pH and Conductivity</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 3: Determination of Moisture Content of Soil Sample</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent3')">Toggle Content</button>
+            <div id="theoryContent3" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment determines the moisture content of a soil sample.</p>
+    
+                <h4>Theory</h4>
+                <p>Moisture content is essential for understanding soil properties and behavior. It is calculated as the ratio of the mass of water to the mass of dry soil.</p>
+    
+                <h4>Equipment</h4>
+                <p>Balance, oven.</p>
+    
+                <div id="videoBlock3" class="video-section">
+                    <h3>Video Explanation of Moisture Content Determination</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 4: Determination of Total Dissolved Solids (TDS) of Water Sample</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent4')">Toggle Content</button>
+            <div id="theoryContent4" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment measures the total dissolved solids (TDS) in a water sample.</p>
+    
+                <h4>Theory</h4>
+                <p>TDS refers to the total concentration of dissolved substances in water, which can impact water quality and taste.</p>
+    
+                <h4>Equipment</h4>
+                <p>TDS meter.</p>
+    
+                <div id="videoBlock4" class="video-section">
+                    <h3>Video Explanation of TDS Determination</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 5: Determination of Dissolved Oxygen (DO) in the Water Sample</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent5')">Toggle Content</button>
+            <div id="theoryContent5" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves measuring the dissolved oxygen (DO) level in a water sample.</p>
+    
+                <h4>Theory</h4>
+                <p>DO is critical for aquatic life; its concentration indicates the water's ability to support living organisms.</p>
+    
+                <h4>Equipment</h4>
+                <p>DO meter, or Winkler method reagents.</p>
+    
+                <div id="videoBlock5" class="video-section">
+                    <h3>Video Explanation of DO Determination</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 6: Determination of Biological Oxygen Demand (BOD) in the Water Sample</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent6')">Toggle Content</button>
+            <div id="theoryContent6" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment focuses on measuring the biological oxygen demand (BOD) in a water sample.</p>
+    
+                <h4>Theory</h4>
+                <p>BOD is a measure of the amount of oxygen required by microorganisms to decompose organic matter in the water, indicating the level of pollution.</p>
+    
+                <h4>Equipment</h4>
+                <p>BOD incubator, DO meter.</p>
+    
+                <div id="videoBlock6" class="video-section">
+                    <h3>Video Explanation of BOD Determination</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 7: Determination of Chemical Oxygen Demand (COD) in the Water Sample</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent7')">Toggle Content</button>
+            <div id="theoryContent7" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves measuring the chemical oxygen demand (COD) in a water sample.</p>
+    
+                <h4>Theory</h4>
+                <p>COD measures the amount of oxygen required to chemically oxidize organic matter in the water, providing insight into water pollution levels.</p>
+    
+                <h4>Equipment</h4>
+                <p>COD reactor, spectrophotometer.</p>
+    
+                <div id="videoBlock7" class="video-section">
+                    <h3>Video Explanation of COD Determination</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 8: Determination of Residual Chlorine in the Water Sample</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent8')">Toggle Content</button>
+            <div id="theoryContent8" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment focuses on measuring the residual chlorine level in a water sample.</p>
+    
+                <h4>Theory</h4>
+                <p>Residual chlorine indicates the effectiveness of disinfection processes and the potential for bacterial contamination.</p>
+    
+                <h4>Equipment</h4>
+                <p>Chlorine test kit or colorimetric analyzer.</p>
+    
+                <div id="videoBlock8" class="video-section">
+                    <h3>Video Explanation of Residual Chlorine Determination</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 9: Determination of Ammonia in the Water Sample</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent9')">Toggle Content</button>
+            <div id="theoryContent9" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment measures the ammonia concentration in a water sample.</p>
+    
+                <h4>Theory</h4>
+                <p>Ammonia levels are crucial indicators of water quality and can affect aquatic life. High levels may indicate pollution.</p>
+    
+                <h4>Equipment</h4>
+                <p>Ammonia test kit or spectrophotometer.</p>
+    
+                <div id="videoBlock9" class="video-section">
+                    <h3>Video Explanation of Ammonia Determination</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 10: Determination of Carbon Dioxide in the Water Sample</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent10')">Toggle Content</button>
+            <div id="theoryContent10" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves measuring the carbon dioxide concentration in a water sample.</p>
+    
+                <h4>Theory</h4>
+                <p>CO<sub>2</sub> levels are significant for aquatic ecosystems, influencing pH and affecting marine life.</p>
+    
+                <h4>Equipment</h4>
+                <p>CO<sub>2</sub> test kit or infrared gas analyzer.</p>
+    
+                <div id="videoBlock10" class="video-section">
+                    <h3>Video Explanation of CO<sub>2</sub> Determination</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 11: Determination of Nitrate Ions or Sulphate Ions in Water using Spectrophotometer</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent11')">Toggle Content</button>
+            <div id="theoryContent11" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment measures nitrate or sulphate ions in a water sample using a spectrophotometer.</p>
+    
+                <h4>Theory</h4>
+                <p>Nitrate and sulphate concentrations are essential for assessing water quality and environmental health.</p>
+    
+                <h4>Equipment</h4>
+                <p>Spectrophotometer.</p>
+    
+                <div id="videoBlock11" class="video-section">
+                    <h3>Video Explanation of Nitrate/Sulphate Determination</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 12: Determination of the Molecular Weight of Polystyrene Sample using Viscometer Method</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent12')">Toggle Content</button>
+            <div id="theoryContent12" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment involves determining the molecular weight of a polystyrene sample using the viscometer method.</p>
+    
+                <h4>Theory</h4>
+                <p>The molecular weight affects the physical properties of polymers, influencing their applications and behavior.</p>
+    
+                <h4>Equipment</h4>
+                <p>Viscometer.</p>
+    
+                <div id="videoBlock12" class="video-section">
+                    <h3>Video Explanation of Molecular Weight Determination</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 13: Base Catalyzed Aldol Condensation by Green Methodology</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent13')">Toggle Content</button>
+            <div id="theoryContent13" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment explores aldol condensation reactions using a base-catalyzed green methodology.</p>
+    
+                <h4>Theory</h4>
+                <p>Aldol condensation is a vital reaction in organic synthesis, producing β-hydroxy carbonyl compounds.</p>
+    
+                <h4>Equipment</h4>
+                <p>Glassware, stirring apparatus.</p>
+    
+                <div id="videoBlock13" class="video-section">
+                    <h3>Video Explanation of Aldol Condensation</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 14: Acetylation of Primary Amines using Eco-Friendly Method</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent14')">Toggle Content</button>
+            <div id="theoryContent14" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment focuses on the acetylation of primary amines using an eco-friendly method.</p>
+    
+                <h4>Theory</h4>
+                <p>Acetylation modifies the properties of amines, essential for various applications in chemical synthesis.</p>
+    
+                <h4>Equipment</h4>
+                <p>Glassware, heating apparatus.</p>
+    
+                <div id="videoBlock14" class="video-section">
+                    <h3>Video Explanation of Acetylation of Primary Amines</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+    
+        <li class="card">
+            <h2 class="card-title">Experiment 15: To Determine the Concentration of Particulate Matter in the Ambient Air using High Volume Sampler</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent15')">Toggle Content</button>
+            <div id="theoryContent15" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>This experiment measures the concentration of particulate matter in the ambient air using a high volume sampler.</p>
+    
+                <h4>Theory</h4>
+                <p>Particulate matter levels are critical for assessing air quality and potential health impacts.</p>
+    
+                <h4>Equipment</h4>
+                <p>High volume air sampler.</p>
+    
+                <div id="videoBlock15" class="video-section">
+                    <h3>Video Explanation of Particulate Matter Concentration Determination</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </li>
+        
+
+
+    </ul>
+
+
+</section>
+
+<script>
+    function toggleContent(contentId) {
+        var content = document.getElementById(contentId);
+
+        // Check if content is hidden (display is "none" or initial empty value)
+        if (content.style.display === "none" || content.style.display === "") {
+            content.style.display = "block"; // Show content
+        } else {
+            content.style.display = "none"; // Hide content
+        }
+    }
+</script>
+</body>
+
+</html>

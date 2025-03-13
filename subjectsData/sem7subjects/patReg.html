@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0B0425;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content h3,
+        .semester1 .theoretical-content h4,
+        .semester1 .theoretical-content h5,
+        .semester1 .theoretical-content p,
+        .semester1 .theoretical-content ul {
+            text-align: left;
+            color: #f3f4f6;
+        }
+
+        .semester1 .theoretical-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .semester1 .theoretical-content h4 {
+            font-size: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .semester1 .theoretical-content h5 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content p {
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .semester1 .theoretical-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .semester1 .theoretical-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .semester1 .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: rgb(47, 130, 255);
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .semester1.section {
+            flex: 1;
+        }
+
+        .video-section {
+            
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:left;
+        }
+        .video-section2 {
+          
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:right;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            border-radius: 0.375rem;
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+
+        pre1 .output
+        {
+            display: inline-block;
+            justify-content: space-between;
+        }
+               
+@media (max-width: 425px) {
+    .semester1 .theoretical-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .semester1 .theoretical-content h4 {
+        font-size: 1.35rem;
+        margin-top: 1.5rem;
+    }
+
+    .semester1 .theoretical-content h5 {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+    }
+
+    .semester1 .theoretical-content p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        line-height: 1.8;
+    }
+
+    .semester1 .theoretical-content ul {
+        margin: 0.3rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .semester1 .theoretical-content ul li {
+        margin-bottom: 0.3rem;
+    }
+
+   .video-section iframe{
+        width: 230px;
+        height: 157px;
+    }
+    .card{
+        width: 95%;
+    }
+
+    .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+        .Output img{
+            width: 260px;
+            height: 170px;
+        }
+        .code-block code{
+                font-size: 0.8rem;
+        }
+    
+}
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester7.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+
+    <!-- Experiments Section -->
+    <section class="semester1 section">
+        <h1 class="section-title">Pattern Recognition and Computer Vision  </h1>
+
+    <a href="files/sem7.pdf" download="ALL.pdf" class="download-button">Download PDF</a>
+    <div class="INFO">
+
+        Video + Theory 
+        
+    </div>
+
+        <ul class="practicals-list">
+
+
+
+            <li class="card">
+                <h2 class="card-title">1. Gaussian Distribution Plotting</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent1')">Toggle Content</button>
+                <div id="theoryContent1" class="theoretical-content">
+                    <h3>Overview of Gaussian Distribution</h3>
+                    <p>A Gaussian distribution (also known as normal distribution) is a probability distribution that is symmetric about the mean, showing that data near the mean are more frequent in occurrence than data far from the mean. The distribution is fully characterized by its mean and variance.</p>
+                    
+                    <h3>Key Concepts</h3>
+                    <h4>1. Mean (m)</h4>
+                    <p><strong>Definition:</strong> The central value of the distribution.</p>
+                    <h4>2. Variance (s)</h4>
+                    <p><strong>Definition:</strong> The measure of the spread of the distribution.</p>
+            
+                    <h4>Viva Questions</h4>
+                    <p>1. What is a Gaussian distribution?</p>
+                    <p><strong>Answer:</strong> A Gaussian distribution is a continuous probability distribution characterized by a bell curve shape, symmetric around the mean.</p>
+                    <p>2. How do mean and variance affect the Gaussian distribution?</p>
+                    <p><strong>Answer:</strong> The mean determines the center, and the variance determines the width of the bell curve.</p>
+            
+                    <!-- Embedded YouTube Video -->
+                    <div id="videoBlock1" class="video-section">
+                        <h2>How to Plot Gaussian Distribution</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/video_link_here" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+            
+                    <h3>Python Code for Gaussian Distribution</h3>
+                    <pre><code>
+i>import numpy as np
+i>import matplotlib.pyplot as plt
+            
+i>def gaussian_distribution(x, mean, variance):
+    i>return (1 / np.sqrt(2 * np.pi * variance)) * np.exp(-0.5 * ((x - mean) ** 2) / variance)
+            
+i># Generate a range of x values
+i>x = np.linspace(-10, 10, 400)
+            
+i># Plot for different means and variances
+i>plt.plot(x, gaussian_distribution(x, 0, 1), label='mean=0, variance=1')
+i>plt.plot(x, gaussian_distribution(x, 0, 2), label='mean=0, variance=2')
+i>plt.plot(x, gaussian_distribution(x, 2, 1), label='mean=2, variance=1')
+            
+i>plt.legend()
+i>plt.title("Effect of Varying Mean and Variance on Gaussian Distribution")
+i>plt.show()
+                    </code></pre>
+                </div>
+            </li>            
+
+            <li class="card">
+                <h2 class="card-title">2. Implementation of Gradient Descent</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent2')">Toggle Content</button>
+                <div id="theoryContent2" class="theoretical-content">
+                    <h3>Overview of Gradient Descent</h3>
+                    <p>Gradient Descent is an optimization algorithm used to minimize a function by iteratively moving in the direction of the steepest descent as defined by the negative of the gradient. It is widely used in machine learning for training models by minimizing the loss function.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <h4>1. Learning Rate (α)</h4>
+                    <p><strong>Definition:</strong> The learning rate controls how large the steps are during each iteration. A small learning rate ensures convergence but may be slow, while a large learning rate may cause overshooting.</p>
+                    
+                    <h4>2. Cost Function</h4>
+                    <p><strong>Definition:</strong> A function that measures the error or 'cost' between the predicted value and the actual value. Gradient descent works to minimize this cost function.</p>
+            
+                    <h4>3. Gradient</h4>
+                    <p><strong>Definition:</strong> The gradient of the cost function with respect to the parameters indicates the direction in which the parameters should be updated to reduce the cost.</p>
+            
+                    <h3>Viva Questions</h3>
+                    <p>1. What is Gradient Descent?</p>
+                    <p><strong>Answer:</strong> Gradient Descent is an iterative optimization algorithm used to find the minimum of a function by updating parameters in the direction of the negative gradient.</p>
+                    <p>2. How does the learning rate affect the Gradient Descent algorithm?</p>
+                    <p><strong>Answer:</strong> A small learning rate results in slow convergence, while a large learning rate might cause the algorithm to diverge or overshoot the minimum.</p>
+                    <p>3. What are the different types of Gradient Descent?</p>
+                    <p><strong>Answer:</strong> The three main types are Batch Gradient Descent, Stochastic Gradient Descent, and Mini-batch Gradient Descent. They differ in how much data is used to compute the gradient in each iteration.</p>
+                    <p>4. What is a cost function?</p>
+                    <p><strong>Answer:</strong> The cost function quantifies the error between the predicted output and the actual output. Gradient Descent minimizes this function to improve the model's accuracy.</p>
+            
+                    <!-- Embedded YouTube Video -->
+                    <div id="videoBlock2" class="video-section">
+                        <h3>How to Implement Gradient Descent</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/video_link_here" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+            
+                    <h3>Python Code for Gradient Descent</h3>
+                    <pre><code>
+import numpy as np
+            
+# Gradient Descent function
+def gradient_descent(x, y, learning_rate, iterations):
+    m = 0
+    b = 0
+    n = len(x)
+    for i in range(iterations):
+        y_pred = m * x + b
+        dm = -(2/n) * sum(x * (y - y_pred))
+        db = -(2/n) * sum(y - y_pred)
+        m = m - learning_rate * dm
+        b = b - learning_rate * db
+    return m, b
+            
+# Example data
+x = np.array([1, 2, 3, 4, 5])
+y = np.array([2, 4, 6, 8, 10])
+            
+# Parameters
+learning_rate = 0.01
+iterations = 1000
+            
+# Running Gradient Descent
+m, b = gradient_descent(x, y, learning_rate, iterations)
+print(f"Slope: {m}, Intercept: {b}")
+                    </code></pre>
+                </div>
+            </li>            
+
+            <li class="card">
+                <h2 class="card-title">3. Implementation of Linear Regression using Gradient Descent</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent3')">Toggle Content</button>
+                <div id="theoryContent3" class="theoretical-content">
+                    <h3>Overview of Linear Regression with Gradient Descent</h3>
+                    <p>Linear Regression is a supervised learning algorithm used for predicting continuous values. It assumes a linear relationship between the input (independent variable) and the output (dependent variable). Gradient Descent is often used to optimize the parameters of the linear regression model by minimizing the cost function.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <h4>1. Hypothesis (h<sub>θ</sub>(x))</h4>
+                    <p><strong>Definition:</strong> The hypothesis in linear regression is the predicted output based on the input variables, represented as h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub>x, where θ<sub>0</sub> is the intercept and θ<sub>1</sub> is the slope.</p>
+                    
+                    <h4>2. Cost Function (J(θ))</h4>
+                    <p><strong>Definition:</strong> The cost function measures the error between the predicted values and the actual values. In linear regression, it is often the mean squared error (MSE) function, J(θ) = (1/2m) Σ(h<sub>θ</sub>(x) - y)<sup>2</sup>, where m is the number of training examples.</p>
+            
+                    <h4>3. Gradient Descent Algorithm</h4>
+                    <p><strong>Definition:</strong> Gradient Descent is used to minimize the cost function by iteratively updating the model parameters θ<sub>0</sub> and θ<sub>1</sub> in the direction of the steepest descent of the cost function.</p>
+            
+                    <h3>Viva Questions</h3>
+                    <p>1. What is Linear Regression?</p>
+                    <p><strong>Answer:</strong> Linear Regression is a method for modeling the relationship between a dependent variable and one or more independent variables by fitting a linear equation to observed data.</p>
+            
+                    <p>2. How is Gradient Descent used in Linear Regression?</p>
+                    <p><strong>Answer:</strong> Gradient Descent is used to find the optimal values of the model parameters (slope and intercept) by minimizing the cost function. It adjusts the parameters iteratively in the direction that reduces the error.</p>
+            
+                    <p>3. What is the difference between Batch Gradient Descent and Stochastic Gradient Descent?</p>
+                    <p><strong>Answer:</strong> Batch Gradient Descent uses the entire training dataset to compute the gradients, while Stochastic Gradient Descent (SGD) uses only one training example per iteration, making it faster but less stable.</p>
+            
+                    <p>4. What is the purpose of the cost function in Linear Regression?</p>
+                    <p><strong>Answer:</strong> The cost function quantifies the error between the predicted and actual values. The objective is to minimize the cost function, which corresponds to the best-fit line.</p>
+            
+                    <!-- Embedded YouTube Video -->
+                    <div id="videoBlock3" class="video-section">
+                        <h3>How to Implement Linear Regression using Gradient Descent</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/video_link_here" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+            
+                    <h3>Python Code for Linear Regression using Gradient Descent</h3>
+                    <pre><code>
+import numpy as np
+import matplotlib.pyplot as plt
+            
+# Linear Regression using Gradient Descent
+def gradient_descent_linear_regression(X, y, learning_rate, iterations):
+    m = X.shape[0]
+    theta = np.zeros(2)  # [theta_0 (intercept), theta_1 (slope)]
+                
+    for i in range(iterations):
+        y_pred = theta[0] + theta[1] * X
+        cost = (1/(2*m)) * np.sum((y_pred - y) ** 2)  # Mean Squared Error
+        theta[0] -= learning_rate * (1/m) * np.sum(y_pred - y)
+        theta[1] -= learning_rate * (1/m) * np.sum((y_pred - y) * X)
+                    
+    return theta
+            
+# Example data
+X = np.array([1, 2, 3, 4, 5])
+y = np.array([1, 2, 3, 4, 5])
+            
+# Parameters
+learning_rate = 0.01
+iterations = 1000
+            
+# Run Gradient Descent
+theta = gradient_descent_linear_regression(X, y, learning_rate, iterations)
+            
+# Display the result
+print(f"Intercept (theta_0): {theta[0]}")
+print(f"Slope (theta_1): {theta[1]}")
+            
+# Plot the result
+plt.scatter(X, y, color='blue', label='Data points')
+plt.plot(X, theta[0] + theta[1] * X, color='red', label='Regression Line')
+plt.title('Linear Regression using Gradient Descent')
+plt.legend()
+plt.show()
+                    </code></pre>
+                </div>
+            </li>
+            
+
+            <li class="card">
+                <h2 class="card-title">4. Implementation of Logistic Regression using Gradient Descent</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent4')">Toggle Content</button>
+                <div id="theoryContent4" class="theoretical-content">
+                    <h3>Overview of Logistic Regression with Gradient Descent</h3>
+                    <p>Logistic Regression is a supervised learning algorithm used for binary classification. Unlike Linear Regression, it predicts the probability of the dependent variable belonging to a particular class by using the logistic (sigmoid) function. Gradient Descent is used to optimize the model's parameters by minimizing the cost function (log-loss).</p>
+            
+                    <h3>Key Concepts</h3>
+                    <h4>1. Hypothesis (h<sub>θ</sub>(x))</h4>
+                    <p><strong>Definition:</strong> In Logistic Regression, the hypothesis represents the probability that the input belongs to a certain class, and it is modeled using the sigmoid function: h<sub>θ</sub>(x) = 1 / (1 + exp(-θ<sub>0</sub> - θ<sub>1</sub>x)).</p>
+            
+                    <h4>2. Cost Function (J(θ))</h4>
+                    <p><strong>Definition:</strong> The cost function in Logistic Regression is the log-loss function, which penalizes incorrect predictions more as they deviate from the true label. It is defined as: J(θ) = -(1/m) Σ[y log(h<sub>θ</sub>(x)) + (1-y) log(1-h<sub>θ</sub>(x))].</p>
+            
+                    <h4>3. Gradient Descent Algorithm</h4>
+                    <p><strong>Definition:</strong> Gradient Descent is used to minimize the cost function by iteratively updating the parameters θ<sub>0</sub> and θ<sub>1</sub> in the direction that reduces the cost.</p>
+            
+                    <h3>Viva Questions</h3>
+                    <p>1. What is Logistic Regression?</p>
+                    <p><strong>Answer:</strong> Logistic Regression is a classification algorithm used to predict the probability that a given input belongs to one of two classes, based on a logistic function.</p>
+            
+                    <p>2. How does Logistic Regression differ from Linear Regression?</p>
+                    <p><strong>Answer:</strong> Logistic Regression is used for classification tasks and predicts probabilities, using the sigmoid function, while Linear Regression is used for predicting continuous values.</p>
+            
+                    <p>3. What is the role of the Sigmoid function in Logistic Regression?</p>
+                    <p><strong>Answer:</strong> The sigmoid function is used to convert the linear combination of input variables into a probability between 0 and 1, which is used to classify the input into one of two categories.</p>
+            
+                    <p>4. What is the purpose of the cost function in Logistic Regression?</p>
+                    <p><strong>Answer:</strong> The cost function, often called log-loss, measures the difference between the predicted probabilities and the actual class labels. Minimizing the cost function results in a better model.</p>
+            
+                    <!-- Embedded YouTube Video -->
+                    <div id="videoBlock4" class="video-section">
+                        <h3>How to Implement Logistic Regression using Gradient Descent</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/video_link_here" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+            
+                    <h3>Python Code for Logistic Regression using Gradient Descent</h3>
+                    <pre><code>
+import numpy as np
+import matplotlib.pyplot as plt
+            
+# Sigmoid function
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
+            
+# Logistic Regression using Gradient Descent
+def gradient_descent_logistic(X, y, learning_rate, iterations):
+    m = X.shape[0]
+    theta = np.zeros(X.shape[1])  # Initialize parameters
+                
+    for i in range(iterations):
+        z = np.dot(X, theta)
+        h = sigmoid(z)
+        cost = -(1/m) * np.sum(y * np.log(h) + (1 - y) * np.log(1 - h))  # Log-loss cost function
+        gradient = (1/m) * np.dot(X.T, (h - y))  # Compute the gradient
+        theta -= learning_rate * gradient  # Update parameters
+                    
+    return theta
+            
+# Example data
+X = np.array([[1, 2], [1, 3], [1, 4], [1, 5]])  # Add intercept term (column of ones)
+y = np.array([0, 0, 1, 1])
+            
+# Parameters
+learning_rate = 0.1
+iterations = 1000
+            
+# Run Gradient Descent
+theta = gradient_descent_logistic(X, y, learning_rate, iterations)
+            
+# Display the result
+print(f"Parameters (theta): {theta}")
+            
+# Plot the decision boundary
+plt.scatter(X[:, 1], y, color='blue', label='Data points')
+plt.plot(X[:, 1], sigmoid(np.dot(X, theta)), color='red', label='Decision boundary')
+plt.title('Logistic Regression using Gradient Descent')
+plt.legend()
+plt.show()
+                    </code></pre>
+                </div>
+            </li>            
+
+
+            <li class="card">
+                <h2 class="card-title">5. Implementation of K-Nearest Neighbors (KNN) Algorithm</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent5')">Toggle Content</button>
+                <div id="theoryContent5" class="theoretical-content">
+                    <h3>Overview of K-Nearest Neighbors (KNN)</h3>
+                    <p>K-Nearest Neighbors (KNN) is a simple, non-parametric, and lazy supervised learning algorithm used for both classification and regression. In classification, KNN assigns a class label to a data point based on the majority vote of its 'K' nearest neighbors in the training data.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <h4>1. Distance Metric</h4>
+                    <p><strong>Definition:</strong> KNN uses a distance metric, typically Euclidean distance, to find the nearest neighbors. The distance between two points (x<sub>1</sub>, y<sub>1</sub>) and (x<sub>2</sub>, y<sub>2</sub>) is given by: d = √((x<sub>2</sub> - x<sub>1</sub>)² + (y<sub>2</sub> - y<sub>1</sub>)²).</p>
+            
+                    <h4>2. Value of 'K'</h4>
+                    <p><strong>Definition:</strong> The parameter 'K' determines how many neighbors should be considered when making the prediction. A small 'K' can lead to overfitting, while a large 'K' may lead to underfitting.</p>
+            
+                    <h4>3. Voting Mechanism</h4>
+                    <p><strong>Definition:</strong> In classification, the class label of a data point is determined by a majority vote among the 'K' nearest neighbors. In regression, the prediction is based on the average of the 'K' nearest neighbors' values.</p>
+            
+                    <h3>Viva Questions</h3>
+                    <p>1. What is the K-Nearest Neighbors (KNN) algorithm?</p>
+                    <p><strong>Answer:</strong> KNN is a supervised learning algorithm that classifies a data point based on the majority vote of its 'K' nearest neighbors in the feature space.</p>
+            
+                    <p>2. How do you choose the value of 'K' in KNN?</p>
+                    <p><strong>Answer:</strong> The value of 'K' is usually chosen based on cross-validation. A small 'K' can cause overfitting, while a large 'K' may oversmooth the decision boundary and cause underfitting.</p>
+            
+                    <p>3. What distance metrics are commonly used in KNN?</p>
+                    <p><strong>Answer:</strong> Common distance metrics include Euclidean distance, Manhattan distance, and Minkowski distance. Euclidean distance is the most widely used in KNN.</p>
+            
+                    <p>4. What are the advantages and disadvantages of KNN?</p>
+                    <p><strong>Answer:</strong> The advantages of KNN are its simplicity and effectiveness for small datasets. However, it can be computationally expensive for large datasets and sensitive to irrelevant features.</p>
+            
+                    <!-- Embedded YouTube Video -->
+                    <div id="videoBlock5" class="video-section">
+                        <h3>How to Implement K-Nearest Neighbors (KNN)</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/video_link_here" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+            
+                    <h3>Python Code for K-Nearest Neighbors (KNN)</h3>
+                    <pre><code>
+import numpy as np
+from collections import Counter
+import matplotlib.pyplot as plt
+            
+# KNN Algorithm
+def knn(X_train, y_train, X_test, k):
+    predictions = []
+                
+    for x in X_test:
+        # Compute distances between x and all points in the training data
+        distances = np.sqrt(np.sum((X_train - x) ** 2, axis=1))
+        # Get the indices of the K nearest neighbors
+        k_indices = np.argsort(distances)[:k]
+        # Get the labels of the K nearest neighbors
+        k_nearest_labels = y_train[k_indices]
+        # Majority voting
+        most_common = Counter(k_nearest_labels).most_common(1)
+        predictions.append(most_common[0][0])
+                
+    return np.array(predictions)
+            
+# Example dataset
+X_train = np.array([[1, 2], [2, 3], [3, 1], [6, 5], [7, 7], [8, 6]])
+y_train = np.array([0, 0, 0, 1, 1, 1])
+X_test = np.array([[4, 4], [5, 5]])
+            
+# Parameters
+k = 3
+            
+# Run KNN
+predictions = knn(X_train, y_train, X_test, k)
+            
+# Display the result
+print(f"Predictions: {predictions}")
+            
+# Plot the result
+plt.scatter(X_train[:, 0], X_train[:, 1], c=y_train, cmap='coolwarm', label='Training Data')
+plt.scatter(X_test[:, 0], X_test[:, 1], color='green', label='Test Data')
+plt.title('K-Nearest Neighbors (KNN)')
+plt.legend()
+plt.show()
+                    </code></pre>
+                </div>
+            </li>            
+
+
+
+            <li class="card">
+                <h2 class="card-title">6. Implementation of Decision Tree Algorithm</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent6')">Toggle Content</button>
+                <div id="theoryContent6" class="theoretical-content">
+                    <h3>Overview of Decision Tree Algorithm</h3>
+                    <p>The Decision Tree Algorithm is a supervised learning algorithm used for both classification and regression tasks. It works by splitting the data into subsets based on the most significant attribute, forming a tree-like structure. Each internal node represents a decision based on an attribute, each branch represents the outcome of the decision, and each leaf node represents a class label or a continuous value.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <h4>1. Splitting Criteria</h4>
+                    <p><strong>Definition:</strong> Splitting criteria are used to decide how to split the data at each node. Common criteria include Gini impurity, entropy (for classification), and mean squared error (for regression).</p>
+            
+                    <h4>2. Gini Impurity</h4>
+                    <p><strong>Definition:</strong> Gini impurity measures the probability of incorrectly classifying a randomly chosen element. It is calculated as: Gini = 1 - Σ(p<sub>i</sub>)², where p<sub>i</sub> is the proportion of samples belonging to class i.</p>
+            
+                    <h4>3. Entropy</h4>
+                    <p><strong>Definition:</strong> Entropy measures the amount of disorder or impurity in the data. It is calculated as: Entropy = -Σ(p<sub>i</sub> * log₂(p<sub>i</sub>)), where p<sub>i</sub> is the proportion of samples in class i.</p>
+            
+                    <h3>Viva Questions</h3>
+                    <p>1. What is a Decision Tree?</p>
+                    <p><strong>Answer:</strong> A Decision Tree is a supervised learning algorithm that splits data into subsets based on feature values, creating a tree-like model of decisions and their possible consequences.</p>
+            
+                    <p>2. What are some common splitting criteria used in Decision Trees?</p>
+                    <p><strong>Answer:</strong> Common splitting criteria include Gini impurity, entropy, and mean squared error, depending on whether the task is classification or regression.</p>
+            
+                    <p>3. How does the Gini impurity measure the quality of a split?</p>
+                    <p><strong>Answer:</strong> Gini impurity measures the likelihood of a random sample being misclassified. A lower Gini impurity indicates a better split with more homogenous subsets.</p>
+            
+                    <p>4. What is overfitting in Decision Trees, and how can it be prevented?</p>
+                    <p><strong>Answer:</strong> Overfitting occurs when a Decision Tree becomes too complex and captures noise in the data. It can be prevented using techniques such as pruning, setting a maximum depth, or requiring a minimum number of samples per leaf.</p>
+            
+                    <!-- Embedded YouTube Video -->
+                    <div id="videoBlock6" class="video-section">
+                        <h3>How to Implement Decision Tree Algorithm</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/video_link_here" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+            
+                    <h3>Python Code for Decision Tree Algorithm</h3>
+                    <pre><code>
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn import tree
+            
+# Load dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+            
+# Split dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+            
+# Initialize and train Decision Tree Classifier
+clf = DecisionTreeClassifier()
+clf.fit(X_train, y_train)
+            
+# Predict on test data
+y_pred = clf.predict(X_test)
+            
+# Display the result
+print(f"Test accuracy: {clf.score(X_test, y_test)}")
+            
+# Plot the decision tree
+plt.figure(figsize=(12, 8))
+tree.plot_tree(clf, filled=True, feature_names=iris.feature_names, class_names=iris.target_names)
+plt.title('Decision Tree Visualization')
+plt.show()
+                    </code></pre>
+                </div>
+            </li>
+            
+            <li class="card">
+                <h2 class="card-title">7. Implementation of Support Vector Machine (SVM) Algorithm</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent7')">Toggle Content</button>
+                <div id="theoryContent7" class="theoretical-content">
+                    <h3>Overview of Support Vector Machine (SVM) Algorithm</h3>
+                    <p>Support Vector Machine (SVM) is a supervised learning algorithm used for classification and regression tasks. The goal of SVM is to find the hyperplane that best separates the data into different classes. For binary classification, this involves finding the hyperplane that maximizes the margin between two classes. SVM can also be extended to handle non-linearly separable data using kernel functions.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <h4>1. Hyperplane</h4>
+                    <p><strong>Definition:</strong> A hyperplane is a decision boundary that separates different classes in the feature space. For binary classification, it is a line in 2D, a plane in 3D, and a hyperplane in higher dimensions.</p>
+            
+                    <h4>2. Margin</h4>
+                    <p><strong>Definition:</strong> The margin is the distance between the hyperplane and the nearest data points from either class. SVM aims to maximize this margin to achieve better generalization.</p>
+            
+                    <h4>3. Kernel Functions</h4>
+                    <p><strong>Definition:</strong> Kernel functions allow SVM to handle non-linearly separable data by transforming the input space into a higher-dimensional space. Common kernels include linear, polynomial, and radial basis function (RBF) kernels.</p>
+            
+                    <h3>Viva Questions</h3>
+                    <p>1. What is a Support Vector Machine (SVM)?</p>
+                    <p><strong>Answer:</strong> A Support Vector Machine (SVM) is a supervised learning algorithm used for classification and regression tasks, which finds the hyperplane that maximizes the margin between classes.</p>
+            
+                    <p>2. How does SVM handle non-linearly separable data?</p>
+                    <p><strong>Answer:</strong> SVM handles non-linearly separable data by using kernel functions to transform the data into a higher-dimensional space where a linear hyperplane can separate the classes.</p>
+            
+                    <p>3. What is the significance of the margin in SVM?</p>
+                    <p><strong>Answer:</strong> The margin is the distance between the hyperplane and the nearest data points. Maximizing the margin helps improve the model's generalization and robustness to new data.</p>
+            
+                    <p>4. What are some common kernel functions used in SVM?</p>
+                    <p><strong>Answer:</strong> Common kernel functions include the linear kernel, polynomial kernel, and radial basis function (RBF) kernel. Each kernel has different properties for handling various types of data distributions.</p>
+            
+                    <!-- Embedded YouTube Video -->
+                    <div id="videoBlock7" class="video-section">
+                        <h3>How to Implement Support Vector Machine (SVM) Algorithm</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/video_link_here" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+            
+                    <h3>Python Code for Support Vector Machine (SVM)</h3>
+                    <pre><code>
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+            
+# Load dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+            
+# Use only two classes for binary classification example
+X = X[y != 2]
+y = y[y != 2]
+            
+# Split dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+            
+# Initialize and train SVM Classifier with RBF kernel
+clf = SVC(kernel='rbf', gamma='scale')
+clf.fit(X_train, y_train)
+            
+# Predict on test data
+y_pred = clf.predict(X_test)
+            
+# Display the result
+print(f"Test accuracy: {metrics.accuracy_score(y_test, y_pred)}")
+            
+# Plot decision boundary
+plt.figure(figsize=(10, 6))
+plt.scatter(X[:, 0], X[:, 1], c=y, cmap='coolwarm', edgecolor='k')
+plt.title('SVM Decision Boundary')
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+plt.show()
+                    </code></pre>
+                </div>
+            </li>
+            
+            <li class="card">
+                <h2 class="card-title">8. Implementation of Naive Bayes Algorithm</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent8')">Toggle Content</button>
+                <div id="theoryContent8" class="theoretical-content">
+                    <h3>Overview of Naive Bayes Algorithm</h3>
+                    <p>Naive Bayes is a probabilistic supervised learning algorithm based on Bayes' Theorem with the assumption of independence between features. It is widely used for classification tasks, especially in text classification and spam filtering. The algorithm computes the posterior probability of each class given the feature values and assigns the class with the highest probability.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <h4>1. Bayes' Theorem</h4>
+                    <p><strong>Definition:</strong> Bayes' Theorem is used to calculate the probability of a class given the features. It is expressed as: P(C|X) = (P(X|C) * P(C)) / P(X), where P(C|X) is the posterior probability, P(X|C) is the likelihood, P(C) is the prior probability, and P(X) is the evidence.</p>
+            
+                    <h4>2. Conditional Independence</h4>
+                    <p><strong>Definition:</strong> Naive Bayes assumes that features are conditionally independent given the class label. This simplifies the computation of the likelihood: P(X|C) = P(x1|C) * P(x2|C) * ... * P(xn|C).</p>
+            
+                    <h4>3. Types of Naive Bayes Classifiers</h4>
+                    <p><strong>Definition:</strong> Common types include Gaussian Naive Bayes (for continuous features), Multinomial Naive Bayes (for discrete features), and Bernoulli Naive Bayes (for binary features).</p>
+            
+                    <h3>Viva Questions</h3>
+                    <p>1. What is the Naive Bayes algorithm?</p>
+                    <p><strong>Answer:</strong> Naive Bayes is a probabilistic classifier based on Bayes' Theorem, assuming that features are conditionally independent given the class label.</p>
+            
+                    <p>2. What is Bayes' Theorem and how is it used in Naive Bayes?</p>
+                    <p><strong>Answer:</strong> Bayes' Theorem calculates the probability of a class given the feature values. In Naive Bayes, it is used to compute the posterior probability of each class and select the class with the highest probability.</p>
+            
+                    <p>3. What does conditional independence mean in the context of Naive Bayes?</p>
+                    <p><strong>Answer:</strong> Conditional independence means that features are assumed to be independent of each other given the class label. This simplifies the computation of the likelihood of the features given the class.</p>
+            
+                    <p>4. What are the different types of Naive Bayes classifiers?</p>
+                    <p><strong>Answer:</strong> The main types are Gaussian Naive Bayes (for continuous features), Multinomial Naive Bayes (for discrete feature counts), and Bernoulli Naive Bayes (for binary features).</p>
+            
+                    <!-- Embedded YouTube Video -->
+                    <div id="videoBlock8" class="video-section">
+                        <h3>How to Implement Naive Bayes Algorithm</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/video_link_here" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+            
+                    <h3>Python Code for Naive Bayes Algorithm</h3>
+                    <pre><code>
+import numpy as np
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn import metrics
+            
+# Load dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+            
+# Split dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+            
+# Initialize and train Naive Bayes Classifier
+gnb = GaussianNB()
+gnb.fit(X_train, y_train)
+            
+# Predict on test data
+y_pred = gnb.predict(X_test)
+            
+# Display the result
+print(f"Test accuracy: {metrics.accuracy_score(y_test, y_pred)}")
+                    </code></pre>
+                </div>
+            </li>            
+
+            <li class="card">
+                <h2 class="card-title">9. Implementation of K-Means Clustering Algorithm</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent9')">Toggle Content</button>
+                <div id="theoryContent9" class="theoretical-content">
+                    <h3>Overview of K-Means Clustering Algorithm</h3>
+                    <p>K-Means is an unsupervised learning algorithm used for clustering tasks. The algorithm aims to partition a dataset into 'K' distinct, non-overlapping subsets or clusters. Each cluster is represented by its centroid, which is the mean of all points in the cluster. The goal is to minimize the within-cluster variance, which is the sum of squared distances between each data point and the centroid of its cluster.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <h4>1. Centroid</h4>
+                    <p><strong>Definition:</strong> A centroid is the center of a cluster. It is the mean position of all the points in the cluster. In K-Means, the centroid is recalculated iteratively as the algorithm assigns points to clusters.</p>
+            
+                    <h4>2. Euclidean Distance</h4>
+                    <p><strong>Definition:</strong> Euclidean distance is used to measure the similarity between data points and centroids. It is calculated as: d = √((x<sub>2</sub> - x<sub>1</sub>)² + (y<sub>2</sub> - y<sub>1</sub>)²) in 2D space.</p>
+            
+                    <h4>3. Convergence</h4>
+                    <p><strong>Definition:</strong> Convergence in K-Means occurs when the centroids no longer change significantly between iterations, or the maximum number of iterations is reached. This indicates that the clustering process has stabilized.</p>
+            
+                    <h3>Viva Questions</h3>
+                    <p>1. What is the K-Means clustering algorithm?</p>
+                    <p><strong>Answer:</strong> K-Means is an unsupervised learning algorithm used to partition data into 'K' clusters, where each cluster is represented by its centroid, and the algorithm aims to minimize the within-cluster variance.</p>
+            
+                    <p>2. How are the centroids updated in K-Means?</p>
+                    <p><strong>Answer:</strong> Centroids are updated by recalculating the mean of all data points assigned to each cluster after each iteration until the centroids stabilize or a maximum number of iterations is reached.</p>
+            
+                    <p>3. What distance metric is commonly used in K-Means clustering?</p>
+                    <p><strong>Answer:</strong> Euclidean distance is commonly used to measure the distance between data points and centroids in K-Means clustering.</p>
+            
+                    <p>4. What are some common issues with K-Means clustering?</p>
+                    <p><strong>Answer:</strong> Common issues include choosing the right value for 'K', sensitivity to initial placement of centroids, and the algorithm's tendency to converge to local minima.</p>
+            
+                    <!-- Embedded YouTube Video -->
+                    <div id="videoBlock9" class="video-section">
+                        <h3>How to Implement K-Means Clustering Algorithm</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/watch?v=UPvv9SprgVo" title="YouTube video player"></iframe>
+                    </div>
+                    
+                    <h3>Python Code for K-Means Clustering Algorithm</h3>
+                    <pre><code>
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+            
+# Load dataset
+iris = load_iris()
+X = iris.data
+            
+# Standardize the dataset
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+            
+# Initialize and fit K-Means model
+kmeans = KMeans(n_clusters=3, random_state=42)
+kmeans.fit(X_scaled)
+            
+# Predict cluster labels
+labels = kmeans.predict(X_scaled)
+centroids = kmeans.cluster_centers_
+            
+# Display the result
+print(f"Cluster centers:\n{centroids}")
+            
+# Plot the clusters
+plt.figure(figsize=(10, 6))
+plt.scatter(X_scaled[:, 0], X_scaled[:, 1], c=labels, cmap='viridis', marker='o', edgecolor='k', s=50)
+plt.scatter(centroids[:, 0], centroids[:, 1], c='red', marker='x', s=100, label='Centroids')
+plt.title('K-Means Clustering')
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+plt.legend()
+plt.show()
+                    </code></pre>
+                </div>
+            </li>
+            
+
+
+        </ul>
+    </section>
+
+    <script>
+        function toggleContent(contentId) {
+            var content = document.getElementById(contentId);
+
+            // Check if content is hidden (display is "none" or initial empty value)
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block"; // Show content
+            } else {
+                content.style.display = "none"; // Hide content
+            }
+        }
+    </script>
+</body>
+
+</html>

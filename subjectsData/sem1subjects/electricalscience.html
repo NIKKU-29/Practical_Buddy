@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0B0425;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content h3,
+        .semester1 .theoretical-content h4,
+        .semester1 .theoretical-content h5,
+        .semester1 .theoretical-content p,
+        .semester1 .theoretical-content ul {
+            text-align: left;
+            color: #f3f4f6;
+        }
+
+        .semester1 .theoretical-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .semester1 .theoretical-content h4 {
+            font-size: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .semester1 .theoretical-content h5 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content p {
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .semester1 .theoretical-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .semester1 .theoretical-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .semester1 .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: rgb(47, 130, 255);
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .semester1.section {
+            flex: 1;
+        }
+
+        .video-section {
+            
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:left;
+        }
+        .video-section2 {
+          
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:right;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            border-radius: 0.375rem;
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+
+        pre1 .output
+        {
+            display: inline-block;
+            justify-content: space-between;
+        }
+        @media (max-width: 425px) {
+    .semester1 .theoretical-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .semester1 .theoretical-content h4 {
+        font-size: 1.35rem;
+        margin-top: 1.5rem;
+    }
+
+    .semester1 .theoretical-content h5 {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+    }
+
+    .semester1 .theoretical-content p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        line-height: 1.8;
+    }
+
+    .semester1 .theoretical-content ul {
+        margin: 0.3rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .semester1 .theoretical-content ul li {
+        margin-bottom: 0.3rem;
+    }
+
+   .video-section iframe{
+        width: 230px;
+        height: 157px;
+    }
+    .card{
+        width: 95%;
+    }
+
+    .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+        .Output img{
+            width: 260px;
+            height: 170px;
+        }
+        .code-block code{
+                font-size: 0.8rem;
+        }
+    
+}
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester7.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+
+    <!-- Experiments Section -->
+    <section class="semester1 section">
+        <h1 class="section-title"> Machine Learning </h1>
+
+    <a href="../files/sem7.pdf" download="ALL.pdf" class="download-button">Download PDF</a>
+    <div class="INFO">
+
+        Video + Theory 
+        
+    </div>
+
+    <section>
+
+        <ul class="practicals-list">
+
+            <li class="card">
+                <h2 class="card-title">1. Circuit Design for a Given Load and Safety Component Selection</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent1')">Toggle Content</button>
+                <div id="theoryContent1" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment involves designing a circuit for a specified load, selecting components and instruments with a focus on safety, or studying electrical symbols and standards used in engineering.</p>
+        
+                    <h4>Procedure</h4>
+                    <p>1. Analyze the load requirements.<br>
+                       2. Select appropriate components and instruments for safe operation.<br>
+                       3. Identify and review symbols used in the circuit diagram.</p>
+        
+                    <h4>Notes</h4>
+                    <p>- Ensure all components meet safety standards.<br>
+                       - Familiarize yourself with standard symbols and current regulations.</p>
+        
+                    <div id="videoBlock1" class="video-section">
+                        <h3>Video on Circuit Design and Safety Standards</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">2. Study and Application of CRO for Voltage, Frequency, and Phase Measurement</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent2')">Toggle Content</button>
+                <div id="theoryContent2" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment explores the applications of the Cathode Ray Oscilloscope (CRO) for measuring voltage, frequency, and phase shifts in electrical signals.</p>
+        
+                    <h4>Procedure</h4>
+                    <p>1. Connect the CRO to the circuit under study.<br>
+                       2. Measure voltage, frequency, and phase for various signals.<br>
+                       3. Analyze the waveform displayed on the CRO screen.</p>
+        
+                    <h4>Notes</h4>
+                    <p>- Ensure proper grounding of the CRO.<br>
+                       - Calibrate the CRO for accurate readings.</p>
+        
+                    <div id="videoBlock2" class="video-section">
+                        <h3>Video on CRO Applications</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">3. Verification of Electrical Theorems</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent3')">Toggle Content</button>
+                <div id="theoryContent3" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment verifies Thevenin’s, Norton’s, Superposition, Reciprocity, and Maximum Power Transfer theorems.</p>
+        
+                    <h4>Procedure</h4>
+                    <p>1. Set up circuits for each theorem.<br>
+                       2. Measure voltages and currents to verify each theorem.<br>
+                       3. Compare results with theoretical predictions.</p>
+        
+                    <h4>Notes</h4>
+                    <p>- Ensure proper circuit setup to avoid errors.<br>
+                       - Verify component values before starting each verification.</p>
+        
+                    <div id="videoBlock3" class="video-section">
+                        <h3>Video on Electrical Theorem Verification</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">4. Finding Roots of f(x)=0 using Newton Raphson Method</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent4')">Toggle Content</button>
+                <div id="theoryContent4" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment uses the Newton-Raphson method, a numerical technique for finding roots of nonlinear equations.</p>
+        
+                    <h4>Procedure</h4>
+                    <p>1. Define the function f(x) and its derivative f’(x).<br>
+                       2. Choose an initial guess for the root.<br>
+                       3. Iterate using the formula x = x - f(x)/f’(x) until convergence.</p>
+        
+                    <h4>Notes</h4>
+                    <p>- Ensure derivative function is correct for accurate convergence.<br>
+                       - Choose an initial guess close to the expected root.</p>
+        
+                    <div id="videoBlock4" class="video-section">
+                        <h3>Video on Newton Raphson Method</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">5. Measurement of Power & Power Factor in Single-Phase A.C Circuit using Three Ammeters or Voltmeters</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent5')">Toggle Content</button>
+                <div id="theoryContent5" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment measures the power and power factor in a single-phase A.C circuit using the three-ammeter or three-voltmeter method.</p>
+        
+                    <h4>Procedure</h4>
+                    <p>1. Connect the ammeters/voltmeters in the circuit.<br>
+                       2. Record current and voltage readings.<br>
+                       3. Calculate power and power factor.</p>
+        
+                    <h4>Notes</h4>
+                    <p>- Properly configure the ammeters and voltmeters for safety.<br>
+                       - Ensure all connections are secure before powering the circuit.</p>
+        
+                    <div id="videoBlock5" class="video-section">
+                        <h3>Video on Power Measurement in A.C Circuits</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">6. Measurement of Power & Power Factor in a Balanced Three Phase Circuit using Two Wattmeters</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent6')">Toggle Content</button>
+                <div id="theoryContent6" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment uses the two-wattmeter method to measure power and power factor in a balanced three-phase circuit.</p>
+        
+                    <h4>Procedure</h4>
+                    <p>1. Connect two wattmeters in the circuit.<br>
+                       2. Record power readings from both wattmeters.<br>
+                       3. Calculate total power and power factor.</p>
+        
+                    <h4>Notes</h4>
+                    <p>- Ensure balanced load for accurate readings.<br>
+                       - Follow all safety guidelines when working with three-phase power.</p>
+        
+                    <div id="videoBlock6" class="video-section">
+                        <h3>Video on Two Wattmeter Method</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">7. Study of Resonance in Series or Parallel R-L-C Circuits</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent7')">Toggle Content</button>
+                <div id="theoryContent7" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment studies resonance in R-L-C circuits, both in series and parallel configurations, to observe frequency response.</p>
+        
+                    <h4>Procedure</h4>
+                    <p>1. Construct the R-L-C circuit (series or parallel).<br>
+                       2. Adjust frequency to find resonance.<br>
+                       3. Observe impedance and voltage changes at resonance frequency.</p>
+        
+                    <h4>Notes</h4>
+                    <p>- Use variable frequency source to pinpoint resonance accurately.<br>
+                       - Take safety precautions when adjusting circuit components.</p>
+        
+                    <div id="videoBlock7" class="video-section">
+                        <h3>Video on R-L-C Resonance</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+
+
+            <li class="card">
+                <h2 class="card-title">8. Open Circuit and Short Circuit Test on a 1-Phase Transformer</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent8')">Toggle Content</button>
+                <div id="theoryContent8" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment involves conducting open-circuit and short-circuit tests on a single-phase transformer to determine its equivalent circuit parameters.</p>
+            
+                    <h4>Procedure</h4>
+                    <p>1. Set up the transformer for the open-circuit test and record measurements.<br>
+                       2. Set up the transformer for the short-circuit test and record measurements.<br>
+                       3. Calculate equivalent circuit parameters using test data.</p>
+            
+                    <h4>Notes</h4>
+                    <p>- Ensure transformer is de-energized before changing setups.<br>
+                       - Follow standard safety precautions when handling transformers.</p>
+            
+                    <div id="videoBlock8" class="video-section">
+                        <h3>Video on Open and Short Circuit Testing</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="card">
+                <h2 class="card-title">9. Starting, Reversing, and Speed Control of a DC Shunt Motor</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent9')">Toggle Content</button>
+                <div id="theoryContent9" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment demonstrates the starting, reversing, and speed control techniques for a DC shunt motor.</p>
+            
+                    <h4>Procedure</h4>
+                    <p>1. Connect the DC shunt motor to the power supply.<br>
+                       2. Start the motor, adjust speed, and reverse the direction as instructed.<br>
+                       3. Observe motor behavior at different speeds and directions.</p>
+            
+                    <h4>Notes</h4>
+                    <p>- Ensure proper load settings before starting the motor.<br>
+                       - Follow safety guidelines when working with rotating machinery.</p>
+            
+                    <div id="videoBlock9" class="video-section">
+                        <h3>Video on DC Shunt Motor Operation</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="card">
+                <h2 class="card-title">10. Starting, Reversing, and Speed Control of a 3-Phase Induction Motor</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent10')">Toggle Content</button>
+                <div id="theoryContent10" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment explores the operation of a three-phase induction motor, focusing on starting, reversing, and speed control techniques.</p>
+            
+                    <h4>Procedure</h4>
+                    <p>1. Connect the induction motor to the three-phase power supply.<br>
+                       2. Start the motor, adjust speed, and reverse direction as instructed.<br>
+                       3. Observe motor behavior at various speeds and directions.</p>
+            
+                    <h4>Notes</h4>
+                    <p>- Ensure safe setup and check connections before starting.<br>
+                       - Follow precautions for working with high-power machines.</p>
+            
+                    <div id="videoBlock10" class="video-section">
+                        <h3>Video on 3-Phase Induction Motor Operation</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="card">
+                <h2 class="card-title">11. Study of Different Types of Storage Batteries and Charging Systems</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent11')">Toggle Content</button>
+                <div id="theoryContent11" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment provides an overview of various types of storage batteries and their respective charging systems.</p>
+            
+                    <h4>Procedure</h4>
+                    <p>1. Study the characteristics of different types of batteries.<br>
+                       2. Analyze the charging systems suitable for each battery type.<br>
+                       3. Record and compare charging rates and efficiencies.</p>
+            
+                    <h4>Notes</h4>
+                    <p>- Ensure batteries are handled with care to avoid leaks or explosions.<br>
+                       - Follow proper disposal protocols for depleted batteries.</p>
+            
+                    <div id="videoBlock11" class="video-section">
+                        <h3>Video on Battery Types and Charging Systems</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="card">
+                <h2 class="card-title">12. Study of Earthing Methods and Earth Leakage Circuit Breaker (GFCI)</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent12')">Toggle Content</button>
+                <div id="theoryContent12" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment covers different earthing methods and introduces the functioning of earth leakage circuit breakers (GFCI).</p>
+            
+                    <h4>Procedure</h4>
+                    <p>1. Study various earthing techniques and their applications.<br>
+                       2. Explore the operation and purpose of a GFCI.<br>
+                       3. Test the GFCI functionality with a sample setup.</p>
+            
+                    <h4>Notes</h4>
+                    <p>- Use insulated tools when working with electrical systems.<br>
+                       - Ensure earthing systems meet safety standards and regulations.</p>
+            
+                    <div id="videoBlock12" class="video-section">
+                        <h3>Video on Earthing and GFCI</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+            
+        </ul>
+        
+    </section>
+
+
+
+
+
+<script>
+    function toggleContent(contentId) {
+        var content = document.getElementById(contentId);
+
+        // Check if content is hidden (display is "none" or initial empty value)
+        if (content.style.display === "none" || content.style.display === "") {
+            content.style.display = "block"; // Show content
+        } else {
+            content.style.display = "none"; // Hide content
+        }
+    }
+</script>
+</body>
+
+</html>

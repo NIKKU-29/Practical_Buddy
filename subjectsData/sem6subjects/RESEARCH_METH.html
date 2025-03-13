@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Practicals List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+
+                
+
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0B0425;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content h3,
+        .semester1 .theoretical-content h4,
+        .semester1 .theoretical-content h5,
+        .semester1 .theoretical-content p,
+        .semester1 .theoretical-content ul {
+            text-align: left;
+            color: #f3f4f6;
+        }
+
+        .semester1 .theoretical-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .semester1 .theoretical-content h4 {
+            font-size: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .semester1 .theoretical-content h5 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content p {
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .semester1 .theoretical-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .semester1 .theoretical-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .semester1 .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: rgb(47, 130, 255);
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .semester1.section {
+            flex: 1;
+        }
+
+        .video-section {
+            
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:left;
+        }
+        .video-section2 {
+          
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:right;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            border-radius: 0.375rem;
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+
+        pre1 .output
+        {
+            display: inline-block;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 425px) {
+    .semester1 .theoretical-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .semester1 .theoretical-content h4 {
+        font-size: 1.35rem;
+        margin-top: 1.5rem;
+    }
+
+    .semester1 .theoretical-content h5 {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+    }
+
+    .semester1 .theoretical-content p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        line-height: 1.8;
+    }
+
+    .semester1 .theoretical-content ul {
+        margin: 0.3rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .semester1 .theoretical-content ul li {
+        margin-bottom: 0.3rem;
+    }
+
+   .video-section iframe{
+        width: 230px;
+        height: 157px;
+    }
+    .card{
+        width: 95%;
+    }
+
+    .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+        .Output img{
+            width: 260px;
+            height: 170px;
+        }
+        .code-block code{
+                font-size: 0.8rem;
+        }
+    
+}
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester6.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+
+    <!-- Semester 6 Practicals Section -->
+    <section class="semester1 section">
+        <h1 class="section-title">STATISTICS, STATISTICAL MODELLING & DATA ANALYTICS LAB Practicals</h1>
+
+        <a href="../../files/ssdma.pdf" download="STATISTICS, STATISTICAL MODELLING & DATA ANALYTICS LAB.pdf" class="download-button">Download PDF</a>
+        
+        <div class="INFO">
+            <p>Video + Theory</p>
+        </div>
+
+        <ul class="practicals-list">
+            <li class="card">
+                <h2 class="card-title">Experiment No. 1: Different Types of Research Methodology</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent1', 'codeBlock1', 'resultsBlock1')">Toggle Theoretical Content, Code & Results</button>
+                
+                <div id="theoryContent1" class="theoretical-content">
+                    <h3>Aim/Objective</h3>
+                    <p>To study the different types of research methodology.</p>
+                    
+                    <h3>Theory</h3>
+                    <p>Research methodology refers to the systematic, theoretical analysis of the methods applied to a field of study. This includes the principles, procedures, and techniques used to conduct research and gather data. Understanding different methodologies helps in choosing the appropriate approach for various research questions and objectives.</p>
+                    
+                    <h3>Methods</h3>
+                    <ol>
+                        <li>Study various research methodologies such as qualitative, quantitative, and mixed methods.</li>
+                        <li>Analyze the strengths and limitations of each methodology.</li>
+                        <li>Apply these methodologies to hypothetical research scenarios.</li>
+                    </ol>
+                    
+                    <h3>Results</h3>
+                    <ul>
+                        <li>Qualitative methods are useful for exploring complex phenomena and understanding context.</li>
+                        <li>Quantitative methods provide statistical analysis and generalizability.</li>
+                        <li>Mixed methods combine the strengths of both qualitative and quantitative approaches.</li>
+                    </ul>
+                    
+                    <h3>Discussion</h3>
+                    <p>Different methodologies serve different purposes. Qualitative methods are good for detailed exploration, while quantitative methods are suited for testing hypotheses and measuring variables. Mixed methods offer a comprehensive approach but can be complex to manage.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>Understanding various research methodologies is crucial for effective research design. Each methodology has its own advantages and is suitable for different types of research questions.</p>
+                </div>
+                
+                <div id="codeBlock1" class="code-block">
+                    
+                    
+                </div>
+            
+                <div id="resultsBlock1" class="results-block">
+                    <!-- Add any specific results here if applicable -->
+                </div>
+            </li>
+            <li class="card">
+                <h2 class="card-title">Experiment No. 2: Creating and Processing Data Sheets</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent2', 'codeBlock2', 'resultsBlock2')">Toggle Theoretical Content, Code & Results</button>
+                
+                <div id="theoryContent2" class="theoretical-content">
+                    <h3>Aim/Objective</h3>
+                    <p>To understand how to create datasheets, process data, and perform analysis.</p>
+                    
+                    <h3>Theory</h3>
+                    <p>Data sheets are essential for organizing and analyzing data in a structured format. This experiment involves creating a datasheet, performing data processing, and conducting analysis to derive meaningful insights.</p>
+                    
+                    <h3>Methods</h3>
+                    <ol>
+                        <li>Data Creation: Create a datasheet using spreadsheet software or programming languages like Python.</li>
+                        <li>Data Processing: Apply data processing techniques such as cleaning, normalization, and transformation.</li>
+                        <li>Data Analysis: Perform statistical or computational analysis to extract insights from the processed data.</li>
+                    </ol>
+                    
+                    <h3>Results</h3>
+                    <ul>
+                        <li>Processed data shows trends and patterns.</li>
+                        <li>Analysis yields actionable insights based on the cleaned data.</li>
+                    </ul>
+                    
+                    <h3>Discussion</h3>
+                    <p>Effective data processing and analysis are critical for deriving meaningful conclusions from raw data. Proper techniques enhance the quality and reliability of the results.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>Creating and processing data sheets involves understanding data structure and applying appropriate processing techniques. This experiment demonstrates the importance of these skills in research.</p>
+                </div>
+                
+                <div id="codeBlock2" class="code-block">
+                    
+                   
+                    <div id="resultsBlock2" class="results-block">
+                        <ul>
+                            <li>Data Creation: DataFrame created with two columns.</li>
+                            <li>Data Processing: Normalized data displayed.</li>
+                            <li>Data Analysis: Statistical summary of the processed data.</li>
+                        </ul>
+                    </div>
+                </div>
+            
+            </li>
+            <li class="card">
+                <h2 class="card-title">Experiment No. 3: Literature Survey on a Research Paper</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent3', 'codeBlock3', 'resultsBlock3')">Toggle Theoretical Content, Code & Results</button>
+                
+                <div id="theoryContent3" class="theoretical-content">
+                    <h3>Aim/Objective</h3>
+                    <p>To take a research paper and conduct a literature survey on it.</p>
+                    
+                    <h3>Theory</h3>
+                    <p>A literature survey involves reviewing existing research and publications related to a specific topic. This helps in understanding the current state of research, identifying gaps, and framing new research questions.</p>
+                    
+                    <h3>Methods</h3>
+                    <ol>
+                        <li>Select a research paper relevant to your topic.</li>
+                        <li>Identify and review related literature cited in the paper.</li>
+                        <li>Summarize key findings and gaps in the research.</li>
+                    </ol>
+                    
+                    <h3>Results</h3>
+                    <ul>
+                        <li>Identified key studies related to the research topic.</li>
+                        <li>Summarized the contributions and limitations of each study.</li>
+                    </ul>
+                    
+                    <h3>Discussion</h3>
+                    <p>The literature survey provides a comprehensive overview of the research landscape. It highlights significant contributions and areas needing further investigation.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>Conducting a literature survey is crucial for understanding the background and context of a research topic. It guides future research directions and helps in building upon existing knowledge.</p>
+                </div>
+                
+                <div id="codeBlock3" class="code-block">
+                    
+                </div>
+            
+                <div id="resultsBlock3" class="results-block">
+                    <!-- Add any specific results here if applicable -->
+                </div>
+            </li>
+            <li class="card">
+                <h2 class="card-title">Experiment No. 4: Soft Computing Techniques</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent4', 'codeBlock4', 'resultsBlock4')">Toggle Theoretical Content, Code & Results</button>
+                
+                <div id="theoryContent4" class="theoretical-content">
+                    <h3>Aim/Objective</h3>
+                    <p>To study different soft computing techniques and learn how to implement them in research.</p>
+                    
+                    <h3>Theory</h3>
+                    <p>Soft computing techniques include methods such as neural networks, fuzzy logic, and genetic algorithms. These techniques are used for solving complex problems that are difficult to address with traditional computing methods.</p>
+                    
+                    <h3>Methods</h3>
+                    <ol>
+                        <li>Study various soft computing techniques.</li>
+                        <li>Implement these techniques using tools like MATLAB or Python.</li>
+                        <li>Apply the techniques to research problems and evaluate their performance.</li>
+                    </ol>
+                    
+                    <h3>Results</h3>
+                    <ul>
+                        <li>Implemented neural network model with performance metrics.</li>
+                        <li>Applied fuzzy logic to a specific problem and evaluated the results.</li>
+                    </ul>
+                    
+                    <h3>Discussion</h3>
+                    <p>Soft computing techniques provide flexible and adaptive solutions to complex problems. Their application can significantly enhance problem-solving capabilities in research.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>Understanding and implementing soft computing techniques is essential for addressing complex research problems. These techniques offer innovative solutions and improve research outcomes.</p>
+                </div>
+                
+                <div id="codeBlock4" class="code-block">
+                <div id="resultsBlock4" class="results-block">
+                    <ul>
+                        <li>Neural network model achieved X% accuracy on the test set.</li>
+                        <li>Fuzzy logic approach yielded expected results for the problem.</li>
+                    </ul>
+                </div>
+                </div>
+            
+            </li>
+            <li class="card">
+                <h2 class="card-title">Experiment No. 5: Identifying Research Problems</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent5', 'codeBlock5', 'resultsBlock5')">Toggle Theoretical Content, Code & Results</button>
+                
+                <div id="theoryContent5" class="theoretical-content">
+                    <h3>Aim/Objective</h3>
+                    <p>To practice identifying research problems based on literature survey.</p>
+                    
+                    <h3>Theory</h3>
+                    <p>Identifying research problems involves understanding gaps in existing research and formulating questions that address these gaps. This process is crucial for developing meaningful and impactful research projects.</p>
+                    
+                    <h3>Methods</h3>
+                    <ol>
+                        <li>Review literature to identify gaps and unexplored areas.</li>
+                        <li>Formulate potential research problems based on these gaps.</li>
+                        <li>Refine and prioritize research problems for further investigation.</li>
+                    </ol>
+                    
+                    <h3>Results</h3>
+                    <ul>
+                        <li>Identified several potential research problems based on literature review.</li>
+                        <li>Prioritized problems based on relevance and feasibility.</li>
+                    </ul>
+                    
+                    <h3>Discussion</h3>
+                    <p>Identifying relevant research problems is crucial for advancing knowledge in a field. The ability to pinpoint gaps and formulate research questions is a key skill for researchers.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>Effective identification of research problems leads to meaningful research contributions. This experiment demonstrates the process of deriving and refining research questions.</p>
+                </div>
+                
+                <div id="codeBlock5" class="code-block">
+                    
+                </div>
+            
+                <div id="resultsBlock5" class="results-block">
+                    <!-- Add any specific results here if applicable -->
+                </div>
+            </li>
+            <li class="card">
+                <h2 class="card-title">Experiment No. 6: Determining Research Objectives</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent6', 'codeBlock6', 'resultsBlock6')">Toggle Theoretical Content, Code & Results</button>
+                
+                <div id="theoryContent6" class="theoretical-content">
+                    <h3>Aim/Objective</h3>
+                    <p>To learn how to determine research objectives based on research problems.</p>
+                    
+                    <h3>Theory</h3>
+                    <p>Research objectives are specific goals that a research project aims to achieve. They are derived from the research problems and provide a clear direction for the study.</p>
+                    
+                    <h3>Methods</h3>
+                    <ol>
+                        <li>Analyze the research problem to understand its scope and context.</li>
+                        <li>Formulate clear and measurable research objectives.</li>
+                        <li>Ensure objectives are aligned with the overall research goals.</li>
+                    </ol>
+                    
+                    <h3>Results</h3>
+                    <ul>
+                        <li>Developed a set of clear and actionable research objectives.</li>
+                        <li>Aligned objectives with the identified research problems.</li>
+                    </ul>
+                    
+                    <h3>Discussion</h3>
+                    <p>Well-defined research objectives guide the research process and ensure that the study remains focused. Clear objectives help in achieving the desired outcomes and provide a framework for evaluating the research.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>Determining research objectives is a critical step in the research process. Clear and actionable objectives help in structuring the research and achieving meaningful results.</p>
+                </div>
+                
+                <div id="codeBlock6" class="code-block">
+                   
+                </div>
+            
+                <div id="resultsBlock6" class="results-block">
+                    <!-- Add any specific results here if applicable -->
+                </div>
+            </li>
+            <li class="card">
+                <h2 class="card-title">Experiment No. 7: Implementing Research Objectives</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent7', 'codeBlock7', 'resultsBlock7')">Toggle Theoretical Content, Code & Results</button>
+                
+                <div id="theoryContent7" class="theoretical-content">
+                    <h3>Aim/Objective</h3>
+                    <p>To try to implement the research objectives in the system using software tools like MATLAB, Python, etc.</p>
+                    
+                    <h3>Theory</h3>
+                    <p>Implementing research objectives involves applying software tools to achieve the goals set in the research plan. This could include coding, simulation, or modeling based on the objectives.</p>
+                    
+                    <h3>Methods</h3>
+                    <ol>
+                        <li>Select appropriate software tools based on the research objectives.</li>
+                        <li>Implement the objectives using the chosen tools.</li>
+                        <li>Test and validate the implementation to ensure it meets the objectives.</li>
+                    </ol>
+                    
+                    <h3>Results</h3>
+                    <ul>
+                        <li>Implemented objectives using MATLAB/Python with specific functionalities.</li>
+                        <li>Validated the implementation against expected outcomes.</li>
+                    </ul>
+                    
+                    <h3>Discussion</h3>
+                    <p>Implementing research objectives effectively requires choosing the right tools and techniques. The success of the implementation depends on how well the tools align with the objectives and how accurately they are applied.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>Successfully implementing research objectives demonstrates the ability to translate theoretical goals into practical solutions using appropriate software tools.</p>
+                </div>
+                
+                <div id="codeBlock7" class="code-block">
+                    <h3>Sample MATLAB Code</h3>
+                    <pre><code>
+% MATLAB code for implementing a research objective
+x = linspace(0, 10, 100);
+y = sin(x);
+                        
+% Plot the results
+plot(x, y);
+xlabel('x');
+ylabel('sin(x)');
+title('Implementation of Research Objective');
+</code></pre>
+                    
+                        <div id="resultsBlock7" class="results-block">
+                            <ul>
+                                <li>MATLAB implementation produced accurate results as expected.</li>
+                                <li>Validated against the research objectives.</li>
+                            </ul>
+                </div>
+            
+                </div>
+            </li>
+            <li class="card">
+                <h2 class="card-title">Experiment No. 8: Writing and Checking Research Paper</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent8', 'codeBlock8', 'resultsBlock8')">Toggle Theoretical Content, Code & Results</button>
+                
+                <div id="theoryContent8" class="theoretical-content">
+                    <h3>Aim/Objective</h3>
+                    <p>To write a research paper based on system results and check its plagiarism.</p>
+                    
+                    <h3>Theory</h3>
+                    <p>Writing a research paper involves documenting research findings, methodologies, and conclusions. Plagiarism checking ensures the originality of the work and adherence to academic integrity standards.</p>
+                    
+                    <h3>Methods</h3>
+                    <ol>
+                        <li>Draft the research paper including introduction, methodology, results, and conclusion sections.</li>
+                        <li>Use plagiarism detection tools to check the originality of the paper.</li>
+                        <li>Revise the paper based on feedback and plagiarism results.</li>
+                    </ol>
+                    
+                    <h3>Results</h3>
+                    <ul>
+                        <li>Research paper drafted and formatted according to academic standards.</li>
+                        <li>Plagiarism report generated and addressed any detected issues.</li>
+                    </ul>
+                    
+                    <h3>Discussion</h3>
+                    <p>Writing a research paper requires careful organization and clear presentation of research findings. Plagiarism checking is crucial for maintaining academic integrity and ensuring that the work is original.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>Effective writing and plagiarism checking are essential steps in the research process. This experiment demonstrates the importance of documenting and validating research work.</p>
+                </div>
+                
+                <div id="codeBlock8" class="code-block">
+                    
+                    
+                </div>
+            
+                <div id="resultsBlock8" class="results-block">
+                    <!-- Add any specific results here if applicable -->
+                </div>
+            </li>
+            
+            
+            
+            
+            
+
+        </ul>
+    </section>
+
+    <script>
+        function toggleContent(theoryId, codeId, videoId) {
+            const theoryContent = document.getElementById(theoryId);
+            const codeBlock = document.getElementById(codeId);
+            const videoBlock = document.getElementById(videoId);
+
+            // Toggle visibility
+            theoryContent.style.display = theoryContent.style.display === 'block' ? 'none' : 'block';
+            codeBlock.style.display = codeBlock.style.display === 'block' ? 'none' : 'block';
+            videoBlock.style.display = videoBlock.style.display === 'block' ? 'none' : 'block';
+
+            // Adjust button text
+            const button = event.target;
+            button.textContent = theoryContent.style.display === 'block' ? 'Hide Theoretical Content, Code & Video' : 'Show Theoretical Content, Code & Video';
+        }
+    </script>
+</body>
+
+</html>

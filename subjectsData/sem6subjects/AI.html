@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Practicals List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0b042500;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content h3,
+        .semester1 .theoretical-content h4,
+        .semester1 .theoretical-content h5,
+        .semester1 .theoretical-content p,
+        .semester1 .theoretical-content ul {
+            text-align: left;
+            color: #f3f4f6;
+        }
+
+        .semester1 .theoretical-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .semester1 .theoretical-content h4 {
+            font-size: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .semester1 .theoretical-content h5 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content p {
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .semester1 .theoretical-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .semester1 .theoretical-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .semester1 .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: rgb(92, 47, 255);
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .semester1.section {
+            flex: 1;
+        }
+
+        .video-section {
+            
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:left;
+        }
+        .video-section2 {
+          
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:right;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            border-radius: 0.375rem;
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+
+        pre1 .output
+        {
+            display: inline-block;
+            justify-content: space-between;
+        }
+
+        
+@media (max-width: 425px) {
+    .semester1 .theoretical-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .semester1 .theoretical-content h4 {
+        font-size: 1.35rem;
+        margin-top: 1.5rem;
+    }
+
+    .semester1 .theoretical-content h5 {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+    }
+
+    .semester1 .theoretical-content p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        line-height: 1.8;
+    }
+
+    .semester1 .theoretical-content ul {
+        margin: 0.3rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .semester1 .theoretical-content ul li {
+        margin-bottom: 0.3rem;
+    }
+
+   .video-section iframe{
+        width: 230px;
+        height: 157px;
+    }
+    .card{
+        width: 95%;
+    }
+
+    .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+        .Output img{
+            width: 260px;
+            height: 170px;
+        }
+        .code-block code{
+                font-size: 0.8rem;
+        }
+    
+}
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester6.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+
+    <!-- Semester 6 Practicals Section -->
+    <section class="semester1 section">
+        <h1 class="section-title">AI Practicals</h1>
+
+    <a href="../../files/AI FILE.pdf" download="AI FILE.pdf" class="download-button">Download PDF</a>
+    <div class="INFO">
+
+        Video + Theory 
+        
+    </div>
+        <ul class="practicals-list">
+            <li class="card">
+                <h2 class="card-title">1. Study of PROLOG</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent1', 'codeBlock1', 'videoBlock1')">Toggle Theoretical Content, Code & Video</button>
+                <div id="theoryContent1" class="theoretical-content">
+                    <!-- Existing theoretical content -->
+                    <h3>Overview of Prolog</h3>
+                    <p>Prolog (Programming in Logic) is a declarative programming language primarily used in artificial intelligence and computational linguistics. It is based on formal logic and focuses on defining relationships and solving problems through logical inference.</p>
+            
+                    <h3>Key Concepts</h3>
+                    <h4>1. Facts</h4>
+                    <p><strong>Definition:</strong> Basic assertions or pieces of information about the world.</p>
+                    <p><strong>Example:</strong> `likes(ram, mango).` This fact asserts that Ram likes mango.</p>
+            
+                    <h4>2. Rules</h4>
+                    <p><strong>Definition:</strong> Define relationships between facts and describe how new facts can be inferred from existing ones.</p>
+                    <p><strong>Example:</strong> `loves_fruit(X) :- likes(X, mango).` This rule states that if a person likes mango, then they love fruit.</p>
+            
+                    <h4>3. Queries</h4>
+                    <p><strong>Definition:</strong> Questions posed to the Prolog system to derive answers based on the facts and rules defined.</p>
+                    <p><strong>Example:</strong> `?- likes(ram, mango).` This query checks if Ram likes mango.</p>
+            
+                    <h3>Practical Use of Prolog</h3>
+                    <h4>Writing and Testing Facts</h4>
+                    <p>Facts are the simplest elements in Prolog. They represent basic truths or assertions about entities. Facts are written in the form of `predicate(argument1, argument2, ..., argumentN).`</p>
+            
+                    <h4>Defining Rules</h4>
+                    <p>Rules in Prolog are used to infer new information based on existing facts. They are written in the form:</p>
+                    <pre><code>rule_name(Condition) :- Condition_1, Condition_2, ..., Condition_N.</code></pre>
+                    <p>The `:-` symbol means "if" and `Condition_1, Condition_2, ..., Condition_N` are the conditions that must be met for the rule to be true.</p>
+            
+                    <h4>Executing Queries</h4>
+                    <p>Queries are used to retrieve information or check the validity of facts and rules. They are written in the form:</p>
+                    <pre><code>?- predicate(argument1, argument2, ..., argumentN).</code></pre>
+                    <p>Prolog tries to satisfy the query by searching through the facts and rules defined.</p>
+            
+                    <!-- Embedded YouTube Video -->
+                    <div class="video-section">
+                        <h2 class="video-title">How to Perform the Practical <br></h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4F2FLNQ6yms" 
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen class="lecture"></iframe>
+                    </div>
+                    <div class="Apparatus & Instruments">
+                        
+                    </div>
+                </div>
+                <div id="codeBlock1" class="code-block">
+                    <h3>Sample Prolog Code</h3>
+                    <pre><code>
+            % Facts
+            likes(ram, mango).
+            
+            % Rules
+            loves_fruit(X) :- likes(X, mango).
+            
+            % Queries
+            ?- likes(ram, mango).
+                    </code></pre>
+                </div>
+            </li>
+            <li class="card">
+                <h2 class="card-title">2. Prolog Predicates for Temperature</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent2', 'codeBlock2', 'videoBlock2')">Toggle Theoretical Content, Code & Video</button>
+                <div id="theoryContent2" class="theoretical-content">
+                    <!-- Theoretical content -->
+                    <h3>Prolog Predicates for Temperature</h3>
+                    <p>In Prolog, you can define predicates to perform specific tasks or checks. Here, we will explore two predicates related to temperature:</p>
+                    
+                    <h3>1. Converting Centigrade to Fahrenheit</h3>
+                    <p><strong>Definition:</strong> A predicate that converts a temperature from Centigrade to Fahrenheit.</p>
+                    <p><strong>Formula:</strong> F = C * 9/5 + 32</p>
+                    <p><strong>Example:</strong> Converting 25°C to Fahrenheit yields 77°F.</p>
+            
+                    <h3>2. Checking if a Temperature is Below Freezing</h3>
+                    <p><strong>Definition:</strong> A predicate that checks if a given temperature is below the freezing point of water (0°C).</p>
+                    <p><strong>Example:</strong> Checking if 5°C is below freezing returns false, while -5°C returns true.</p>
+            
+                    <h3>Practical Use of Predicates</h3>
+                    <h4>1. Conversion Predicate</h4>
+                    <p>This predicate takes a temperature in Centigrade and converts it to Fahrenheit using the specified formula.</p>
+            
+                    <h4>2. Below Freezing Predicate</h4>
+                    <p>This predicate determines whether the given temperature is below the freezing point.</p>
+            
+                    <!-- Embedded YouTube Video -->
+                    <div class="video-section" style="display: none;">
+                        <h2 class="video-title">Temperature Conversion and Checking in Prolog</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/AKH6ZNSnWOA" 
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div id="codeBlock2" class="code-block">
+                    <h3>Sample Prolog Code</h3>
+                    <pre><code>
+def centigrade_to_fahrenheit(celsius):
+     """Convert Celsius to Fahrenheit."""
+     fahrenheit = celsius * 9 / 5 + 32
+     return fahrenheit
+
+def is_below_freezing(celsius):
+    """Check if the temperature in Celsius is below freezing."""
+    return celsius < 0
+
+# Get temperature input from the user
+celsius_temp = float(input("Enter temperature in Celsius: "))
+
+# Convert Celsius to Fahrenheit
+fahrenheit_temp = centigrade_to_fahrenheit(celsius_temp)
+
+# Print the conversion result
+print(f'{celsius_temp}°C is equal to {fahrenheit_temp}°F')
+
+# Check if the temperature is below freezing
+if is_below_freezing(celsius_temp):
+    print("The temperature is below freezing.")
+else:
+    print("The temperature is above freezing.")
+
+                        
+
+                    </code></pre>
+
+                    <pre1><code class="Output">
+<img src="../../files/m1.png" alt="error" >
+<img src="../../files/m2.png" alt="error" >
+                        
+                    </code></pre1>
+                </div>
+                </li>
+
+                <li class="card">
+                    <h2 class="card-title">3. Remove Punctuation Using Python</h2>
+                    <button class="reveal-button" onclick="toggleContent('theoryContent3', 'codeBlock3', 'videoBlock3')">Toggle Theoretical Content, Code & Video</button>
+                    <div id="theoryContent3" class="theoretical-content">
+                        <!-- Theoretical Content -->
+                        <h3>Overview of Removing Punctuation in Python</h3>
+                        <p>Removing punctuation is often necessary when processing text data. This can be useful for tasks such as text normalization, data cleaning, or natural language processing (NLP) tasks.</p>
+                        
+                        <h3>Key Concepts</h3>
+                        <h4>1. String Library</h4>
+                        <p><strong>Definition:</strong> Python provides a built-in <code>string</code> library that contains useful constants such as <code>string.punctuation</code> which holds all punctuation characters.</p>
+                        <p><strong>Example:</strong> The <code>string.punctuation</code> contains characters like <code>!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~</code>.</p>
+                
+                        <h4>2. Translation Table</h4>
+                        <p><strong>Definition:</strong> A translation table maps characters in a string to their replacements. You can use this to efficiently remove punctuation.</p>
+                        <p><strong>Example:</strong> The method <code>str.translate()</code> uses a translation table to replace or remove characters from a string.</p>
+                
+                        <h3>Practical Use of Punctuation Removal</h3>
+                        <p>Removing punctuation is useful in text preprocessing steps in machine learning pipelines and NLP applications like sentiment analysis or text classification.</p>
+                        <div class="video-section"></div>
+                        <h2 class="video-title">How to Remove Punctuation Using Python</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4F2FLNQ6yms" 
+                        title="YouTube video player" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen class="lecture"></iframe>
+                    </div>
+                </div>
+                
+                    <div id="codeBlock3" class="code-block">
+                        <h3>Sample Python Code for Removing Punctuation</h3>
+                        <pre><code>
+# Import the string library to get the punctuation characters
+import string
+                
+# Define a function to remove punctuations from a given string
+def remove_punctuations(input_string):
+    # Define a translation table to remove punctuation
+    translator = str.maketrans('', '', string.punctuation)
+    # Use the translate method to remove punctuation
+    return input_string.translate(translator)
+                
+# Example usage
+input_string = "Hello!!!, he said -- and went."
+no_punctuation_string = remove_punctuations(input_string)
+print(no_punctuation_string)
+                        </code></pre>
+
+                        <pre1><code class="Output">
+                            <img src="../../files/m3.png" alt="error">
+                            
+                        </code></pre1>
+
+                    </div>
+                </li>
+               
+                <li class="card">
+                    <h2 class="card-title">4. Sort Sentence Alphabetically Using Python</h2>
+                    <button class="reveal-button" onclick="toggleContent('theoryContent4', 'codeBlock4', 'videoBlock4')">
+                        Toggle Theoretical Content, Code & Video
+                    </button>
+                
+                    <div id="theoryContent4" class="theoretical-content">
+                        <!-- Theoretical Content -->
+                        <h3>Overview of Sorting a Sentence in Python</h3>
+                        <p>Sorting words in a sentence alphabetically is a common task in text processing. It involves splitting the sentence into individual words, sorting them, and joining them back into a coherent sentence.</p>
+                        
+                        <h3>Key Concepts</h3>
+                        <h4>1. Splitting Strings</h4>
+                        <p><strong>Definition:</strong> You can split a sentence into words using Python's <code>split()</code> method. It breaks the string at spaces by default.</p>
+                        <p><strong>Example:</strong> The sentence "Python is powerful" will be split into <code>['Python', 'is', 'powerful']</code>.</p>
+                
+                        <h4>2. Sorting Strings</h4>
+                        <p><strong>Definition:</strong> You can sort the list of words using the <code>sorted()</code> function, which arranges the words in alphabetical order.</p>
+                        <p><strong>Example:</strong> The list <code>['Python', 'is', 'powerful']</code> will be sorted to <code>['Python', 'is', 'powerful']</code>.</p>
+                
+                        <h3>Practical Use of Sentence Sorting</h3>
+                        <p>This functionality is useful for text manipulation tasks like word frequency analysis or improving readability of scrambled sentences.</p>
+                
+                        <div id="videoBlock4" class="video-section"></div>
+                        <h2 class="video-title">How to Sort Sentences Alphabetically in Python</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4F2FLNQ6yms" 
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                
+                    <div id="codeBlock4" class="code-block">
+                        <h3>Sample Python Code for Sorting a Sentence Alphabetically</h3>
+                        <pre><code>
+# Define a function to sort the sentence alphabetically
+def sort_sentence_alphabetically(sentence):
+    # Split the sentence into words
+    words = sentence.split()
+    # Sort the words alphabetically
+    sorted_words = sorted(words)
+    # Join the sorted words back into a sentence
+    sorted_sentence = ' '.join(sorted_words)
+    return sorted_sentence
+
+# Example usage
+example_sentence = "python is a powerful programming language"
+sorted_sentence = sort_sentence_alphabetically(example_sentence)
+print(sorted_sentence)
+                        </code></pre>
+                
+                        <pre1><code class="Output">
+<img src="../../files/m4.png" alt="error">
+                        </code></pre1>
+                
+                    </div>
+                </li>
+
+                <li class="card">
+                    <h2 class="card-title">5. Implementing Tic-Tac-Toe in Python</h2>
+                    <button class="reveal-button" onclick="toggleContent('theoryContent5', 'codeBlock5', 'videoBlock5')">
+                        Toggle Theoretical Content, Code & Video
+                    </button>
+                
+                    <div id="theoryContent5" class="theoretical-content">
+                        <!-- Theoretical Content -->
+                        <h3>Overview of Tic-Tac-Toe Game in Python</h3>
+                        <p>Tic-Tac-Toe is a two-player game where players alternate marking X and O on a 3x3 grid. The objective is to be the first to get three of your marks in a row, column, or diagonal.</p>
+                
+                        <h3>Key Concepts</h3>
+                        <h4>1. Board Setup</h4>
+                        <p><strong>Definition:</strong> The game board can be represented using a 2D list in Python. This grid is filled with empty strings initially, and updated as players make their moves.</p>
+                
+                        <h4>2. Win Conditions</h4>
+                        <p><strong>Definition:</strong> The win conditions can be checked by examining the rows, columns, and diagonals to see if they contain the same symbol (X or O).</p>
+                
+                        <h3>Hardware and Software Requirements</h3>
+                        <ul>
+                            <li><strong>Hardware:</strong> 512 GB SSD, Intel Core i5 Processor</li>
+                            <li><strong>Software:</strong> Python 3.12.2</li>
+                        </ul>
+                
+                        <div id="videoBlock5" class="video-section"></div>
+                        <h2 class="video-title">How to Implement Tic-Tac-Toe Game in Python</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                
+                    <div id="codeBlock5" class="code-block">
+                        <h3>Sample Python Code for Tic-Tac-Toe Game</h3>
+                        <pre><code>
+# Define a function to print the board
+def print_board(board):
+    for row in board:
+        print("|".join(row))
+        print("-" * 5)
+                
+# Define a function to check if there's a win
+def check_win(board, player):
+    win_conditions = [
+        [board[0][0], board[0][1], board[0][2]],
+        [board[1][0], board[1][1], board[1][2]],
+        [board[2][0], board[2][1], board[2][2]],
+        [board[0][0], board[1][0], board[2][0]],
+        [board[0][1], board[1][1], board[2][1]],
+        [board[0][2], board[1][2], board[2][2]],
+        [board[0][0], board[1][1], board[2][2]],
+        [board[0][2], board[1][1], board[2][0]],
+    ]
+    return [player, player, player] in win_conditions
+                
+# Define a function for player moves
+def player_move(board, player):
+    while True:
+        row = int(input(f"Player {player}, enter your move row (0-2): "))
+        col = int(input(f"Player {player}, enter your move column (0-2): "))
+        if board[row][col] == " ":
+            board[row][col] = player
+            break
+        else:
+            print("This position is already taken. Please choose another.")
+                
+# Define the game loop
+def play_game():
+    board = [[" " for _ in range(3)] for _ in range(3)]
+    player = "X"
+    print("Welcome to Tic-Tac-Toe!")
+                    
+    for _ in range(9):
+        print_board(board)
+        player_move(board, player)
+        if check_win(board, player):
+            print_board(board)
+            print(f"Player {player} wins!")
+            return
+        player = "O" if player == "X" else "X"
+                    
+    print_board(board)
+    print("It's a draw!")
+                
+# Start the game
+play_game()
+
+<img src="../../files/m5.png" alt="error">
+
+
+
+
+                        </code></pre>
+
+                    </div>
+                </li>
+
+
+                <li class="card">
+                    <h2 class="card-title">6. Implementing Hangman Game in Python</h2>
+                    <button class="reveal-button" onclick="toggleContent('theoryContent6', 'codeBlock6', 'videoBlock6')">
+                        Toggle Theoretical Content, Code & Video
+                    </button>
+                
+                    <div id="theoryContent6" class="theoretical-content">
+                        <!-- Theoretical Content -->
+                        <h3>Overview of Hangman Game in Python</h3>
+                        <p>Hangman is a classic word-guessing game where players guess letters to try and figure out the hidden word before running out of attempts. Each wrong guess reduces the number of remaining attempts.</p>
+                
+                        <h3>Key Concepts</h3>
+                        <h4>1. Word Selection</h4>
+                        <p><strong>Definition:</strong> A random word is selected from a predefined list using Python's <code>random.choice()</code> function.</p>
+                
+                        <h4>2. Player Guesses</h4>
+                        <p><strong>Definition:</strong> The player inputs their guesses, and the game checks whether the letter is in the word. Correct guesses reveal the letter's position in the word, while wrong guesses decrease the remaining attempts.</p>
+                
+                        <h3>Hardware and Software Requirements</h3>
+                        <ul>
+                            <li><strong>Hardware:</strong> 512 GB SSD, Intel Core i5 Processor</li>
+                            <li><strong>Software:</strong> Python 3.12.2</li>
+                        </ul>
+                
+                        <div id="videoBlock6" class="video-section"></div>
+                        <h2 class="video-title">How to Implement Hangman Game in Python</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                
+                    <div id="codeBlock6" class="code-block">
+                        <h3>Sample Python Code for Hangman Game</h3>
+                        <pre><code>
+import random
+
+# List of words to choose from
+words = ['python', 'java', 'kotlin', 'javascript']
+
+# Randomly select a word from the list
+word = random.choice(words)
+
+# Create a list to represent the guessed word
+guessed_word = ['_' for _ in word]
+
+# Number of attempts allowed
+attempts = 8
+
+# Set to track guessed letters
+guessed_letters = set()
+
+print("HANGMAN GAME")
+
+# Game loop
+while attempts > 0:
+    print("\n" + ' '.join(guessed_word))
+    
+    # Get player's guess
+    guess = input("Input a letter: ").lower()
+
+    # Check if the letter was already guessed
+    if guess in guessed_letters:
+        print("No improvements. You've already guessed this letter.")
+    else:
+        guessed_letters.add(guess)
+        
+        # Check if the guessed letter is in the word
+        if guess in word:
+            for i in range(len(word)):
+                if word[i] == guess:
+                    guessed_word[i] = guess
+        else:
+            print(f"That letter doesn't appear in the word!")
+            attempts -= 1
+
+    # Check if the player has guessed the whole word
+    if ''.join(guessed_word) == word:
+        print(f"\nCongratulations! You've guessed the word '{word}'!")
+        print("You survived!")
+        break
+
+# If attempts run out, print the losing message
+if attempts == 0:
+    print(f"\nYou lost! The word was '{word}'. Better luck next time.")
+
+
+
+
+
+    <img src="../../files/m6.png" alt="">
+        </code></pre>
+    </div>
+</li>
+                        </code></pre>
+                    </div>
+                </li>
+
+
+
+                <li class="card">
+                <h2 class="card-title">7. Implementing Breadth-First Search (BFS) in Python</h2>
+                    <button class="reveal-button" onclick="toggleContent('theoryContent8', 'codeBlock8', 'videoBlock8')">
+                        Toggle Theoretical Content, Code & Video
+                    </button>
+                
+                    <div id="theoryContent8" class="theoretical-content">
+                        <!-- Theoretical Content -->
+                        <h3>Overview of Breadth-First Search (BFS) Algorithm</h3>
+                        <p>BFS is an algorithm for traversing or searching tree or graph data structures. It starts from a selected node, explores all the neighboring nodes at the present depth, before moving on to nodes at the next depth level.</p>
+                
+                        <h3>Key Concepts</h3>
+                        <h4>1. Queue Data Structure</h4>
+                        <p><strong>Definition:</strong> BFS uses a queue to keep track of the nodes to visit. A queue follows the First-In-First-Out (FIFO) principle, meaning that the first element added will be the first to be processed.</p>
+                
+                        <h4>2. Visited Nodes</h4>
+                        <p><strong>Definition:</strong> The algorithm keeps a list of visited nodes to ensure that each node is processed only once and to avoid cycles in graphs.</p>
+                
+                        <h3>Hardware and Software Requirements</h3>
+                        <ul>
+                            <li><strong>Hardware:</strong> 512 GB SSD, Intel Core i5 Processor</li>
+                            <li><strong>Software:</strong> Python 3.12.2</li>
+                        </ul>
+                
+                        <div id="videoBlock8" class="video-section"></div>
+                        <h2 class="video-title">How to Implement BFS Algorithm in Python</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/2P-yW7LQr08" 
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                
+                    <div id="codeBlock8" class="code-block">
+                        <h3>Sample Python Code for BFS Algorithm</h3>
+                        <pre><code>
+# Breadth-First Search (BFS) algorithm in Python
+                
+# Sample graph using an adjacency list
+graph = {
+    'A': ['B', 'C'],
+    'B': ['C', 'E'],
+    'C': ['F'],
+    'D': [],
+    'E': ['F'],
+    'F': []
+}
+
+visited = []  # List to keep track of visited nodes.
+queue = []    # Initialize a queue
+
+# Function to perform BFS
+def bfs(visited, graph, node):
+    visited.append(node)
+    queue.append(node)
+
+    while queue:  # Create a loop to visit each node
+        current_node = queue.pop(0) 
+        print(current_node, end=" ")
+
+        # Get all adjacent nodes of the current node
+        for neighbor in graph[current_node]:
+            if neighbor not in visited:
+                visited.append(neighbor)
+                queue.append(neighbor)
+
+# Driver code
+print("Breadth-First Search (BFS) starting from node A:")
+bfs(visited, graph, 'A')
+
+
+
+
+<img src="../../files/m7.png" alt="">
+                        </code></pre>
+                    </div>
+                </li>
+                
+                <li class="card">
+                    <h2 class="card-title">8. Implementing Water Jug Problem in Python</h2>
+                    <button class="reveal-button" onclick="toggleContent('theoryContent9', 'codeBlock9', 'videoBlock9')">
+                        Toggle Theoretical Content, Code & Video
+                    </button>
+                
+                    <div id="theoryContent9" class="theoretical-content">
+                        <!-- Theoretical Content -->
+                        <h3>Overview of the Water Jug Problem</h3>
+                        <p>The Water Jug Problem involves two jugs with given capacities, and the goal is to measure a specific amount of water using these jugs. You can perform the following operations:</p>
+                        <ul>
+                            <li>Fill a jug completely.</li>
+                            <li>Empty a jug.</li>
+                            <li>Pour water from one jug to the other until one jug is either full or empty.</li>
+                        </ul>
+                        <p>Given a target amount of water, you need to determine if it is possible to measure that amount using the two jugs and return the number of steps taken to reach the desired quantity.</p>
+                
+                        <h3>Key Concepts</h3>
+                        <h4>1. State Representation</h4>
+                        <p><strong>Definition:</strong> Each state of the problem can be represented as a tuple containing the amount of water in both jugs.</p>
+                
+                        <h4>2. Breadth-First Search (BFS)</h4>
+                        <p><strong>Definition:</strong> BFS is used to explore all possible states (water levels in the jugs) to find the shortest path to the target amount of water.</p>
+                
+                        <h3>Hardware and Software Requirements</h3>
+                        <ul>
+                            <li><strong>Hardware:</strong> 512 GB SSD, Intel Core i5 Processor</li>
+                            <li><strong>Software:</strong> Python 3.12.2</li>
+                        </ul>
+                
+                        <div id="videoBlock9" class="video-section"></div>
+                        <h2 class="video-title">How to Solve the Water Jug Problem in Python</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZOQ9uCUGf4g" 
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                
+                    <div id="codeBlock9" class="code-block">
+                        <h3>Sample Python Code for Water Jug Problem</h3>
+                        <pre><code>
+from collections import deque
+
+def water_jug_problem(m, n, target):
+    # Helper function to compute the greatest common divisor
+    def gcd(a, b):
+        while b:
+            a, b = b, a % b
+        return a
+
+    # Check if the target is achievable
+    if target > max(m, n) or target % gcd(m, n) != 0:
+        return "Solution not possible"
+
+    visited = set()  # To keep track of visited states
+    queue = deque([(0, 0)])  # Initialize with both jugs being empty
+    path = []  # To store the path taken
+
+    while queue:
+        jug1, jug2 = queue.popleft()
+        path.append((jug1, jug2))
+
+        # Check if the target is reached
+        if jug1 == target or jug2 == target:
+            return path  # Return the path if the target is found
+
+        # Possible operations
+        states = [
+            (m, jug2),  # Fill jug1
+            (jug1, n),  # Fill jug2
+            (0, jug2),  # Empty jug1
+            (jug1, 0),  # Empty jug2
+            (jug1 - min(jug1, n - jug2), jug2 + min(jug1, n - jug2)),  # Pour jug1 to jug2
+            (jug1 + min(jug2, m - jug1), jug2 - min(jug2, m - jug1))   # Pour jug2 to jug1
+        ]
+
+        for state in states:
+            if state not in visited:
+                visited.add(state)
+                queue.append(state)
+
+    return "Solution not possible"
+
+# Example usage
+m, n, target = 3, 5, 4
+result = water_jug_problem(m, n, target)
+if isinstance(result, list):
+    print("Path to reach target:", result)
+else:
+    print(result)
+
+
+
+
+<img src="../../files/m8.png" alt="">
+
+                        </code></pre>
+                    </div>
+                </li>
+
+
+                <li class="card">
+                    <h2 class="card-title">9. Removing Stop Words from a Text ../file using NLTK in Python</h2>
+                    <button class="reveal-button" onclick="toggleContent('theoryContent10', 'codeBlock10', 'videoBlock10')">
+                        Toggle Theoretical Content, Code & Video
+                    </button>
+                
+                    <div id="theoryContent10" class="theoretical-content">
+                        <!-- Theoretical Content -->
+                        <h3>Overview of Stop Words Removal</h3>
+                        <p>Stop words are common words that are usually filtered out before processing text. Removing stop words from a text can help in focusing on the more meaningful words and improving the efficiency of text analysis tasks.</p>
+                
+                        <h3>Key Concepts</h3>
+                        <h4>1. Tokenization</h4>
+                        <p><strong>Definition:</strong> Tokenization is the process of splitting text into individual words or tokens.</p>
+                
+                        <h4>2. Stop Words</h4>
+                        <p><strong>Definition:</strong> Stop words are commonly used words that are typically removed in text processing tasks because they do not contribute much to the meaning of the text.</p>
+                
+                        <h3>Hardware and Software Requirements</h3>
+                        <ul>
+                            <li><strong>Hardware:</strong> 512 GB SSD, Intel Core i5 Processor</li>
+                            <li><strong>Software:</strong> Python 3.12.2</li>
+                        </ul>
+                
+                        <h3>Steps to Install NLTK</h3>
+                        <ol>
+                            <li>Open your terminal or command prompt.</li>
+                            <li>Install NLTK using pip:
+                                <pre><code>pip install nltk</code></pre>
+                            </li>
+                            <li>After installing, you can download the necessary NLTK resources using Python:
+                                <pre><code>
+                import nltk
+                nltk.download('punkt')
+                nltk.download('stopwords')
+                                </code></pre>
+                            </li>
+                        </ol>
+                
+                        <div id="videoBlock10" class="video-section"></div>
+                        <h2 class="video-title">How to Remove Stop Words Using NLTK in Python</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZOQ9uCUGf4g" 
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                
+                    <div id="codeBlock10" class="code-block">
+                        <h3>Sample Python Code for Removing Stop Words</h3>
+                        <pre><code>
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+import os
+
+# Make sure to download the stopwords set if you haven't already
+nltk.download('punkt')
+nltk.download('stopwords')
+
+def remove_stop_words(file_path):
+    if not os.path.isfile(file_path):
+        raise FileNotFoundError(f"The file {file_path} does not exist.")
+    
+    # Read text from the file
+    with open(file_path, 'r', encoding='utf-8') as file:
+        text = file.read()
+    
+    # Tokenize the text into words
+    words = word_tokenize(text)
+    
+    # Get the set of English stop words
+    stop_words = set(stopwords.words('english'))
+    
+    # Remove stop words from the tokenized words
+    filtered_text = [word for word in words if word.lower() not in stop_words]
+    
+    # Join words back to form the string without stop words
+    filtered_text = ' '.join(filtered_text)
+    return filtered_text
+
+# Example usage
+file_path = 'path/to/your/text_file.txt'  # Replace with your text file path
+try:
+    processed_text = remove_stop_words(file_path)
+    print(processed_text)
+except Exception as e:
+    print(f"An error occurred: {e}")
+                        </code></pre>
+                    </div>
+                </li>
+                
+
+                <li class="card">
+                    <h2 class="card-title">10. Implementing Stemming from a Given Sentence using NLTK in Python</h2>
+                    <button class="reveal-button" onclick="toggleContent('theoryContent11', 'codeBlock11', 'videoBlock11')">
+                        Toggle Theoretical Content, Code & Video
+                    </button>
+                
+                    <div id="theoryContent11" class="theoretical-content">
+                        <!-- Theoretical Content -->
+                        <h3>Overview of Stemming</h3>
+                        <p>Stemming is a text normalization process that reduces words to their root or base form. For example, the words "running," "runner," and "runs" may all be reduced to "run." This process helps in text analysis by reducing the complexity of the text data.</p>
+                
+                        <h3>Key Concepts</h3>
+                        <h4>1. Tokenization</h4>
+                        <p><strong>Definition:</strong> Tokenization involves splitting text into individual words or tokens.</p>
+                
+                        <h4>2. Stemming</h4>
+                        <p><strong>Definition:</strong> Stemming is the process of removing prefixes or suffixes from words to obtain their root form. NLTK provides stemmers like the Porter Stemmer to perform this task.</p>
+                
+                        <h3>Hardware and Software Requirements</h3>
+                        <ul>
+                            <li><strong>Hardware:</strong> 512 GB SSD, Intel Core i5 Processor</li>
+                            <li><strong>Software:</strong> Python 3.12.2</li>
+                        </ul>
+                
+                        <h3>Steps to Install NLTK</h3>
+                        <ol>
+                            <li>Open your terminal or command prompt.</li>
+                            <li>Install NLTK using pip:
+                                <pre><code>pip install nltk</code></pre>
+                            </li>
+                            <li>After installing, you can download the necessary NLTK resources using Python:
+                                <pre><code>
+                import nltk
+                nltk.download('punkt')
+                                </code></pre>
+                            </li>
+                        </ol>
+                
+                        <div id="videoBlock11" class="video-section"></div>
+                        <h2 class="video-title">How to Implement Stemming Using NLTK in Python</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZOQ9uCUGf4g" 
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                
+                    <div id="codeBlock11" class="code-block">
+                        <h3>Sample Python Code for Stemming a Sentence</h3>
+                        <pre><code>
+                import nltk
+                from nltk.stem import PorterStemmer
+                from nltk.tokenize import word_tokenize
+                
+                # Make sure to download the punkt tokenizer module if you haven't already
+                nltk.download('punkt')
+                
+                def stem_sentence(sentence):
+                    # Tokenize the sentence into words
+                    words = word_tokenize(sentence)
+                    
+                    # Create a Porter Stemmer object
+                    stemmer = PorterStemmer()
+                    
+                    # Stem each word in the sentence
+                    stemmed_words = [stemmer.stem(word) for word in words]
+                    
+                    # Join the stemmed words back into a string
+                    stemmed_sentence = ' '.join(stemmed_words)
+                    return stemmed_sentence
+                
+                # Example usage
+                sentence = "The running runner runs quickly"
+                stemmed_sentence = stem_sentence(sentence)
+                print("Original Sentence:", sentence)
+                print("Stemmed Sentence:", stemmed_sentence)
+                        </code></pre>
+                    </div>
+                </li>
+                
+
+                
+                
+                
+                
+            <!-- Repeat for other practicals -->
+        </ul>
+    </section>
+
+    <script>
+        function toggleContent(theoryId, codeId, videoId) {
+            const theoryContent = document.getElementById(theoryId);
+            const codeBlock = document.getElementById(codeId);
+            const videoBlock = document.getElementById(videoId);
+
+            // Toggle visibility
+            theoryContent.style.display = theoryContent.style.display === 'block' ? 'none' : 'block';
+            codeBlock.style.display = codeBlock.style.display === 'block' ? 'none' : 'block';
+            videoBlock.style.display = videoBlock.style.display === 'block' ? 'none' : 'block';
+
+            // Adjust button text
+            const button = event.target;
+            button.textContent = theoryContent.style.display === 'block' ? 'Hide Theoretical Content, Code & Video' : 'Show Theoretical Content, Code & Video';
+        }
+    </script>
+</body>
+
+</html>

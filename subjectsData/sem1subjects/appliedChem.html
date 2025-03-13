@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0B0425;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content h3,
+        .semester1 .theoretical-content h4,
+        .semester1 .theoretical-content h5,
+        .semester1 .theoretical-content p,
+        .semester1 .theoretical-content ul {
+            text-align: left;
+            color: #f3f4f6;
+        }
+
+        .semester1 .theoretical-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .semester1 .theoretical-content h4 {
+            font-size: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .semester1 .theoretical-content h5 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content p {
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .semester1 .theoretical-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .semester1 .theoretical-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .semester1 .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: rgb(47, 130, 255);
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .semester1.section {
+            flex: 1;
+        }
+
+        .video-section {
+            
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:left;
+        }
+        .video-section2 {
+          
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:right;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            border-radius: 0.375rem;
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+
+        pre1 .output
+        {
+            display: inline-block;
+            justify-content: space-between;
+        }
+               
+@media (max-width: 425px) {
+    .semester1 .theoretical-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .semester1 .theoretical-content h4 {
+        font-size: 1.35rem;
+        margin-top: 1.5rem;
+    }
+
+    .semester1 .theoretical-content h5 {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+    }
+
+    .semester1 .theoretical-content p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        line-height: 1.8;
+    }
+
+    .semester1 .theoretical-content ul {
+        margin: 0.3rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .semester1 .theoretical-content ul li {
+        margin-bottom: 0.3rem;
+    }
+
+   .video-section iframe{
+        width: 230px;
+        height: 157px;
+    }
+    .card{
+        width: 95%;
+    }
+
+    .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+        .Output img{
+            width: 260px;
+            height: 170px;
+        }
+        .code-block code{
+                font-size: 0.8rem;
+        }
+    
+}
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester1.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+
+    <!-- Experiments Section -->
+    <section class="semester1 section">
+        <h1 class="section-title"> Applied Chemistry Practical List</h1>
+
+    <a href="../files/sem7.pdf" download="ALL.pdf" class="download-button">Download PDF</a>
+    <div class="INFO">
+
+        Video + Theory 
+        
+    </div>
+
+    <section>
+
+        <ul class="practicals-list">
+
+            <li class="card">
+                <h2 class="card-title">1. Determination of Alkalinity of Water Sample</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent1')">Toggle Content</button>
+                <div id="theoryContent1" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment involves assessing the alkalinity of a water sample by titrating it with a standard acid solution. Alkalinity is a measure of water's capacity to neutralize acids, which is crucial for maintaining pH stability in various applications.</p>
+                    
+                    <h4>Procedure:</h4>
+                    <ol>
+                        <li>Take a sample of water in a clean beaker.</li>
+                        <li>Add a few drops of phenolphthalein indicator.</li>
+                        <li>Titrate the sample with a standard acid solution until the color changes.</li>
+                        <li>Record the amount of acid used to calculate alkalinity.</li>
+                    </ol>
+                    
+                    <h4>Note:</h4>
+                    <p>Ensure that the titration is done slowly near the endpoint to avoid overshooting, which could lead to inaccurate results.</p>
+        
+                    <div id="videoBlock1" class="video-section">
+                        <h3>Video on Determination of Alkalinity</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">2. Determination of Hardness of Water Sample by EDTA Method</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent2')">Toggle Content</button>
+                <div id="theoryContent2" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment determines the hardness of a water sample using EDTA as a complexing agent. Hardness is caused by calcium and magnesium ions, which can affect water quality and industrial applications.</p>
+                    
+                    <h4>Procedure:</h4>
+                    <ol>
+                        <li>Take a known volume of water sample in a conical flask.</li>
+                        <li>Add a buffer solution to maintain pH and a few drops of Eriochrome Black T indicator.</li>
+                        <li>Titrate with EDTA solution until the color changes from wine red to blue.</li>
+                        <li>Calculate hardness based on the amount of EDTA used.</li>
+                    </ol>
+                    
+                    <h4>Note:</h4>
+                    <p>Ensure the pH is correctly adjusted as the EDTA titration is pH-sensitive.</p>
+        
+                    <div id="videoBlock2" class="video-section">
+                        <h3>Video on Hardness Determination</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">3. Determine the Percentage Composition of Sodium Hydroxide</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent3')">Toggle Content</button>
+                <div id="theoryContent3" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment focuses on determining the percentage composition of sodium hydroxide (NaOH) in a mixture with sodium chloride by titration against a standard acid.</p>
+                    
+                    <h4>Procedure:</h4>
+                    <ol>
+                        <li>Weigh the mixture sample accurately.</li>
+                        <li>Dissolve it in distilled water and titrate with a standard hydrochloric acid solution.</li>
+                        <li>Record the volume of HCl required to reach the endpoint and use it to calculate NaOH percentage.</li>
+                    </ol>
+                    
+                    <h4>Note:</h4>
+                    <p>Use a pH indicator like phenolphthalein to identify the endpoint accurately.</p>
+        
+                    <div id="videoBlock3" class="video-section">
+                        <h3>Video on Composition Determination</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">4. Determine the Amount of Oxalic Acid and Sulphuric Acid</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent4')">Toggle Content</button>
+                <div id="theoryContent4" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment determines the amounts of oxalic acid and sulfuric acid in a solution by titration with standard solutions of sodium hydroxide and potassium permanganate.</p>
+                    
+                    <h4>Procedure:</h4>
+                    <ol>
+                        <li>Add a known volume of the sample to a conical flask.</li>
+                        <li>Titrate with sodium hydroxide to neutralize sulfuric acid.</li>
+                        <li>After neutralization, titrate with potassium permanganate to determine oxalic acid content.</li>
+                    </ol>
+                    
+                    <h4>Note:</h4>
+                    <p>Handle potassium permanganate with care as it is a strong oxidizing agent.</p>
+        
+                    <div id="videoBlock4" class="video-section">
+                        <h3>Video on Acid Determination</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">5. Determine the Amount of Copper in Copper Ore Solution</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent5')">Toggle Content</button>
+                <div id="theoryContent5" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment measures the copper content in a copper ore solution by iodometric titration, where iodine reacts with copper ions to determine its concentration.</p>
+                    
+                    <h4>Procedure:</h4>
+                    <ol>
+                        <li>Add a known volume of copper ore solution to a flask.</li>
+                        <li>React with excess iodide solution to release iodine.</li>
+                        <li>Titrate the liberated iodine with sodium thiosulfate until a color change occurs.</li>
+                    </ol>
+                    
+                    <h4>Note:</h4>
+                    <p>Ensure all solutions are freshly prepared for accurate results.</p>
+        
+                    <div id="videoBlock5" class="video-section">
+                        <h3>Video on Copper Determination</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+
+            <li class="card">
+                <h2 class="card-title">6. Determination of Chloride Ions in Water using Silver Nitrate (Mohr’s Precipitation Method)</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent6')">Toggle Content</button>
+                <div id="theoryContent6" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment measures the concentration of chloride ions in a water sample through precipitation with silver nitrate, forming a visible precipitate of silver chloride.</p>
+                    
+                    <h4>Procedure</h4>
+                    <p>1. Add potassium chromate indicator to the water sample.<br>
+                       2. Titrate with silver nitrate until a persistent reddish-brown precipitate appears, indicating the endpoint.</p>
+                    
+                    <h4>Notes</h4>
+                    <p>- Ensure accurate addition of potassium chromate for consistent results.<br>
+                       - The endpoint is sensitive to pH, so maintain a neutral pH for reliable results.</p>
+        
+                    <div id="videoBlock6" class="video-section">
+                        <h3>Video on Mohr’s Precipitation Method</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">7. Determination of Strength of MgSO4 Solution by Complexometric Titration</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent7')">Toggle Content</button>
+                <div id="theoryContent7" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment calculates the concentration of magnesium sulfate in solution through titration with EDTA, a common complexing agent that binds to metal ions.</p>
+        
+                    <h4>Procedure</h4>
+                    <p>1. Add an appropriate buffer to maintain pH.<br>
+                       2. Use Eriochrome Black T as an indicator.<br>
+                       3. Titrate with EDTA until the color changes, indicating all magnesium ions have reacted.</p>
+        
+                    <h4>Notes</h4>
+                    <p>- Ensure pH is stable for accurate EDTA binding.<br>
+                       - The endpoint color change can be subtle; observe carefully.</p>
+        
+                    <div id="videoBlock7" class="video-section">
+                        <h3>Video on Complexometric Titration</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">8. Determination of Surface Tension of a Liquid using Drop Number Method</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent8')">Toggle Content</button>
+                <div id="theoryContent8" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment measures the surface tension of a liquid by counting the number of drops required to release a specific volume, which correlates to the liquid's cohesive forces.</p>
+        
+                    <h4>Procedure</h4>
+                    <p>1. Use a burette to release drops of the liquid.<br>
+                       2. Count the drops necessary to reach a specific volume.<br>
+                       3. Calculate surface tension based on the drop count and volume.</p>
+        
+                    <h4>Notes</h4>
+                    <p>- Temperature affects surface tension, so perform the experiment at room temperature.<br>
+                       - Maintain consistent drop sizes for accurate results.</p>
+        
+                    <div id="videoBlock8" class="video-section">
+                        <h3>Video on Drop Number Method</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">9. Determination of Viscosity of a Liquid</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent9')">Toggle Content</button>
+                <div id="theoryContent9" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>Viscosity, or the resistance of a liquid to flow, is determined by allowing a liquid to flow through a capillary tube and measuring the time taken.</p>
+        
+                    <h4>Procedure</h4>
+                    <p>1. Measure the density of the liquid.<br>
+                       2. Fill a viscometer with the liquid.<br>
+                       3. Record the flow time between two marks.<br>
+                       4. Use density and time to calculate viscosity.</p>
+        
+                    <h4>Notes</h4>
+                    <p>- Ensure the viscometer is clean for accurate readings.<br>
+                       - Avoid air bubbles in the liquid column.</p>
+        
+                    <div id="videoBlock9" class="video-section">
+                        <h3>Video on Viscosity Determination</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="card">
+                <h2 class="card-title">10. Determination of Cell Constant and Conductometric Titration</h2>
+                <button class="reveal-button" onclick="toggleContent('theoryContent10')">Toggle Content</button>
+                <div id="theoryContent10" class="theoretical-content">
+                    <h3>Overview</h3>
+                    <p>This experiment determines the cell constant for a conductivity cell and uses it to measure conductometric titration between strong acid and base.</p>
+        
+                    <h4>Procedure</h4>
+                    <p>1. Calibrate the cell using a standard KCl solution.<br>
+                       2. Titrate the acid and base, recording conductivity changes.<br>
+                       3. Determine cell constant and equivalence point.</p>
+        
+                    <h4>Notes</h4>
+                    <p>- Accurate calibration is essential for reliable results.<br>
+                       - Clean electrodes between uses to maintain conductivity accuracy.</p>
+        
+                    <div id="videoBlock10" class="video-section">
+                        <h3>Video on Conductometric Titration</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_link_here" title="YouTube video player"></iframe>
+                    </div>
+                </div>
+            </li>
+            
+        </ul>
+        
+    </section>
+
+
+
+
+
+<script>
+    function toggleContent(contentId) {
+        var content = document.getElementById(contentId);
+
+        // Check if content is hidden (display is "none" or initial empty value)
+        if (content.style.display === "none" || content.style.display === "") {
+            content.style.display = "block"; // Show content
+        } else {
+            content.style.display = "none"; // Hide content
+        }
+    }
+</script>
+</body>
+
+</html>

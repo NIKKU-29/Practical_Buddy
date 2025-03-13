@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0B0425;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content h3,
+        .semester1 .theoretical-content h4,
+        .semester1 .theoretical-content h5,
+        .semester1 .theoretical-content p,
+        .semester1 .theoretical-content ul {
+            text-align: left;
+            color: #f3f4f6;
+        }
+
+        .semester1 .theoretical-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .semester1 .theoretical-content h4 {
+            font-size: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .semester1 .theoretical-content h5 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content p {
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .semester1 .theoretical-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .semester1 .theoretical-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .semester1 .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: rgb(47, 130, 255);
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .semester1.section {
+            flex: 1;
+        }
+
+        .video-section {
+            
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:left;
+        }
+        .video-section2 {
+          
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:right;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            border-radius: 0.375rem;
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+
+        pre1 .output
+        {
+            display: inline-block;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester5.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+
+    <!-- Experiments Section -->
+    <section class="semester1 section">
+        <h1 class="section-title"> Power System 2 </h1>
+
+    <a href="../files/sem7.pdf" download="ALL.pdf" class="download-button">Download PDF</a>
+    <div class="INFO">
+
+        Video + Theory 
+        
+    </div>
+    <ul class="practicals-list">
+
+        <li class="card">
+            <h2 class="card-title">1. Single Line-to-Ground Fault in Transmission Lines</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent1')">Toggle Content</button>
+            <div id="theoryContent1" class="theoretical-content">
+                <h3>Theory</h3>
+                <p>
+                    A single line-to-ground fault occurs when one of the phase conductors of a transmission line comes into direct contact with the ground.
+                    It results in unbalanced conditions in the power system, causing fault currents to flow and affecting the voltage levels.
+                    This fault is common in power systems due to insulation breakdown, lightning strikes, or physical damage.
+                    The key aspect of analysis involves understanding fault currents, voltages, and the impact on system stability.
+                </p>
+                <p>
+                    Protective devices such as ground fault relays and circuit breakers are employed to detect and isolate the fault promptly. 
+                    Calculations of symmetrical components and fault impedance are used to study the fault's effect on the system.
+                </p>
+                
+                <h3>Procedure</h3>
+                <ol>
+                    <li>Set up the transmission line model with appropriate protective devices.</li>
+                    <li>Introduce a fault at a designated location by connecting one phase to the ground through a fault simulating switch.</li>
+                    <li>Record the fault currents and voltages at different locations using measuring instruments like ammeters and voltmeters.</li>
+                    <li>Observe the operation of protective devices and note their response time.</li>
+                    <li>Analyze the collected data to calculate the fault current, fault impedance, and voltage drops in the system.</li>
+                </ol>
+        
+                <h3>Viva Questions</h3>
+                <h4>1. What is a single line-to-ground fault?</h4>
+                <p><strong>Answer:</strong> It is a fault where one phase of a three-phase system comes into direct contact with the ground, causing an unbalanced condition in the system.</p>
+                <h4>2. What is the role of symmetrical components in fault analysis?</h4>
+                <p><strong>Answer:</strong> Symmetrical components simplify the analysis of unbalanced faults by representing them as a combination of balanced systems.</p>
+                <h4>3. How does a ground fault relay work?</h4>
+                <p><strong>Answer:</strong> A ground fault relay detects excessive current flowing to the ground and triggers protective actions like tripping the circuit breaker.</p>
+                <h4>4. Why is this fault considered common in power systems?</h4>
+                <p><strong>Answer:</strong> Due to factors like insulation breakdown, physical damage, or natural events like lightning strikes.</p>
+            </div>
+        </li>
+        
+        <li class="card">
+            <h2 class="card-title">2. Three-Phase Fault in Transmission Lines</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent2')">Toggle Content</button>
+            <div id="theoryContent2" class="theoretical-content">
+                <h3>Theory</h3>
+                <p>
+                    A three-phase fault is the most severe fault type, occurring when all three phases are short-circuited together or connected to ground simultaneously.
+                    This results in extremely high fault currents and severe voltage drops, posing a significant threat to system stability and equipment safety.
+                </p>
+                <p>
+                    These faults are rare compared to single line-to-ground faults but are critical for testing protective equipment's ability to respond under maximum fault conditions.
+                    Fault current levels during a three-phase fault are used to determine the design and rating of protective devices like circuit breakers.
+                </p>
+        
+                <h3>Procedure</h3>
+                <ol>
+                    <li>Set up the transmission line with circuit breakers and relays to simulate a three-phase fault.</li>
+                    <li>Introduce the fault using a fault simulating switch, ensuring all three phases are short-circuited.</li>
+                    <li>Measure fault currents using current transformers and record the voltage levels at various points in the system.</li>
+                    <li>Observe the protective device operations and record their response time.</li>
+                    <li>Analyze the fault current waveform to determine the fault's impact and verify the effectiveness of the protective devices.</li>
+                </ol>
+        
+                <h3>Viva Questions</h3>
+                <h4>1. What is a three-phase fault?</h4>
+                <p><strong>Answer:</strong> It is a fault where all three phases of a three-phase system are short-circuited together or grounded.</p>
+                <h4>2. Why is a three-phase fault considered severe?</h4>
+                <p><strong>Answer:</strong> It generates maximum fault current and can cause significant damage to equipment if not cleared promptly.</p>
+                <h4>3. How are protective devices designed to handle three-phase faults?</h4>
+                <p><strong>Answer:</strong> They are rated based on the maximum fault current expected in the system to ensure reliable operation during severe faults.</p>
+                <h4>4. What is the importance of relay coordination in handling such faults?</h4>
+                <p><strong>Answer:</strong> Relay coordination ensures that only the faulted section is isolated, minimizing disruption to the system.</p>
+            </div>
+        </li>
+
+        <li class="card">
+            <h2 class="card-title">3. Differential Relay Protection for Transformer</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent3')">Toggle Content</button>
+            <div id="theoryContent3" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>Differential protection compares currents entering and leaving the protected zone to detect internal faults in transformers.</p>
+        
+                <h3>Theoretical Concepts</h3>
+                <h4>Basic Principle</h4>
+                <ul>
+                    <li>Operating current = |I₁ - I₂|</li>
+                    <li>Restraining current = (I₁ + I₂)/2</li>
+                    <li>Percentage bias = (Iop/Ir) × 100%</li>
+                </ul>
+        
+                <h4>Protection Against</h4>
+                <ul>
+                    <li>Phase-to-phase faults</li>
+                    <li>Ground faults</li>
+                    <li>Inter-turn faults</li>
+                    <li>Core faults</li>
+                </ul>
+        
+                <h3>Key Components</h3>
+                <ul>
+                    <li>Current transformers (CTs)</li>
+                    <li>Differential relay unit</li>
+                    <li>Trip circuit</li>
+                    <li>Protected transformer</li>
+                    <li>Fault simulation unit</li>
+                </ul>
+        
+                <h3>Special Considerations</h3>
+                <ul>
+                    <li>CT ratio matching</li>
+                    <li>Phase shift compensation</li>
+                    <li>Magnetizing inrush current</li>
+                    <li>Zero sequence current filtering</li>
+                </ul>
+        
+                <h3>Viva Questions</h3>
+                <h4>1. What is differential protection principle?</h4>
+                <p><strong>Answer:</strong> The principle is based on comparing input and output currents of protected equipment. Under normal conditions, these currents are equal; any difference indicates an internal fault.</p>
+        
+                <h4>2. Why is CT ratio matching important?</h4>
+                <p><strong>Answer:</strong> CT ratios must match transformer voltage ratios to ensure accurate current comparison and prevent false tripping during normal operation.</p>
+        
+                <h4>3. How does the relay handle magnetizing inrush current?</h4>
+                <p><strong>Answer:</strong> Modern relays use second harmonic restraint to prevent operation during inrush conditions, as inrush current contains high second harmonic content.</p>
+        
+                <h4>4. What is percentage differential protection?</h4>
+                <p><strong>Answer:</strong> It's a protection scheme where the operating threshold increases with through-current magnitude, providing stability during CT saturation conditions.</p>
+        
+                <h4>5. What causes CT saturation and how is it handled?</h4>
+                <p><strong>Answer:</strong> CT saturation occurs during high through-faults or DC offset. Percentage bias characteristic provides stability during these conditions.</p>
+        
+                <div class="video-section">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/7ldqZQ3XiYk" title="Differential Protection"></iframe>
+                </div>
+            </div>
+        </li>
+        
+        <li class="card">
+            <h2 class="card-title">4. Instantaneous Over Current Relay</h2>
+            <button class="reveal-button" onclick="toggleContent('theoryContent4')">Toggle Content</button>
+            <div id="theoryContent4" class="theoretical-content">
+                <h3>Overview</h3>
+                <p>Instantaneous overcurrent relays provide immediate protection against severe overcurrent conditions without intentional time delay.</p>
+        
+                <h3>Theoretical Concepts</h3>
+                <h4>Operating Principles</h4>
+                <ul>
+                    <li>Pick-up current setting</li>
+                    <li>Operating time (20-30ms)</li>
+                    <li>Reset ratio (typically 0.95)</li>
+                    <li>Dropout current</li>
+                </ul>
+        
+                <h4>Types</h4>
+                <ul>
+                    <li>Electromagnetic</li>
+                    <li>Static/Electronic</li>
+                    <li>Numerical/Digital</li>
+                </ul>
+        
+                <h3>Applications</h3>
+                <ul>
+                    <li>Short circuit protection</li>
+                    <li>Feeder protection</li>
+                    <li>Backup protection</li>
+                    <li>Motor protection</li>
+                </ul>
+        
+                <h3>Characteristics</h3>
+                <ul>
+                    <li>Time vs Current curve</li>
+                    <li>Operating range</li>
+                    <li>Reset characteristics</li>
+                    <li>Burden specifications</li>
+                </ul>
+        
+                <h3>Viva Questions</h3>
+                <h4>1. What is the difference between instantaneous and IDMT relays?</h4>
+                <p><strong>Answer:</strong> Instantaneous relays operate immediately upon fault detection, while IDMT relays have an intentional time delay that varies with current magnitude.</p>
+        
+                <h4>2. What is meant by pickup current?</h4>
+                <p><strong>Answer:</strong> It's the minimum current value at which the relay starts to operate or initiates tripping action.</p>
+        
+                <h4>3. Why is reset ratio important?</h4>
+                <p><strong>Answer:</strong> Reset ratio prevents relay chattering by ensuring clear distinction between pickup and dropout values.</p>
+        
+                <h4>4. What factors affect relay operating time?</h4>
+                <p><strong>Answer:</strong> Operating time depends on fault current magnitude, relay mechanism type, and CT characteristics.</p>
+        
+                <h4>5. What are the advantages of numerical relays over electromagnetic types?</h4>
+                <p><strong>Answer:</strong> Digital relays offer better accuracy, flexibility in settings, self-monitoring capabilities, and communication features.</p>
+        
+                <div class="video-section">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/XvUXyWn3jX4" title="Overcurrent Protection"></iframe>
+                </div>
+            </div>
+        </li>
+        
+<li class="card">
+    <h2 class="card-title">5. Over Voltage Relay (Static Type)</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent5')">Toggle Content</button>
+    <div id="theoryContent5" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>Static overvoltage relays use solid-state components to protect equipment from dangerous voltage levels.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Operating Principles</h4>
+        <ul>
+            <li>Voltage sensing circuit</li>
+            <li>Time delay characteristics</li>
+            <li>Voltage threshold settings</li>
+            <li>Reset voltage level</li>
+        </ul>
+
+        <h4>Components</h4>
+        <ul>
+            <li>Potential transformer</li>
+            <li>Comparator circuit</li>
+            <li>Timer circuit</li>
+            <li>Output relay</li>
+        </ul>
+
+        <h3>Applications</h3>
+        <ul>
+            <li>Generator protection</li>
+            <li>Transformer protection</li>
+            <li>Transmission line protection</li>
+            <li>Load protection</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. Why are static relays preferred over electromagnetic types?</h4>
+        <p><strong>Answer:</strong> Static relays offer better accuracy, faster response, no moving parts, and higher reliability.</p>
+
+        <h4>2. What is the typical time delay setting range?</h4>
+        <p><strong>Answer:</strong> Usually adjustable from instantaneous to several seconds, typically 0-10 seconds.</p>
+
+        <h4>3. How is voltage threshold adjusted?</h4>
+        <p><strong>Answer:</strong> Through potential divider networks or reference voltage adjustment in the comparator circuit.</p>
+
+        <h4>4. What causes nuisance tripping in overvoltage relays?</h4>
+        <p><strong>Answer:</strong> Voltage spikes, improper threshold settings, or electromagnetic interference.</p>
+
+        <h4>5. How is relay reset voltage determined?</h4>
+        <p><strong>Answer:</strong> Usually set 2-5% below pickup voltage to prevent chattering.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dBq6gR2_YH4" title="Overvoltage Protection"></iframe>
+        </div>
+    </div>
+</li>
+
+<li class="card">
+    <h2 class="card-title">6. Miniature Circuit Breaker Characteristics</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent6')">Toggle Content</button>
+    <div id="theoryContent6" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>MCBs provide both thermal and magnetic protection mechanisms for low voltage circuits.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Protection Mechanisms</h4>
+        <ul>
+            <li>Thermal trip (bimetallic strip)</li>
+            <li>Magnetic trip (solenoid)</li>
+            <li>Arc extinction</li>
+        </ul>
+
+        <h4>Trip Curves</h4>
+        <ul>
+            <li>B-type (3-5 In)</li>
+            <li>C-type (5-10 In)</li>
+            <li>D-type (10-20 In)</li>
+        </ul>
+
+        <h3>Applications</h3>
+        <ul>
+            <li>Domestic circuits</li>
+            <li>Industrial protection</li>
+            <li>Motor circuits</li>
+            <li>Distribution systems</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. Explain B, C, and D type MCB characteristics.</h4>
+        <p><strong>Answer:</strong> They differ in magnetic trip levels: B-type for resistive loads, C-type for mixed loads, D-type for highly inductive loads.</p>
+
+        <h4>2. How does thermal tripping work?</h4>
+        <p><strong>Answer:</strong> Bimetallic strip bends due to heating from overcurrent, triggering the trip mechanism.</p>
+
+        <h4>3. What is the purpose of arc chutes?</h4>
+        <p><strong>Answer:</strong> They cool and split the arc during interruption, helping quick arc extinction.</p>
+
+        <h4>4. What is breaking capacity?</h4>
+        <p><strong>Answer:</strong> Maximum fault current an MCB can safely interrupt without damage.</p>
+
+        <h4>5. Why are MCBs preferred over fuses?</h4>
+        <p><strong>Answer:</strong> Reusable, better discrimination, visible isolation, and combined thermal-magnetic protection.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/QGWBmp3dqXk" title="MCB Operation"></iframe>
+        </div>
+    </div>
+</li>
+
+<li class="card">
+    <h2 class="card-title">7. HRC Fuse Characteristics</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent7')">Toggle Content</button>
+    <div id="theoryContent7" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>High Rupturing Capacity fuses provide excellent short circuit protection with current limiting capability.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Operating Parameters</h4>
+        <ul>
+            <li>Pre-arcing time</li>
+            <li>Arcing time</li>
+            <li>Total clearing time</li>
+            <li>Cut-off current</li>
+        </ul>
+
+        <h4>Construction</h4>
+        <ul>
+            <li>Fuse element</li>
+            <li>Quartz filler</li>
+            <li>Ceramic body</li>
+            <li>End caps</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. What is current limiting effect?</h4>
+        <p><strong>Answer:</strong> HRC fuse interrupts fault current before it reaches first peak, limiting fault energy.</p>
+
+        <h4>2. Why is quartz filling used?</h4>
+        <p><strong>Answer:</strong> For arc quenching and heat absorption during fuse operation.</p>
+
+        <h4>3. What is pre-arcing time?</h4>
+        <p><strong>Answer:</strong> Time between fault inception and start of arc formation.</p>
+
+        <h4>4. Explain fuse factor.</h4>
+        <p><strong>Answer:</strong> Ratio of minimum fusing current to rated current of fuse.</p>
+
+        <h4>5. What is discrimination in fuses?</h4>
+        <p><strong>Answer:</strong> Ability of fuses in series to operate selectively under fault conditions.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/yp5NAXBd8_k" title="HRC Fuse Operation"></iframe>
+        </div>
+    </div>
+</li>
+
+<!-- 8. Circuit Breaker Testing -->
+<li class="card">
+    <h2 class="card-title">8. Circuit Breaker Testing</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent8')">Toggle Content</button>
+    <div id="theoryContent8" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>Circuit breakers are essential devices for interrupting fault currents in power systems. They provide protection by automatically disconnecting faulty sections.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Important Parameters</h4>
+        <ul>
+            <li>Breaking capacity</li>
+            <li>Making capacity</li>
+            <li>Arc quenching time</li>
+        </ul>
+
+        <h4>Types of Circuit Breakers</h4>
+        <ul>
+            <li>Air Circuit Breaker (ACB)</li>
+            <li>Vacuum Circuit Breaker (VCB)</li>
+            <li>Oil Circuit Breaker (OCB)</li>
+            <li>SF6 Circuit Breaker</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. What is the function of a circuit breaker?</h4>
+        <p><strong>Answer:</strong> To disconnect faulty sections of the power system, preventing damage to equipment.</p>
+
+        <h4>2. Why is SF6 gas used in circuit breakers?</h4>
+        <p><strong>Answer:</strong> For effective arc quenching and insulation.</p>
+
+        <h4>3. What is the difference between ACB and VCB?</h4>
+        <p><strong>Answer:</strong> ACB uses air for arc extinction, while VCB uses vacuum.</p>
+
+        <h4>4. Define making and breaking capacity of a circuit breaker.</h4>
+        <p><strong>Answer:</strong> Making capacity refers to the highest current a breaker can handle without damage during closure. Breaking capacity is the maximum fault current it can safely interrupt.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZIdynw_9xow" title="Circuit Breaker Testing"></iframe>
+        </div>
+    </div>
+</li>
+
+<!-- 9. Characteristics of SCR -->
+<li class="card">
+    <h2 class="card-title">9. Characteristics of SCR (Silicon Controlled Rectifier)</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent9')">Toggle Content</button>
+    <div id="theoryContent9" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>SCR is a semiconductor device widely used in power control applications due to its fast switching capability and high efficiency.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Operating Regions</h4>
+        <ul>
+            <li>Forward Blocking</li>
+            <li>Forward Conduction</li>
+            <li>Reverse Blocking</li>
+        </ul>
+
+        <h4>Applications</h4>
+        <ul>
+            <li>Phase control</li>
+            <li>Inverters</li>
+            <li>Motor speed control</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. What is SCR?</h4>
+        <p><strong>Answer:</strong> A semiconductor device that acts as a controlled switch in power circuits.</p>
+
+        <h4>2. How is SCR triggered?</h4>
+        <p><strong>Answer:</strong> By applying a gate signal to turn it ON.</p>
+
+        <h4>3. What is the holding current of an SCR?</h4>
+        <p><strong>Answer:</strong> The minimum current required to keep the SCR in conduction mode.</p>
+
+        <h4>4. What is the difference between SCR and diode?</h4>
+        <p><strong>Answer:</strong> SCR can be controlled using a gate signal, while a diode is uncontrolled.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/lCvOYOrlmNc" title="SCR Characteristics"></iframe>
+        </div>
+    </div>
+</li>
+
+<!-- 10. Power Factor Improvement -->
+<li class="card">
+    <h2 class="card-title">10. Power Factor Improvement</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent10')">Toggle Content</button>
+    <div id="theoryContent10" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>Power factor improvement enhances the efficiency of power systems by reducing reactive power demand.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Methods for Improvement</h4>
+        <ul>
+            <li>Capacitor banks</li>
+            <li>Synchronous condensers</li>
+            <li>Phase Advancers</li>
+        </ul>
+
+        <h4>Benefits</h4>
+        <ul>
+            <li>Reduced power losses</li>
+            <li>Improved voltage regulation</li>
+            <li>Cost savings in electricity bills</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. What is power factor?</h4>
+        <p><strong>Answer:</strong> The ratio of real power to apparent power in a system.</p>
+
+        <h4>2. How does a capacitor improve power factor?</h4>
+        <p><strong>Answer:</strong> It provides leading reactive power, offsetting lagging reactive power from inductive loads.</p>
+
+        <h4>3. What are synchronous condensers?</h4>
+        <p><strong>Answer:</strong> Synchronous motors operating without mechanical load to improve power factor.</p>
+
+        <h4>4. Why is power factor correction important?</h4>
+        <p><strong>Answer:</strong> To reduce energy losses and maintain system stability.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/hfP_4CN-Pb4" title="Power Factor Improvement"></iframe>
+        </div>
+    </div>
+</li>
+
+        
+        
+        
+
+
+    </ul>
+
+
+</section>
+
+<script>
+    function toggleContent(contentId) {
+        var content = document.getElementById(contentId);
+
+        // Check if content is hidden (display is "none" or initial empty value)
+        if (content.style.display === "none" || content.style.display === "") {
+            content.style.display = "block"; // Show content
+        } else {
+            content.style.display = "none"; // Hide content
+        }
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments List</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #0B0425;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        .navbar .brand {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .semester1 .section {
+            background-color: #1f2937;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .semester1 .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            font-weight: 800;
+        }
+
+        .semester1 .practicals-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .semester1 .practicals-list .card {
+            background: linear-gradient(to right, rgb(45, 45, 197),rgba(64, 201, 116, 0.678), rgb(45, 45, 197));
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .semester1 .practicals-list .card:hover {
+            background-color: #4b5563;
+            transform: scale(1.02);
+        }
+
+        .semester1 .card-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .semester1 .theoretical-content,
+        .semester1 .code-block {
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content h3,
+        .semester1 .theoretical-content h4,
+        .semester1 .theoretical-content h5,
+        .semester1 .theoretical-content p,
+        .semester1 .theoretical-content ul {
+            text-align: left;
+            color: #f3f4f6;
+        }
+
+        .semester1 .theoretical-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .semester1 .theoretical-content h4 {
+            font-size: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .semester1 .theoretical-content h5 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .semester1 .theoretical-content p {
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .semester1 .theoretical-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .semester1 .theoretical-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .semester1 .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        .reveal-button {
+            background-color: #0B0425;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .reveal-button:hover {
+            background-color: rgb(47, 130, 255);
+        }
+
+        .container {
+            display: inline-block;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .semester1.section {
+            flex: 1;
+        }
+
+        .video-section {
+            
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:left;
+        }
+        .video-section2 {
+          
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            text-align:right;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            border-radius: 0.375rem;
+        }
+        .download-button {
+            width: 30vw;
+            display: inline-block;
+            padding: 1vh 2vh;
+            font-size: 3vh;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 3vh;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .INFO
+        {
+            padding: 1vh 2vh;
+            font-size: 4vh;
+            display: block;
+            margin-bottom: 2vh;
+            color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: center;
+            background-color: #0056b3;
+            border-radius: 10px;
+            max-width: 50vw;
+            max-height: 20vw;
+            margin: 4vh auto;
+        }
+
+        pre1 .output
+        {
+            display: inline-block;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<!-- all in it -->https://www.youtube.com/watch?v=0b_mQ3Lkp6Q INDIA VS IRAN
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../semestershtml/semester5.html" class="brand">Back to Subjects</a>
+        </div>
+    </nav>
+
+    <!-- Experiments Section -->
+    <section class="semester1 section">
+        <h1 class="section-title"> Machine Learning </h1>
+
+    <a href="../files/sem7.pdf" download="ALL.pdf" class="download-button">Download PDF</a>
+    <div class="INFO">
+
+        Video + Theory 
+        
+    </div>
+    <ul class="practicals-list">
+
+        <!-- Experiment 1: Step & Impulse Response -->
+<li class="card">
+    <h2 class="card-title">1. Step & Impulse Response of Second-Order Unity Feedback System</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent1')">Toggle Content</button>
+    <div id="theoryContent1" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>Analyzing the step and impulse response of a second-order unity feedback system provides insights into the stability and transient behavior of the system.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Key Parameters</h4>
+        <ul>
+            <li>Natural frequency (ω<sub>n</sub>)</li>
+            <li>Damping ratio (ζ)</li>
+            <li>Settling time</li>
+            <li>Peak time</li>
+        </ul>
+
+        <h4>Formulas</h4>
+        <ul>
+            <li>Transfer Function: \( T(s) = \frac{\omega_n^2}{s^2 + 2ζω_ns + \omega_n^2} \)</li>
+            <li>Step Response: \( c(t) = 1 - e^{-ζω_nt} \)</li>
+            <li>Impulse Response: \( h(t) = ω_n e^{-ζω_nt} \sin(ω_d t) \)</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. Define step and impulse response.</h4>
+        <p><strong>Answer:</strong> Step response shows the system's reaction to a unit step input, while impulse response represents the output for a unit impulse input.</p>
+
+        <h4>2. How is the damping ratio related to system stability?</h4>
+        <p><strong>Answer:</strong> A higher damping ratio indicates better stability with minimal oscillations.</p>
+
+        <h4>3. What is natural frequency?</h4>
+        <p><strong>Answer:</strong> The frequency at which a system oscillates when not damped.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/WXz6Y9KJXiU" title="Step and Impulse Response"></iframe>
+        </div>
+    </div>
+</li>
+
+<!-- Experiment 2: Speed-Torque Characteristics of Servo Motor -->
+<li class="card">
+    <h2 class="card-title">2. Speed-Torque Characteristics of Servo Motor</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent2')">Toggle Content</button>
+    <div id="theoryContent2" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>Servo motors are used for precise control of angular position. This experiment analyzes their speed-torque relationship.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Key Characteristics</h4>
+        <ul>
+            <li>Torque constant</li>
+            <li>Stall torque</li>
+            <li>Speed constant</li>
+        </ul>
+
+        <h4>Equations</h4>
+        <ul>
+            <li>Torque: \( T = K_t I \)</li>
+            <li>Speed: \( \omega = K_e V \)</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. What is a servo motor?</h4>
+        <p><strong>Answer:</strong> A motor designed for precise control of position and speed.</p>
+
+        <h4>2. Define stall torque.</h4>
+        <p><strong>Answer:</strong> Maximum torque produced by the motor at zero speed.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/LCGGi0WNqTk" title="Servo Motor Characteristics"></iframe>
+        </div>
+    </div>
+</li>
+
+<!-- Experiment 3: Synchro Pair Characteristics -->
+<li class="card">
+    <h2 class="card-title">3. Synchro Pair Characteristics</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent3')">Toggle Content</button>
+    <div id="theoryContent3" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>Synchros are used in control systems for position sensing and control. The experiment demonstrates their characteristics.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Important Aspects</h4>
+        <ul>
+            <li>Transmitter-receiver configuration</li>
+            <li>Null voltage</li>
+            <li>Angular displacement relationship</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. What is a synchro pair?</h4>
+        <p><strong>Answer:</strong> A pair of devices that work together to transmit angular position information.</p>
+
+        <h4>2. What is null voltage?</h4>
+        <p><strong>Answer:</strong> The voltage observed when the transmitter and receiver are aligned.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/HYTP_PkN4jY" title="Synchro Pair Characteristics"></iframe>
+        </div>
+    </div>
+</li>
+
+<!-- Experiment 4: Transfer Function of DC Machine -->
+<li class="card">
+    <h2 class="card-title">4. Transfer Function of DC Machine</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent4')">Toggle Content</button>
+    <div id="theoryContent4" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>The transfer function of a DC machine relates its input voltage to the output speed or torque.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Key Parameters</h4>
+        <ul>
+            <li>Armature resistance and inductance</li>
+            <li>Back EMF constant</li>
+            <li>Torque constant</li>
+        </ul>
+
+        <h4>Transfer Function</h4>
+        <ul>
+            <li>Speed: \( \frac{\omega(s)}{V_a(s)} = \frac{K_t}{(J_s + B)(L_a s + R_a) + K_b K_t} \)</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. Define transfer function.</h4>
+        <p><strong>Answer:</strong> The mathematical representation of the relationship between input and output.</p>
+
+        <h4>2. What is back EMF?</h4>
+        <p><strong>Answer:</strong> The voltage induced in the armature winding opposing the applied voltage.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/lfRQOPQ4v04" title="DC Machine Transfer Function"></iframe>
+        </div>
+    </div>
+</li>
+
+
+<!-- Experiment 5: Unit Step Response and Key Parameters -->
+<li class="card">
+    <h2 class="card-title">5. Unit Step Response Analysis</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent5')">Toggle Content</button>
+    <div id="theoryContent5" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>Plotting the unit step response of a transfer function provides insights into the dynamic behavior and system stability.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Key Parameters</h4>
+        <ul>
+            <li>Delay Time (t<sub>d</sub>)</li>
+            <li>Rise Time (t<sub>r</sub>)</li>
+            <li>Peak Time (t<sub>p</sub>)</li>
+            <li>Peak Overshoot (M<sub>p</sub>)</li>
+        </ul>
+
+        <h4>Formulas</h4>
+        <ul>
+            <li>Transfer Function: \( G(s) = \frac{K}{s^2 + 2ζω_n s + \omega_n^2} \)</li>
+            <li>Response: \( C(t) = 1 - e^{-ζω_n t} [\cos(ω_d t) + (ζ/√(1-ζ^2)) \sin(ω_d t)] \)</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. What is the significance of rise time?</h4>
+        <p><strong>Answer:</strong> It is the time taken for the system output to rise from 10% to 90% of its final value.</p>
+
+        <h4>2. How do you measure peak overshoot?</h4>
+        <p><strong>Answer:</strong> It is the maximum deviation above the steady-state value, usually expressed as a percentage.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/2p6XGNJqE8Q" title="Step Response Analysis"></iframe>
+        </div>
+    </div>
+</li>
+
+<!-- Experiment 6: Pole-Zero Configuration -->
+<li class="card">
+    <h2 class="card-title">6. Pole-Zero Configuration in S-Plane</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent6')">Toggle Content</button>
+    <div id="theoryContent6" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>The location of poles and zeros in the s-plane determines the stability and response of the system.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Key Definitions</h4>
+        <ul>
+            <li>Pole: The value of \( s \) where the transfer function goes to infinity.</li>
+            <li>Zero: The value of \( s \) where the transfer function becomes zero.</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. What is the significance of poles in the s-plane?</h4>
+        <p><strong>Answer:</strong> Poles determine system stability; all poles should be in the left half-plane for stability.</p>
+
+        <h4>2. What does a zero on the s-plane indicate?</h4>
+        <p><strong>Answer:</strong> Zeros affect the system response but not its stability.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/xhmwvjmqRG8" title="Pole-Zero Analysis"></iframe>
+        </div>
+    </div>
+</li>
+
+<!-- Experiment 7: Characteristics of Magnetic Amplifiers -->
+<li class="card">
+    <h2 class="card-title">7. Characteristics of Magnetic Amplifiers</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent7')">Toggle Content</button>
+    <div id="theoryContent7" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>Magnetic amplifiers are used in control systems for signal amplification through magnetic fields.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Important Parameters</h4>
+        <ul>
+            <li>Core saturation</li>
+            <li>Input-output relationship</li>
+            <li>Hysteresis loop</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. What is core saturation in magnetic amplifiers?</h4>
+        <p><strong>Answer:</strong> It occurs when the core material's magnetic flux density reaches its maximum limit.</p>
+
+        <h4>2. How does a magnetic amplifier differ from a traditional amplifier?</h4>
+        <p><strong>Answer:</strong> Magnetic amplifiers use magnetic fields for amplification, unlike traditional amplifiers that use transistors.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/oaU3TLfuWxE" title="Magnetic Amplifier Characteristics"></iframe>
+        </div>
+    </div>
+</li>
+
+<!-- Experiment 8: MATLAB - Time Domain Analysis -->
+<li class="card">
+    <h2 class="card-title">8. Time Domain Analysis Using MATLAB</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent8')">Toggle Content</button>
+    <div id="theoryContent8" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>Time domain analysis is crucial for understanding system behavior in terms of time-dependent variables like settling time and steady-state error.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Steps in MATLAB</h4>
+        <ol>
+            <li>Define the transfer function using \( tf \).</li>
+            <li>Plot response using \( step() \) and \( impulse() \).</li>
+            <li>Analyze time-domain specifications using simulation.</li>
+        </ol>
+
+        <h3>Viva Questions</h3>
+        <h4>1. How is MATLAB used in control systems?</h4>
+        <p><strong>Answer:</strong> MATLAB allows for simulation and analysis of control system behavior through its toolboxes.</p>
+
+        <h4>2. What is steady-state error?</h4>
+        <p><strong>Answer:</strong> The difference between the desired and actual output as \( t → ∞ \).</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/D0UhXW9MF1c" title="MATLAB Time Domain Analysis"></iframe>
+        </div>
+    </div>
+</li>
+
+<!-- Experiment 9: Effect of P, PI, PID Controllers -->
+<li class="card">
+    <h2 class="card-title">9. P, PI, PID Controllers for Second-Order Systems</h2>
+    <button class="reveal-button" onclick="toggleContent('theoryContent9')">Toggle Content</button>
+    <div id="theoryContent9" class="theoretical-content">
+        <h3>Overview</h3>
+        <p>Proportional, Integral, and Derivative (PID) controllers improve the performance of control systems by addressing error, rate of change, and accumulated error.</p>
+
+        <h3>Theoretical Concepts</h3>
+        <h4>Controller Functions</h4>
+        <ul>
+            <li>P Controller: Corrects proportional to error.</li>
+            <li>PI Controller: Adds integral action to eliminate steady-state error.</li>
+            <li>PID Controller: Combines P, I, and D actions for optimal performance.</li>
+        </ul>
+
+        <h3>Viva Questions</h3>
+        <h4>1. What are the advantages of a PID controller?</h4>
+        <p><strong>Answer:</strong> Provides fast response, eliminates steady-state error, and improves stability.</p>
+
+        <h4>2. What is the main drawback of a PI controller?</h4>
+        <p><strong>Answer:</strong> It may result in overshoot due to accumulated error correction.</p>
+
+        <div class="video-section">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Y5wnno6DeaI" title="PID Controller Analysis"></iframe>
+        </div>
+    </div>
+</li>
+
+
+
+
+
+    </ul>
+
+
+</section>
+
+<script>
+    function toggleContent(contentId) {
+        var content = document.getElementById(contentId);
+
+        // Check if content is hidden (display is "none" or initial empty value)
+        if (content.style.display === "none" || content.style.display === "") {
+            content.style.display = "block"; // Show content
+        } else {
+            content.style.display = "none"; // Hide content
+        }
+    }
+</script>
+</body>
+
+</html>
