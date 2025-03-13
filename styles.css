@@ -210,14 +210,14 @@ body {
 
 .sectionMAIN {
     /* Tailwind's gray-800 */
-    text-align: right;
+    text-align: left;
     padding: 0rem 1rem;
     margin-left: 1vw;
     margin-right: 1vw;
     color: #f3f4f6;   
 }
 .section-title {
-    text-align: right;
+    text-align: center;
     padding: 10px 10px 10px 10px;
     font-size:8vw;
     margin-top: 0vw;
@@ -403,9 +403,9 @@ body {
         }
         
         p {
-            color: #aaa;
+            color: #060000;
             margin-bottom: 20px;
-            font-size: 15px;
+            font-size: 1.5vw;
         }
         
         /* Subject Selection Styles */
@@ -866,13 +866,16 @@ body {
 }
 
 .carousel-container {
-    height: 40vw;
-
+    height: 55vw;
+    margin-top: 10vw;
     width: 100%;
-    margin: 0 auto;
-
     overflow: hidden;
     position: relative;
+}
+
+.carousel-container h2{
+    text-align: center;
+    font-size: 3vw;
 }
 
 h1 {
@@ -882,7 +885,7 @@ h1 {
 }
 
 h1 em {
-    color: #0066cc;
+    color: whitesmoke;
 }
 
 .carousel {
@@ -908,7 +911,7 @@ h1 em {
     object-fit: cover;
     padding: 2vw;
     transition: all 0.5s ease;
-    background-color: #261952;
+    background-color: rgb(13, 69, 144);
     border-radius: 2vw;
 }
 
@@ -917,22 +920,24 @@ h1 em {
     right: -100%;
     top: 0;
     width: 50%;
-    height: 100%;
-    background-color: #261952;  /* Changed from white to match website theme */
+    height: 30vw;
+    background-color: rgb(13, 69, 144);  /* Changed from white to match website theme */
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     transition: all 0.5s ease;
     opacity: 0;
-    border-left: 1vw solid #2B88E0; /* Added border with accent color */
+    border-radius: 2vw;
+    border-left: 0.2vw solid #2B88E0; /* Added border with accent color */
 }
 
 .carousel-item:hover .carousel-image {
     transform: translateX(-25vw);
-    width: 30%;
+    width: 30vw;
     object-position: left;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease ;
+    
 }
 
 .carousel-item:hover .carousel-content {
@@ -941,7 +946,7 @@ h1 em {
 }
 
 .carousel-content h3 {
-    color: #0066cc;
+    color: whitesmoke;
     margin-bottom: 1vw;
     font-size: 4vw;
 }
@@ -973,7 +978,7 @@ h1 em {
 }
 
 .carousel-content a.exp {
-    color: #0066cc;
+    color: white;
     text-decoration: none;
     font-weight: bold;
     display: inline-block;
@@ -1075,7 +1080,7 @@ h1 em {
 
 .text-overlay {
 
-    margin-top: 35vh;
+    margin-top: 55vh;
     position: absolute;
     /* Adjust as needed to position correctly */
     left: 0;
@@ -1278,7 +1283,7 @@ h1 em {
     display: inline-block;
     color: rgb(238, 235, 235);
     padding: 2vh 2vw;
-    margin-left: 28vw;
+    margin-left: 22vw;
     margin-bottom: 2vh;
     
 }
@@ -1288,7 +1293,7 @@ h1 em {
 {
     display: flex;
     flex-direction:row;
-    width: 99.5vw;
+    width: 100%;
     height: 31vw;
 }
 .support .left {
